@@ -1,18 +1,9 @@
 import { fetchLighthouses, getWeather } from "@/app/lib/data";
 import Header from "@/app/ui/forecast/dailyTable";
 import DayCard from "@/app/ui/forecast/dayCard";
-import TableRow from "@/app/ui/forecast/hourlyTable";
-import Table from "@/app/ui/forecast/table";
-import { LighthouseProps } from "@/app/lib/definitions";
-
-
 
 export default async function Page() {
-
   const lighthouses = await fetchLighthouses();
-  // console.log("fetch lighthouses.......",lighthouses);
-
-
   return (
     <>
       <h1>Current Weather</h1>
