@@ -1,13 +1,7 @@
+import { dayCardProps } from "@/app/lib/definitions";
 import { getIcon } from "@/app/lib/IconCode";
 import { formatTimestampToDay } from "@/app/lib/utils";
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-type dayCardProps = {
-  // icon: React.ReactNode;
-  iconCode: number | undefined;
-  timestamp: number | undefined;
-  degree: number;
-} & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export default function DayCard({
   // icon = <FaSun className="w-16 h-16" />,

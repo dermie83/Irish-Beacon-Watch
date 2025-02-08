@@ -8,13 +8,13 @@ import {
       } from './definitions';
 // import { formatCurrency } from './utils';
 
-export async function fetchLighthouse() {
+export async function fetchLighthouses() {
   try {
     const data = await sql<LighthouseProps>`SELECT * FROM lighthouse`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch revenue data.');
+    throw new Error('Failed to fetch lighthouse data.');
   }
 }
 
@@ -49,8 +49,6 @@ export async function getWeather(
           hourly: parseHourlyWeather(response.data),
         };
       });
-  
-    // return resp.data;
   }
 
   function parseCurrentWeather({ current, daily }: any): CurrentWeatherType {
@@ -67,7 +65,6 @@ export async function getWeather(
       precipitation_sum: [precip],
     } = daily;
   
-    // temperature_2m: [maxTemp] same as const maxTemp = daily.temperature_2m[0]
     return {
       currentTemp: Math.round(currentTemp),
       highTemp: Math.round(maxTemp),

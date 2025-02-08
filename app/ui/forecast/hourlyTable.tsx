@@ -1,14 +1,6 @@
+import { TableRowProps } from "@/app/lib/definitions";
 import { getIcon } from "@/app/lib/IconCode";
 import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
-
-type TableRowProps = {
-  timestamp: number | undefined;
-  iconCode?: number | undefined;
-  maxTemp: number | undefined;
-  feelsLike: number | undefined;
-  windSpeed: number | undefined;
-  precip: number | undefined;
-};
 
 export default function TableRow({
   timestamp = 999,
