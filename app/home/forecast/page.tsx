@@ -1,6 +1,7 @@
 import { fetchLighthouses, getWeather } from "@/app/lib/data";
 import Header from "@/app/ui/forecast/dailyTable";
 import DayCard from "@/app/ui/forecast/dayCard";
+import Map from '@/app/ui/home/map';
 
 export default async function Page() {
   const lighthouses = await fetchLighthouses();
@@ -10,6 +11,7 @@ export default async function Page() {
       {lighthouses.map(async(lighthouse) => {
         const { current, daily, hourly } = await getWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         console.log("Current....",current);
+        console.log(lighthouse.name);
 
         return (
           <>

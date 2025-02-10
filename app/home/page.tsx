@@ -1,18 +1,25 @@
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
+import { fetchLighthouses } from "../lib/data";
+import Map from '@/app/ui/home/map';
 
-export default function Page() {
-  const Map = useMemo(() => dynamic(
-    () => import('@/app/ui/home/map'),
-    {
-        loading: () => <p>A map is loading</p>
-    }
-), [])
+export default async function Page() {
+
+    const lighthouses = await fetchLighthouses();
+    console.log(lighthouses);
+
     return (
         <>
-            <div className="bg-white-700 mx-auto my-5 w-[70%] h-[70%]">
-                <Map />
+        {lighthouses.map((lighthouse) => (
+            <div className="bg-white-700 mx-auto my-5 w-[40%] h-[40%]">
+                <Map 
+                 id={lighthouse.id} 
+                 name={lighthouse.name} 
+                 latitude={lighthouse.latitude} 
+                 longitude={lighthouse.longitude} 
+                />
             </div>
+        ))}
         </>
     )
 }

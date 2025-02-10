@@ -4,6 +4,7 @@
 Added map to home page
 Added weather api data forecast page (graphs and tables are still to be decided on)
 Rendered weather data on forecast page
+Implemented function to retrieve lighthouse data from database onto map page
 
 ## verson 0.1.0
 Clone example boiler plate from nextjs official web page https://nextjs.org/learn/dashboard-app/getting-started
