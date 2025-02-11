@@ -40,6 +40,11 @@ export type TableRowProps = {
   precip: number | undefined;
 };
 
+export type DailyHistoricaltWeatherType = {
+  windSpeed:number;
+  
+}
+
 export type WeatherDetailProps = {
   visability: string;
   humidity: string;

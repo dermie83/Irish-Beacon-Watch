@@ -2,6 +2,7 @@ import axios from "axios";
 import { sql } from '@vercel/postgres';
 import {
   CurrentWeatherType, 
+  DailyHistoricaltWeatherType, 
   DailytWeatherType, 
   HourlyWeatherType, 
   LighthouseProps
@@ -17,6 +18,42 @@ export async function fetchLighthouses() {
     throw new Error('Failed to fetch lighthouse data.');
   }
 }
+
+export async function getHistoricalWeather(
+  lat: number,
+  lon: number,
+  // Promise<{current:object, daily:object, hourly:object}> {
+): Promise<{
+  daily: DailyHistoricaltWeatherType[];
+}> {
+  return await axios
+  .get("https://archive-api.open-meteo.com/v1/archive?start_date=2000-01-01&end_date=2009-12-31&daily=wind_speed_10m_max,wind_gusts_10m_max&timezone=GMT",
+      {
+        params: {
+          latitude: lat,
+          longitude: lon,
+        },
+      }
+    )
+    .then((response:any) => {
+      return {
+        daily: parseHistoricalDailyWeather(response.data),
+      };
+    });
+}
+
+function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherType[] {
+  return daily.time.map((time: number, index: number) => {
+    return {
+      timestamp: time * 1000, //second to milliseconds
+      maxWind: Math.round(daily.wind_speed_10m_max[index]),
+      maxGust: Math.round(daily.wind_gusts_10m_max[index]),
+    };
+  });
+}
+
+
+
 
 
 export async function getWeather(
@@ -76,6 +113,8 @@ export async function getWeather(
       iconCode: iconCode,
     };
   }
+
+  parseHistoricalDailyWeather
   
   function parseDailyWeather({ daily }: any): DailytWeatherType[] {
     return daily.time.map((time: number, index: number) => {

@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-import { useMemo } from "react";
 import { fetchLighthouses } from "../lib/data";
 import Map from '@/app/ui/home/map';
 
