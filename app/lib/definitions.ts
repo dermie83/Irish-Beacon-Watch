@@ -41,8 +41,9 @@ export type TableRowProps = {
 };
 
 export type DailyHistoricaltWeatherType = {
-  windSpeed:number;
-  
+  timestamp: number | undefined;
+  maxWind:number | undefined;
+  maxGust:number | undefined;
 }
 
 export type WeatherDetailProps = {

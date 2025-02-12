@@ -1,6 +1,7 @@
 import { fetchLighthouses, getWeather } from "@/app/lib/data";
 import Header from "@/app/ui/forecast/dailyTable";
 import DayCard from "@/app/ui/forecast/dayCard";
+import TableRow from "@/app/ui/forecast/hourlyTable";
 import Map from '@/app/ui/home/map';
 
 export default async function Page() {
@@ -16,14 +17,14 @@ export default async function Page() {
         return (
           <>
             <h1>{ lighthouse.name }</h1>
-            <div className="bg-white-700 mx-auto my-5 w-[40%] h-[40%]">
+            {/* <div className="bg-white-700 mx-auto my-5 w-[40%] h-[40%]">
                     <Map 
                     id={lighthouse.id} 
                     name={lighthouse.name} 
                     latitude={lighthouse.latitude} 
                     longitude={lighthouse.longitude} 
                     />
-            </div>
+            </div> */}
 
 
             <Header
@@ -46,7 +47,7 @@ export default async function Page() {
                 />
               ))}
             </section>
-             {/* <table className="w-full text-center border-spacing-0">
+             <table className="w-full text-center border-spacing-0">
                 <tbody>
                   {hourly.map((item, index) => (
                     <TableRow
@@ -60,7 +61,7 @@ export default async function Page() {
                     />
                   ))}
                 </tbody>
-            </table> */}
+            </table>
           </>
         )
       })}
