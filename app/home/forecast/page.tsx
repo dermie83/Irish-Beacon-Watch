@@ -25,8 +25,7 @@ export default async function Page() {
                     longitude={lighthouse.longitude} 
                     />
             </div> */}
-
-
+            
             <Header
               currentTemp={current?.currentTemp}
               highTemp={current?.highTemp}
@@ -47,7 +46,7 @@ export default async function Page() {
                 />
               ))}
             </section>
-             <table className="w-full text-center border-spacing-0">
+             {/* <table className="w-full text-center border-spacing-0">
                 <tbody>
                   {hourly.map((item, index) => (
                     <TableRow
@@ -61,7 +60,7 @@ export default async function Page() {
                     />
                   ))}
                 </tbody>
-            </table>
+            </table> */}
           </>
         )
       })}

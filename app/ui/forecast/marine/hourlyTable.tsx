@@ -1,13 +1,11 @@
-import { DailyHistoricaltWeatherType} from "@/app/lib/definitions";
+import { HourlyMarineProp } from "@/app/lib/definitions";
 import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
 
 export default function TableRow({
   timestamp = 999,
-  maxGust = 31,
-  maxWind = 19,
-}: DailyHistoricaltWeatherType) {
+  waveHeight=0.99,
+}: HourlyMarineProp) {
 
-  
   // const dayDate = formatTimestampToDay(timestamp);
   // const hourDate = formatTimestampToNumericHour(timestamp);
 
@@ -20,18 +18,35 @@ export default function TableRow({
           <div className="uppercase">{timestamp}</div>
         </div>
       </td>
+      
       <td>
         <div className="flex flex-col items-center">
-          <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">TEMP</div>
-          <div>{maxWind}&deg;</div>
+          <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">waveHeight</div>
+          <div>{waveHeight}&deg;</div>
         </div>
       </td>
-      <td>
+      {/* <td>
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">FL TEMP</div>
-          <div>{maxGust}&deg;</div>
+          <div>{feelsLike}&deg;</div>
         </div>
       </td>
+      <td>
+        <div className="flex flex-col items-center">
+          <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">WIND</div>
+          <div>
+            {windSpeed}<span className="font-normal text-sm">mph</span>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div className="flex flex-col items-center">
+          <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">PRECIP</div>
+          <div>
+            {precip}<span className="font-normal text-sm">in</span>
+          </div>
+        </div>
+      </td> */}
     </tr>
   );
 }

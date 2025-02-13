@@ -40,11 +40,22 @@ export type TableRowProps = {
   precip: number | undefined;
 };
 
+export type HourlyMarineProp = {
+  timestamp:number | undefined;
+  waveHeight: number | undefined;
+};
+
+export type HourlyMarineType = {
+  timestamp:number;
+  waveHeight: number;
+};
+
+
 export type DailyHistoricaltWeatherType = {
   timestamp: number | undefined;
   maxWind:number | undefined;
   maxGust:number | undefined;
-}
+};
 
 export type WeatherDetailProps = {
   visability: string;
@@ -53,7 +64,7 @@ export type WeatherDetailProps = {
   airPressure: string;
   sunrise: string;
   sunset: string;
-}
+};
 
 export type CurrentWeatherType = {
   currentTemp: number;
