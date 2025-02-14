@@ -41,20 +41,15 @@ export type TableRowProps = {
 };
 
 export type HourlyMarineProp = {
-  timestamp:number | undefined;
-  waveHeight: number | undefined;
-};
-
-export type HourlyMarineType = {
-  timestamp:number;
+  timestamp:string;
   waveHeight: number;
 };
 
 
-export type DailyHistoricaltWeatherType = {
-  timestamp: number | undefined;
-  maxWind:number | undefined;
-  maxGust:number | undefined;
+export type DailyHistoricaltWeatherProp = {
+  timestamp: string;
+  maxWind:number;
+  maxGust:number;
 };
 
 export type WeatherDetailProps = {

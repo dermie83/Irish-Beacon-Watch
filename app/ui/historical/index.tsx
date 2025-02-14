@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 
 const LineGraph = dynamic(
-    () => import('@/app/ui/historical/lineChart/lineChart'),
+    () => import('@/app/ui/historical/lineChart'),
     { 
       loading: () => <p>A chart is loading</p>,
       ssr: false

@@ -1,11 +1,11 @@
-import { DailyHistoricaltWeatherType} from "@/app/lib/definitions";
+import { DailyHistoricaltWeatherProp} from "@/app/lib/definitions";
 import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
 
 export default function TableRow({
-  timestamp = 999,
+  timestamp = "",
   maxGust = 31,
   maxWind = 19,
-}: DailyHistoricaltWeatherType) {
+}: DailyHistoricaltWeatherProp) {
 
   
   // const dayDate = formatTimestampToDay(timestamp);

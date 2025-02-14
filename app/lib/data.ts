@@ -2,9 +2,9 @@ import axios from "axios";
 import { sql } from '@vercel/postgres';
 import {
   CurrentWeatherType, 
-  DailyHistoricaltWeatherType, 
+  DailyHistoricaltWeatherProp, 
   DailytWeatherType, 
-  HourlyMarineType, 
+  HourlyMarineProp, 
   HourlyWeatherType, 
   LighthouseProps
       } from './definitions';
@@ -26,7 +26,7 @@ export async function getMarineForecast(
   timezone: string,
   // Promise<{current:object, daily:object, hourly:object}> {
 ): Promise<{
-  hourly: HourlyMarineType[];
+  hourly: HourlyMarineProp[];
 }> {
   return await axios
   .get("https://marine-api.open-meteo.com/v1/marine?hourly=wave_height",
@@ -45,7 +45,7 @@ export async function getMarineForecast(
   });
 }
 
-function parseHourlyMarineForecase({ hourly }: any): HourlyMarineType[] {
+function parseHourlyMarineForecase({ hourly }: any): HourlyMarineProp[] {
   // console.log("Hourly Marine time.....",hourly.time);
   return hourly.time.map((time: string, index: number) => {
     return {
@@ -61,7 +61,7 @@ export async function getHistoricalWeather(
   timezone: string,
   // Promise<{current:object, daily:object, hourly:object}> {
 ): Promise<{
-  daily: DailyHistoricaltWeatherType[];
+  daily: DailyHistoricaltWeatherProp[];
 }> {
   return await axios
   .get("https://archive-api.open-meteo.com/v1/archive?start_date=2000-01-01&end_date=2001-12-31&daily=wind_speed_10m_max,wind_gusts_10m_max",
@@ -80,8 +80,8 @@ export async function getHistoricalWeather(
     });
 }
 
-function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherType[] {
-  console.log("Daily historical time.....",daily.time);
+function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherProp[] {
+  // console.log("Daily historical time.....",daily.time);
   return daily.time.map((time: number, index: number) => {
     return {
       timestamp: time, //second to milliseconds

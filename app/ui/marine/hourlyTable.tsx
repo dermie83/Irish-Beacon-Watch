@@ -2,7 +2,7 @@ import { HourlyMarineProp } from "@/app/lib/definitions";
 import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
 
 export default function TableRow({
-  timestamp = 999,
+  timestamp = "string",
   waveHeight=0.99,
 }: HourlyMarineProp) {
 

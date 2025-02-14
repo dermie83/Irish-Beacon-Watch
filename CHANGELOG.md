@@ -1,5 +1,9 @@
 # Irish Beacon Watch Changelog
 
+## verson 0.2.0
+Added linegraph to Historical page to show wind metrics
+Added linegraph to Marine page to show waveheight metrics
+
 ## verson 0.1.1
 Added map to home page
 Added weather api data forecast page (graphs and tables are still to be decided on)

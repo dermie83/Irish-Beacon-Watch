@@ -1,5 +1,6 @@
 import { fetchLighthouses, getMarineForecast} from "@/app/lib/data";
-import TableRow from "@/app/ui/forecast/marine/hourlyTable";
+import LineGraph from "@/app/ui/marine";
+import TableRow from "@/app/ui/marine/hourlyTable";
 
 export default async function Page() {
   const lighthouses = await fetchLighthouses();
@@ -8,12 +9,15 @@ export default async function Page() {
       <h1>Current Marine Forecast</h1>
       {lighthouses.map(async(lighthouse) => {
         const { hourly } = await getMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
-        console.log("Current....",hourly);
+        // console.log("Current....",hourly);
         // console.log(lighthouse.name);
 
         return (
           <>
             <h1>{ lighthouse.name }</h1>
+            <div>  
+              <LineGraph hourly = {hourly}/>
+            </div>
             {/* <div className="bg-white-700 mx-auto my-5 w-[40%] h-[40%]">
                     <Map 
                     id={lighthouse.id} 
@@ -44,7 +48,7 @@ export default async function Page() {
                 />
               ))}
             </section> */}
-             <table className="w-full text-center border-spacing-0">
+             {/* <table className="w-full text-center border-spacing-0">
                 <tbody>
                   {hourly.map((item, index) => (
                     <TableRow
@@ -54,7 +58,7 @@ export default async function Page() {
                     />
                   ))}
                 </tbody>
-            </table>
+            </table> */}
           </>
         )
       })}
