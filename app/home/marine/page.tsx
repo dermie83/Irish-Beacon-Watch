@@ -1,23 +1,22 @@
-import { fetchLighthouses, getHistoricalWeather} from "@/app/lib/data";
-import TableRow from "@/app/ui/historical/dailyTable";
-import LineGraph from "@/app/ui/historical";
-import { LineChart } from "recharts";
+import { fetchLighthouses, getMarineForecast} from "@/app/lib/data";
+import LineGraph from "@/app/ui/marine";
+import TableRow from "@/app/ui/marine/hourlyTable";
 
 export default async function Page() {
   const lighthouses = await fetchLighthouses();
   return (
     <>
-      <h1>Historical Weather</h1>
+      <h1>Current Marine Forecast</h1>
       {lighthouses.map(async(lighthouse) => {
-        const { daily } = await getHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
-        // console.log("Current....",daily);
+        const { hourly } = await getMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
+        // console.log("Current....",hourly);
         // console.log(lighthouse.name);
 
         return (
           <>
             <h1>{ lighthouse.name }</h1>
             <div>  
-              <LineGraph daily = {daily}/>
+              <LineGraph hourly = {hourly}/>
             </div>
             {/* <div className="bg-white-700 mx-auto my-5 w-[40%] h-[40%]">
                     <Map 
@@ -51,13 +50,11 @@ export default async function Page() {
             </section> */}
              {/* <table className="w-full text-center border-spacing-0">
                 <tbody>
-                  {daily.map((item, index) => (
+                  {hourly.map((item, index) => (
                     <TableRow
                       key={index}
-                      maxWind={item.maxWind}
                       timestamp={item.timestamp}
-                      maxGust={item.maxGust}
-                    
+                      waveHeight={item.waveHeight}
                     />
                   ))}
                 </tbody>

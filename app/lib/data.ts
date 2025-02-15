@@ -2,7 +2,9 @@ import axios from "axios";
 import { sql } from '@vercel/postgres';
 import {
   CurrentWeatherType, 
+  DailyHistoricaltWeatherProp, 
   DailytWeatherType, 
+  HourlyMarineProp, 
   HourlyWeatherType, 
   LighthouseProps
       } from './definitions';
@@ -16,6 +18,77 @@ export async function fetchLighthouses() {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch lighthouse data.');
   }
+}
+
+export async function getMarineForecast(
+  lat: number,
+  lon: number,
+  timezone: string,
+  // Promise<{current:object, daily:object, hourly:object}> {
+): Promise<{
+  hourly: HourlyMarineProp[];
+}> {
+  return await axios
+  .get("https://marine-api.open-meteo.com/v1/marine?hourly=wave_height",
+    {
+      params: {
+        latitude: lat,
+        longitude: lon,
+        timezone,
+      },
+    }
+  )
+  .then((response:any) => {
+    return {
+      hourly: parseHourlyMarineForecase(response.data),
+    };
+  });
+}
+
+function parseHourlyMarineForecase({ hourly }: any): HourlyMarineProp[] {
+  // console.log("Hourly Marine time.....",hourly.time);
+  return hourly.time.map((time: string, index: number) => {
+    return {
+      timestamp: time, //second to milliseconds
+      waveHeight: hourly.wave_height[index],
+    };
+  });
+}
+
+export async function getHistoricalWeather(
+  lat: number,
+  lon: number,
+  timezone: string,
+  // Promise<{current:object, daily:object, hourly:object}> {
+): Promise<{
+  daily: DailyHistoricaltWeatherProp[];
+}> {
+  return await axios
+  .get("https://archive-api.open-meteo.com/v1/archive?start_date=2000-01-01&end_date=2001-12-31&daily=wind_speed_10m_max,wind_gusts_10m_max",
+      {
+        params: {
+          latitude: lat,
+          longitude: lon,
+          timezone,
+        },
+      }
+    )
+    .then((response:any) => {
+      return {
+        daily: parseHistoricalDailyWeather(response.data),
+      };
+    });
+}
+
+function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherProp[] {
+  // console.log("Daily historical time.....",daily.time);
+  return daily.time.map((time: number, index: number) => {
+    return {
+      timestamp: time, //second to milliseconds
+      maxWind: Math.round(daily.wind_speed_10m_max[index]),
+      maxGust: Math.round(daily.wind_gusts_10m_max[index]),
+    };
+  });
 }
 
 
@@ -88,7 +161,7 @@ export async function getWeather(
   }
   
   function parseHourlyWeather({ hourly, current }: any): HourlyWeatherType[] {
-    console.log(current.time * 1000);
+    // console.log(current.time * 1000);
     return hourly.time
       .map((time: number, index: number) => {
         return {
