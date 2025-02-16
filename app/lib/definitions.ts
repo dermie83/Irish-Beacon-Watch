@@ -10,6 +10,10 @@ export type LighthouseProps = {
   name: string;
   latitude: number;
   longitude: number;
+  towerHeight:number;
+  lightHeight:number;
+  range:number;
+  greatLighthouse:boolean;
 };
 
 

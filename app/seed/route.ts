@@ -6,20 +6,35 @@ const client = await db.connect();
 async function seedLighthouse() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
+  // await client.sql`DROP TABLE lighthouse`;
+
   await client.sql`
     CREATE TABLE IF NOT EXISTS lighthouse (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       latitude float(10) NOT NULL,
-      longitude float(10) NOT NULL
+      longitude float(10) NOT NULL,
+      towerHeight float(10) NOT NULL,
+      lightHeight float(10) NOT NULL,
+      range float(10) NOT NULL,
+      greatLighthouse boolean
     );
   `;
+  // await client.sql`
+  //   ALTER TABLE lighthouse
+  //     ADD towerHeight float(10) NOT NULL,
+  //     ADD lightHeight float(10) NOT NULL,
+  //     ADD range float(10) NOT NULL,
+  //     ADD greatLighthouse boolean`
+  // ;
 
   const insertedLighthouses = await Promise.all(
     lighthouses.map(
       (lighthouse) => client.sql`
-        INSERT INTO lighthouse (id, name, latitude, longitude)
-        VALUES (${lighthouse.id}, ${lighthouse.name}, ${lighthouse.latitude}, ${lighthouse.longitude})
+        INSERT INTO lighthouse (id, name, latitude, longitude, 
+        towerHeight, lightHeight, range, greatLighthouse)
+        VALUES (${lighthouse.id}, ${lighthouse.name}, ${lighthouse.latitude}, ${lighthouse.longitude},
+                ${lighthouse.towerHeight}, ${lighthouse.lightHeight}, ${lighthouse.range}, ${lighthouse.greatLighthouse})
         ON CONFLICT (id) DO NOTHING;
       `,
     ),

@@ -3,20 +3,15 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import { LighthouseProps } from "@/app/lib/definitions";
-import { lighthouses } from "@/app/lib/placeholder-data";
 
+//lat: 53.4462988 , lng: -7.5265753
 
-export default function Map({
-    id= '410544b8-4001-4271-9855-fec4b6a6442a',
-    name= 'Muglins',
-    latitude= 53.2755975,
-    longitude= -6.0758683,
-}: LighthouseProps) {
+export default function Map(lighthouse: LighthouseProps) {
     const zoom = 7;
     
     return (
         <MapContainer
-            center={{lat: latitude , lng: longitude}}
+            center={{lat: lighthouse.latitude , lng: lighthouse.longitude}}
             zoom={zoom}
             scrollWheelZoom={false}
             style={{ height: "100%", width: "100%" }}
@@ -26,8 +21,10 @@ export default function Map({
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
         
-            <Marker key = {id} position={{lat:latitude,lng:longitude}} draggable={false}>
-                <Popup>{name}</Popup>
+            <Marker key = {lighthouse.id} position={{lat: lighthouse.latitude , lng: lighthouse.longitude}} draggable={false}>
+                <Popup> 
+                    Name: {lighthouse.name}
+                </Popup>
             </Marker>
         </MapContainer>
     )}

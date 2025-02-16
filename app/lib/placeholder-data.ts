@@ -4,14 +4,22 @@ const lighthouses = [
   {
     id: '410544b2-4001-4271-9855-fec4b6a6442a',
     name: 'Hook',
-    latitude: 52.1237453,
-    longitude: -6.9293683,
+    latitude: 52.1237486,
+    longitude: -6.9319432,
+    towerHeight: 35,
+    lightHeight: 46,
+    range: 23,
+    greatLighthouse: true,
   },
   {
     id: '410544b8-4001-4271-9855-fec4b6a6442a',
     name: 'Muglins',
-    latitude: 53.2755975,
-    longitude: -6.0758683,
+    latitude: 53.281456,
+    longitude: -6.1500728,
+    towerHeight: 9,
+    lightHeight: 14,
+    range: 11,
+    greatLighthouse: false,
   },
 ];
 

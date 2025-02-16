@@ -12,11 +12,12 @@ import {
 
 export async function fetchLighthouses() {
   try {
-    const data = await sql<LighthouseProps>`SELECT * FROM lighthouse`;
+    const data = await sql<LighthouseProps>
+    `SELECT * FROM lighthouse`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch lighthouse data.');
+    throw new Error('Failed to fetch lighthouse location data.');
   }
 }
 
