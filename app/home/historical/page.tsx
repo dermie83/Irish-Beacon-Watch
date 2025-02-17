@@ -19,16 +19,6 @@ export default async function Page() {
             <div>  
               <LineGraph daily = {daily}/>
             </div>
-            {/* <div className="bg-white-700 mx-auto my-5 w-[40%] h-[40%]">
-                    <Map 
-                    id={lighthouse.id} 
-                    name={lighthouse.name} 
-                    latitude={lighthouse.latitude} 
-                    longitude={lighthouse.longitude} 
-                    />
-            </div> */}
-
-
             {/* <Header
               currentTemp={current?.currentTemp}
               highTemp={current?.highTemp}

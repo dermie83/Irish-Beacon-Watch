@@ -28,7 +28,7 @@ type LighthouseCharacterType = {
 export default function BarGraph({characters} : LighthouseCharacterType) {
         return (
           <>
-            <ResponsiveContainer width="100%" minHeight={300}>
+            <ResponsiveContainer width="100%" minHeight={180}>
               <BarChart data={characters}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -42,6 +42,5 @@ export default function BarGraph({characters} : LighthouseCharacterType) {
               </BarChart>
             </ResponsiveContainer>
           </>
-           
         )}
  

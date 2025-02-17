@@ -14,9 +14,6 @@ export default function Header({
   const Icon = getIcon(iconCode);
   return (
     <header className="flex items-center my-4 mx-10">
-      <div className="text-3xl ml-4">
-          <span data-current-name>{currentTemp}</span>&deg;
-      </div>
       <div className="flex w-1/2 justify-center items-center m-0.5 p-0.5 border-r-2 border-foregroundColor">
         {/* {Icon} */}
         {Icon && <Icon className="w-20 h-20 object-contain" />}

@@ -6,6 +6,7 @@ Added linegraph to Marine page to show waveheight metrics
 Added map to Forecast page
 Changed lighthouse data from database fetch to placeholder-data for map on home page
 Added Chart to Home page
+Added styling and layout to forecast
 
 ## verson 0.1.1
 Added map to home page
