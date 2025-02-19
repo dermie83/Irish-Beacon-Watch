@@ -14,6 +14,9 @@ export type LighthouseProps = {
   lightHeight:number;
   range:number;
   greatLighthouse:boolean;
+  constructed:string;
+  currentDate:string;
+  age:number;
 };
 
 

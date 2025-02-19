@@ -10,6 +10,8 @@ const lighthouses = [
     lightHeight: 46,
     range: 23,
     greatLighthouse: true,
+    constructed: '1172-01-01',
+    currentDate: "",
   },
   {
     id: '410544b8-4001-4271-9855-fec4b6a6442a',
@@ -20,6 +22,8 @@ const lighthouses = [
     lightHeight: 14,
     range: 11,
     greatLighthouse: false,
+    constructed: '1880-01-01',
+    currentDate: "",
   },
 ];
 

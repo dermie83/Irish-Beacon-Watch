@@ -17,7 +17,9 @@ async function seedLighthouse() {
       towerHeight float(10) NOT NULL,
       lightHeight float(10) NOT NULL,
       range float(10) NOT NULL,
-      greatLighthouse boolean
+      greatLighthouse boolean,
+      constructed DATE NOT NULL,
+      currentDate DATE NOT NULL DEFAULT CURRENT_DATE
     );
   `;
   // await client.sql`
@@ -32,9 +34,10 @@ async function seedLighthouse() {
     lighthouses.map(
       (lighthouse) => client.sql`
         INSERT INTO lighthouse (id, name, latitude, longitude, 
-        towerHeight, lightHeight, range, greatLighthouse)
+        towerHeight, lightHeight, range, greatLighthouse, constructed, currentDate)
         VALUES (${lighthouse.id}, ${lighthouse.name}, ${lighthouse.latitude}, ${lighthouse.longitude},
-                ${lighthouse.towerHeight}, ${lighthouse.lightHeight}, ${lighthouse.range}, ${lighthouse.greatLighthouse})
+                ${lighthouse.towerHeight}, ${lighthouse.lightHeight}, ${lighthouse.range}, 
+                ${lighthouse.greatLighthouse}, ${lighthouse.constructed}, ${lighthouse.currentDate})
         ON CONFLICT (id) DO NOTHING;
       `,
     ),

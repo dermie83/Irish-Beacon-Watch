@@ -1,10 +1,18 @@
 import { fetchLighthouses, getWeather } from "@/app/lib/data";
+import { formatDateToLocal } from "@/app/lib/utils";
 import Header from "@/app/ui/forecast/dailyTable";
 import DayCard from "@/app/ui/forecast/dayCard";
 import Map from "@/app/ui/forecast/map";
 
 export default async function Page() {
   const lighthouses = await fetchLighthouses();
+  // const date = new Date().toISOString()
+
+  // const currentDate = formatDateToLocal(date)
+  // console.log("Date....",currentDate)
+  // const constructed = lighthouses.map((light)=> formatDateToLocal(light.currentDate));
+  // console.log("constr....",constructed);
+  console.log("fetch....",lighthouses[0].age)
   return (
     <>
       {lighthouses.map(async(lighthouse) => {
@@ -36,6 +44,9 @@ export default async function Page() {
                   lightHeight={lighthouse.lightHeight}
                   range={lighthouse.range}
                   greatLighthouse={lighthouse.greatLighthouse}
+                  constructed={formatDateToLocal(lighthouse.constructed)}
+                  currentDate= {""}
+                  age={lighthouse.age}
               />
               <div className="col-span-3 row-span-1">
                 <Header
@@ -56,3 +67,4 @@ export default async function Page() {
     </>
   )
 }
+

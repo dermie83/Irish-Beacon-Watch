@@ -13,7 +13,19 @@ import {
 export async function fetchLighthouses() {
   try {
     const data = await sql<LighthouseProps>
-    `SELECT * FROM lighthouse`;
+    `SELECT 
+            lighthouse.id, 
+            lighthouse.name, 
+            lighthouse.latitude, 
+            lighthouse.longitude, 
+            lighthouse.towerHeight, 
+            lighthouse.lightHeight, 
+            lighthouse.range, 
+            lighthouse.greatLighthouse,
+            lighthouse.constructed,
+            lighthouse.currentDate,
+            (lighthouse.currentDate - lighthouse.constructed)/365 AS "age"
+     FROM lighthouse`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
