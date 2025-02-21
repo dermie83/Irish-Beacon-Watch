@@ -8,7 +8,7 @@ import {
   HourlyWeatherType, 
   LighthouseProps
       } from './definitions';
-// import { formatCurrency } from './utils';
+
 
 export async function fetchLighthouses() {
   try {
@@ -25,11 +25,24 @@ export async function fetchLighthouses() {
             lighthouse.constructed,
             lighthouse.currentDate,
             (lighthouse.currentDate - lighthouse.constructed)/365 AS "age"
-     FROM lighthouse`;
+     FROM lighthouse LIMIT ${ITEMS_PER_PAGE}`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch lighthouse location data.');
+  }
+}
+
+const ITEMS_PER_PAGE = 1;
+export async function fetchTotalLighthouses() {
+  try {
+    const data = await sql`SELECT COUNT(*)
+     FROM lighthouse LIMIT ${ITEMS_PER_PAGE}`;
+     const totalPages = Math.ceil(Number(data.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch total number of invoices.');
   }
 }
 

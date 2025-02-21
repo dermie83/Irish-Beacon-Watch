@@ -1,18 +1,17 @@
-import { fetchLighthouses, getWeather } from "@/app/lib/data";
+import { fetchLighthouses, fetchTotalLighthouses, getWeather } from "@/app/lib/data";
 import { formatDateToLocal } from "@/app/lib/utils";
 import Header from "@/app/ui/forecast/dailyTable";
 import DayCard from "@/app/ui/forecast/dayCard";
 import Map from "@/app/ui/forecast/map";
+import Pagination from "@/app/ui/forecast/pagination";
 
 export default async function Page() {
-  const lighthouses = await fetchLighthouses();
-  // const date = new Date().toISOString()
 
-  // const currentDate = formatDateToLocal(date)
-  // console.log("Date....",currentDate)
-  // const constructed = lighthouses.map((light)=> formatDateToLocal(light.currentDate));
-  // console.log("constr....",constructed);
-  console.log("fetch....",lighthouses[0].age)
+  const lighthouses = await fetchLighthouses();
+  const totalPages = await fetchTotalLighthouses();
+  console.log("totalpages....",totalPages)
+  
+  console.log("fetch....",lighthouses)
   return (
     <>
       {lighthouses.map(async(lighthouse) => {
@@ -64,6 +63,9 @@ export default async function Page() {
           </>
         )
       })}
+      <div className="mt-5 flex w-full justify-center">
+        <Pagination totalPages={totalPages} />
+      </div>
     </>
   )
 }
