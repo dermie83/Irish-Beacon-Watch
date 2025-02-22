@@ -1,4 +1,4 @@
-import { TableRowProps } from "@/app/lib/definitions";
+import { TableRowWeatherProps } from "@/app/lib/definitions";
 import { getIcon } from "@/app/lib/IconCode";
 import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
 
@@ -9,7 +9,7 @@ export default function TableRow({
   feelsLike = 30,
   windSpeed = 19,
   precip = 0.1,
-}: TableRowProps) {
+}: TableRowWeatherProps) {
 
   const Icon = getIcon(iconCode);
   const dayDate = formatTimestampToDay(timestamp);

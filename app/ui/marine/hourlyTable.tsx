@@ -1,10 +1,10 @@
-import { HourlyMarineProp } from "@/app/lib/definitions";
-import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
+import { HourlyMarineType } from "@/app/lib/definitions";
+// import { formatTimestampToDay, formatTimestampToNumericHour } from "@/app/lib/utils";
 
 export default function TableRow({
   timestamp = "string",
   waveHeight=0.99,
-}: HourlyMarineProp) {
+}: HourlyMarineType) {
 
   // const dayDate = formatTimestampToDay(timestamp);
   // const hourDate = formatTimestampToNumericHour(timestamp);

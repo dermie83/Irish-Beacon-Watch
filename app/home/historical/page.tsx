@@ -1,4 +1,4 @@
-import { fetchLighthouses, fetchLighthousePages, getHistoricalWeather} from "@/app/lib/data";
+import { fetchLighthouses, fetchLighthousePages, fetchHistoricalWeather} from "@/app/lib/data";
 import TableRow from "@/app/ui/historical/dailyTable";
 import LineGraph from "@/app/ui/historical";
 import { LineChart } from "recharts";
@@ -25,7 +25,7 @@ export default async function Page(props: {
     <>
       <h1>Historical Weather</h1>
       {lighthouses.map(async(lighthouse) => {
-        const { daily } = await getHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
+        const { daily } = await fetchHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         // console.log("Current....",daily);
         // console.log(lighthouse.name);
 

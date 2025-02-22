@@ -12,7 +12,7 @@ import {
   } from "recharts";
 
 
-type LighthouseCharacterType = {
+type LighthouseCharacterProps = {
   characters: {
     id: string;
     name: string;
@@ -25,7 +25,7 @@ type LighthouseCharacterType = {
   }[]
 }
 
-export default function BarGraph({characters} : LighthouseCharacterType) {
+export default function BarGraph({characters} : LighthouseCharacterProps) {
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>

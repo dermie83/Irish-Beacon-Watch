@@ -1,75 +1,74 @@
-import { HeaderProps } from "@/app/lib/definitions";
-import { getIcon } from "@/app/lib/IconCode";
+import { MarineHeaderProps } from "@/app/lib/definitions";
   
 export default function Header({
-  currentTemp = 31,
-  highTemp = 32,
-  lowTemp = 9,
-  highFeelsLike = 30,
-  lowFeelsLike = 20,
-  windSpeed = 9,
-  precip = 0.1,
-  iconCode = 999,
-}: HeaderProps) {
-  const Icon = getIcon(iconCode);
+  waveHeight = 2,
+  wind_wave_height=2,
+  swell_wave_height=2,
+  wave_direction=2,
+  wave_period=2,
+  ocean_current_velocity=2,
+  ocean_current_direction=2,
+}: MarineHeaderProps) {
+  
   return (
     <header className="flex items-center my-4 mx-10">
       <div className="flex w-1/2 justify-center items-center m-0.5 p-0.5 border-r-2 border-foregroundColor">
-        {/* {Icon} */}
-        {Icon && <Icon className="w-20 h-20 object-contain" />}
-        <div className="text-3xl ml-4">
-          <span data-current-temp>{currentTemp}</span>&deg;
+        <div className="text-2xl ml-4">
+            <p> Current Height </p>
+          <span data-current-waveheight>{waveHeight}</span>
+          <span className="font-normal text-sm"> meters</span>
         </div>
       </div>
       <div className="grid w-1/2 gap-4 justify-around grid-cols-3 grid-rows-2">
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
-            High
+            Wind Wave Height
           </div>
           <div>
-            <span data-current-high>{highTemp}</span>&deg;
+            <span data-current-wind-wave>{wind_wave_height}</span>
+            <span className="font-normal text-sm"> meters</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
-            FL High
+            Swell Height
           </div>
           <div>
-            <span data-current-fl-high>{highFeelsLike}</span>&deg;
+            <span data-current-swell-wave>{swell_wave_height}</span>
+            <span className="font-normal text-sm"> meters</span>
           </div>
         </div>
         <div className="flex flex-col items-center ">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
-            Wind
+            Direction
           </div>
           <div>
-            <span data-current-wind>{windSpeed}</span>
-            <span className="font-normal text-sm">mph</span>
+            <span data-current-wave-direction>{wave_direction}</span>&deg;
           </div>
         </div>
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
-            Low
+            Periods
           </div>
           <div>
-            <span data-current-low>{lowTemp}</span>&deg;
+            <span data-current-low>{wave_period}</span>&deg;
           </div>
         </div>
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
-            FL Low
+            Current Velocity
           </div>
           <div>
-            <span data-current-fl-low>{lowFeelsLike}</span>&deg;
+            <span data-current-current-velocity>{ocean_current_velocity}</span>
+            <span className="font-normal text-sm"> m/sec</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
-            Precip
+            Ocean Direction
           </div>
           <div>
-            <span data-current-precip>{precip}</span>
-            <span className="font-normal text-sm">in</span>
+            <span data-current-ocean-direction>{ocean_current_direction}</span>&deg;
           </div>
         </div>
       </div>

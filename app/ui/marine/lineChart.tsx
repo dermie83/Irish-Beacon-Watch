@@ -10,14 +10,14 @@ import {
   } from "recharts";
 
 
-type hourlyMarinetForecastType = {
+type hourlyMarinetForecastProps = {
   hourly: {
     timestamp:string
     waveHeight: number;
   }[]
 }
 
-export default function LineGraph({hourly} : hourlyMarinetForecastType) {
+export default function LineGraph({hourly} : hourlyMarinetForecastProps) {
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={300}>

@@ -2,11 +2,12 @@ import axios from "axios";
 import { sql } from '@vercel/postgres';
 import {
   CurrentWeatherType, 
-  DailyHistoricaltWeatherProp, 
+  DailyHistoricaltWeatherType, 
   DailytWeatherType, 
-  HourlyMarineProp, 
+  HourlyMarineType,
+  CurrentMarineType,
   HourlyWeatherType, 
-  LighthouseProps
+  LighthouseType
       } from './definitions';
 
 
@@ -18,7 +19,7 @@ export async function fetchLighthouses(
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
-    const data = await sql<LighthouseProps>
+    const data = await sql<LighthouseType>
     `SELECT 
             lighthouse.id, 
             lighthouse.name, 
@@ -60,16 +61,16 @@ export async function fetchLighthousePages(
   }
 }
 
-export async function getMarineForecast(
+export async function fetchMarineForecast(
   lat: number,
   lon: number,
   timezone: string,
-  // Promise<{current:object, daily:object, hourly:object}> {
 ): Promise<{
-  hourly: HourlyMarineProp[];
+  current: CurrentMarineType;
+  hourly: HourlyMarineType[];
 }> {
   return await axios
-  .get("https://marine-api.open-meteo.com/v1/marine?hourly=wave_height",
+  .get("https://marine-api.open-meteo.com/v1/marine?hourly=wave_height&current=wave_height,wave_direction,wave_period,wind_wave_height,swell_wave_height,ocean_current_velocity,ocean_current_direction",
     {
       params: {
         latitude: lat,
@@ -80,12 +81,34 @@ export async function getMarineForecast(
   )
   .then((response:any) => {
     return {
+      current: parseCurrentMarineForecast(response.data),
       hourly: parseHourlyMarineForecase(response.data),
     };
   });
 }
 
-function parseHourlyMarineForecase({ hourly }: any): HourlyMarineProp[] {
+function parseCurrentMarineForecast({ current }: any): CurrentMarineType {
+  const {
+    wave_height: waveHeight,
+    wind_wave_height: wind_wave_height,
+    swell_wave_height: swell_wave_height,
+    wave_direction: wave_direction,
+    wave_period: wave_period,
+    ocean_current_velocity: ocean_current_velocity,
+    ocean_current_direction: ocean_current_direction,
+  } = current;
+  return {
+    waveHeight: Math.round(waveHeight),
+    wind_wave_height: Math.round(wind_wave_height),
+    swell_wave_height: Math.round(swell_wave_height),
+    wave_direction: Math.round(wave_direction),
+    wave_period: Math.round(wave_period),
+    ocean_current_velocity: Math.round(ocean_current_velocity),
+    ocean_current_direction: Math.round(ocean_current_direction),
+  };
+}
+
+function parseHourlyMarineForecase({ hourly }: any): HourlyMarineType[] {
   // console.log("Hourly Marine time.....",hourly.time);
   return hourly.time.map((time: string, index: number) => {
     return {
@@ -95,13 +118,13 @@ function parseHourlyMarineForecase({ hourly }: any): HourlyMarineProp[] {
   });
 }
 
-export async function getHistoricalWeather(
+export async function fetchHistoricalWeather(
   lat: number,
   lon: number,
   timezone: string,
   // Promise<{current:object, daily:object, hourly:object}> {
 ): Promise<{
-  daily: DailyHistoricaltWeatherProp[];
+  daily: DailyHistoricaltWeatherType[];
 }> {
   return await axios
   .get("https://archive-api.open-meteo.com/v1/archive?start_date=2000-01-01&end_date=2001-12-31&daily=wind_speed_10m_max,wind_gusts_10m_max",
@@ -120,7 +143,7 @@ export async function getHistoricalWeather(
     });
 }
 
-function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherProp[] {
+function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherType[] {
   // console.log("Daily historical time.....",daily.time);
   return daily.time.map((time: number, index: number) => {
     return {
@@ -132,7 +155,7 @@ function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherPro
 }
 
 
-export async function getWeather(
+export async function fetchWeatherForecast(
     lat: number,
     lon: number,
     timezone: string

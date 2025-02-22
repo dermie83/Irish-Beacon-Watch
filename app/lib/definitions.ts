@@ -5,7 +5,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 // However, these types are generated automatically if you're using an ORM such as Prisma.
-export type LighthouseProps = {
+export type LighthouseType = {
   id: string;
   name: string;
   latitude: number;
@@ -20,7 +20,7 @@ export type LighthouseProps = {
 };
 
 
-export type HeaderProps = {
+export type WeatherHeaderProps = {
   currentTemp: number | undefined;
   highTemp: number | undefined;
   lowTemp: number | undefined;
@@ -31,14 +31,14 @@ export type HeaderProps = {
   iconCode: number | undefined;
 };
 
-export type dayCardProps = {
+export type DayCardWeatherProps = {
   iconCode: number | undefined;
   timestamp: number | undefined;
   degree: number;
 } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 
-export type TableRowProps = {
+export type TableRowWeatherProps = {
   timestamp: number | undefined;
   iconCode?: number | undefined;
   maxTemp: number | undefined;
@@ -47,16 +47,35 @@ export type TableRowProps = {
   precip: number | undefined;
 };
 
-export type HourlyMarineProp = {
-  timestamp:string;
+export type MarineHeaderProps = {
+  waveHeight: number | undefined;
+  wind_wave_height: number | undefined;
+  swell_wave_height: number | undefined;
+  wave_direction: number | undefined;
+  wave_period: number | undefined;
+  ocean_current_velocity: number | undefined;
+  ocean_current_direction: number| undefined;
+};
+
+export type HourlyMarineType = {
+  timestamp: string;
   waveHeight: number;
 };
 
+export type CurrentMarineType = {
+  waveHeight: number;
+  wind_wave_height: number;
+  swell_wave_height: number;
+  wave_direction: number;
+  wave_period: number;
+  ocean_current_velocity: number;
+  ocean_current_direction: number;
+};
 
-export type DailyHistoricaltWeatherProp = {
+export type DailyHistoricaltWeatherType = {
   timestamp: string;
-  maxWind:number;
-  maxGust:number;
+  maxWind: number;
+  maxGust: number;
 };
 
 export type WeatherDetailProps = {
