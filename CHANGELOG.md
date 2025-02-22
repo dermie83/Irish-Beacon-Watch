@@ -1,5 +1,9 @@
 # Irish Beacon Watch Changelog
 
+## verson 0.3.0
+Added Pagination component to all pages
+Added Search bar component to allow search by Lighthouse name
+
 ## verson 0.2.0
 Added linegraph to Historical page to show wind metrics
 Added linegraph to Marine page to show waveheight metrics

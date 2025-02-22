@@ -21,7 +21,7 @@ type LighthouseCharacterType = {
     towerHeight:number;
     lightHeight:number;
     range:number;
-    greatLighthouse:boolean;
+    age:number;
   }[]
 }
 
@@ -37,8 +37,9 @@ export default function BarGraph({characters} : LighthouseCharacterType) {
                   <Tooltip />
                   <Legend />
                   <Bar dataKey="range" stroke="#8884d8" />
-                  <Bar dataKey="towerheight" stroke="#8884d8" />
-                  <Bar dataKey="lightheight" stroke="#8884d8" />
+                  <Bar dataKey="towerheight" stroke="#8884d7" />
+                  <Bar dataKey="lightheight" stroke="#8884d6" />
+                  <Bar dataKey="age" stroke="#8884d5" />
               </BarChart>
             </ResponsiveContainer>
           </>

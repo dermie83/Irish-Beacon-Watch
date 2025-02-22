@@ -2,19 +2,23 @@ import { fetchLighthouses, fetchLighthousePages, getHistoricalWeather} from "@/a
 import TableRow from "@/app/ui/historical/dailyTable";
 import LineGraph from "@/app/ui/historical";
 import { LineChart } from "recharts";
-import Pagination from "@/app/ui/forecast/pagination";
+import Pagination from "@/app/ui/pagination";
+import Search from "@/app/ui/search";
 
 export default async function Page(props: {
   searchParams?: Promise<{
     page?: string;
+    query?:string;
   }>;
   }) {
     const searchParams = await props.searchParams;
     // console.log("searchparams...",searchParams)
     const currentPage = Number(searchParams?.page) || 1;
     // console.log("currentPage...",currentPage)
-    const lighthouses = await fetchLighthouses(currentPage);
-    const totalPages = await fetchLighthousePages();
+    const query = searchParams?.query || '';
+    console.log("query...",query)
+    const lighthouses = await fetchLighthouses(currentPage, query);
+    const totalPages = await fetchLighthousePages(query);
     // console.log("totalpages....",totalPages)
     // console.log("fetch....",lighthouses)
   return (
@@ -67,6 +71,7 @@ export default async function Page(props: {
           </>
         )
       })}
+      <Search placeholder="Search Lighthouse..." />
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>

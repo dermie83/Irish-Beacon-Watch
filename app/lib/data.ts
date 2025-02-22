@@ -14,6 +14,7 @@ import {
 const ITEMS_PER_PAGE = 2;
 export async function fetchLighthouses(
   currentPage: number,
+  query: string,
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
@@ -30,7 +31,10 @@ export async function fetchLighthouses(
             lighthouse.constructed,
             lighthouse.currentDate,
             (lighthouse.currentDate - lighthouse.constructed)/365 AS "age"
-     FROM lighthouse LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
+     FROM lighthouse
+     WHERE
+        lighthouse.name ILIKE ${`%${query}%`}
+      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -39,10 +43,15 @@ export async function fetchLighthouses(
 }
 
 
-export async function fetchLighthousePages() {
+export async function fetchLighthousePages(
+  query: string,
+) {
   try {
     const data = await sql`SELECT COUNT(*)
-     FROM lighthouse LIMIT ${ITEMS_PER_PAGE}`;
+     FROM lighthouse
+     WHERE
+        lighthouse.name ILIKE ${`%${query}%`}
+         LIMIT ${ITEMS_PER_PAGE}`;
      const totalPages = Math.ceil(Number(data.rows[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {

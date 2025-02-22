@@ -1,19 +1,23 @@
 import { fetchLighthousePages, fetchLighthouses, getMarineForecast} from "@/app/lib/data";
-import Pagination from "@/app/ui/forecast/pagination";
+import Pagination from "@/app/ui/pagination";
 import LineGraph from "@/app/ui/marine";
 import TableRow from "@/app/ui/marine/hourlyTable";
+import Search from "@/app/ui/search";
 
 export default async function Page(props: {
   searchParams?: Promise<{
     page?: string;
+    query?:string;
   }>;
   })  {
     const searchParams = await props.searchParams;
     // console.log("searchparams...",searchParams)
     const currentPage = Number(searchParams?.page) || 1;
     // console.log("currentPage...",currentPage)
-    const lighthouses = await fetchLighthouses(currentPage);
-    const totalPages = await fetchLighthousePages();
+    const query = searchParams?.query || '';
+    console.log("query...",query)
+    const lighthouses = await fetchLighthouses(currentPage, query);
+    const totalPages = await fetchLighthousePages(query);
     // console.log("totalpages....",totalPages)
   return (
     <>
@@ -73,6 +77,7 @@ export default async function Page(props: {
           </>
         )
       })}
+      <Search placeholder="Search Lighthouse..." />
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
