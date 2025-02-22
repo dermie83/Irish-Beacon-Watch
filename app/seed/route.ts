@@ -19,7 +19,7 @@ async function seedLighthouse() {
       range float(10) NOT NULL,
       greatLighthouse boolean,
       constructed DATE NOT NULL,
-      currentDate DATE NOT NULL,
+      currentDate DATE NOT NULL
     );
   `;
   // await client.sql`

@@ -1,17 +1,23 @@
-import { fetchLighthouses, fetchTotalLighthouses, getWeather } from "@/app/lib/data";
+import { fetchLighthouses, fetchLighthousePages, getWeather } from "@/app/lib/data";
 import { formatDateToLocal } from "@/app/lib/utils";
 import Header from "@/app/ui/forecast/dailyTable";
 import DayCard from "@/app/ui/forecast/dayCard";
 import Map from "@/app/ui/forecast/map";
 import Pagination from "@/app/ui/forecast/pagination";
 
-export default async function Page() {
-
-  const lighthouses = await fetchLighthouses();
-  const totalPages = await fetchTotalLighthouses();
-  console.log("totalpages....",totalPages)
-  
-  console.log("fetch....",lighthouses)
+export default async function Page(props: {
+  searchParams?: Promise<{
+    page?: string;
+  }>;
+  })  {
+    const searchParams = await props.searchParams;
+    // console.log("searchparams...",searchParams)
+    const currentPage = Number(searchParams?.page) || 1;
+    // console.log("currentPage...",currentPage)
+    const lighthouses = await fetchLighthouses(currentPage);
+    const totalPages = await fetchLighthousePages();
+    // console.log("totalpages....",totalPages)
+    // console.log("fetch....",lighthouses)
   return (
     <>
       {lighthouses.map(async(lighthouse) => {
@@ -44,7 +50,7 @@ export default async function Page() {
                   range={lighthouse.range}
                   greatLighthouse={lighthouse.greatLighthouse}
                   constructed={formatDateToLocal(lighthouse.constructed)}
-                  currentDate= {""}
+                  currentDate= {lighthouse.currentDate}
                   age={lighthouse.age}
               />
               <div className="col-span-3 row-span-1">

@@ -10,7 +10,12 @@ import {
       } from './definitions';
 
 
-export async function fetchLighthouses() {
+
+const ITEMS_PER_PAGE = 2;
+export async function fetchLighthouses(
+  currentPage: number,
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
     const data = await sql<LighthouseProps>
     `SELECT 
@@ -25,7 +30,7 @@ export async function fetchLighthouses() {
             lighthouse.constructed,
             lighthouse.currentDate,
             (lighthouse.currentDate - lighthouse.constructed)/365 AS "age"
-     FROM lighthouse LIMIT ${ITEMS_PER_PAGE}`;
+     FROM lighthouse LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -33,8 +38,8 @@ export async function fetchLighthouses() {
   }
 }
 
-const ITEMS_PER_PAGE = 1;
-export async function fetchTotalLighthouses() {
+
+export async function fetchLighthousePages() {
   try {
     const data = await sql`SELECT COUNT(*)
      FROM lighthouse LIMIT ${ITEMS_PER_PAGE}`;
