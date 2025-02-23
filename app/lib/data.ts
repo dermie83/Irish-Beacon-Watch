@@ -168,7 +168,7 @@ export async function fetchWeatherForecast(
   
     return await axios
       .get(
-        "https://api.open-meteo.com/v1/forecast?current=temperature_2m,weather_code,wind_speed_10m&hourly=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&precipitation_unit=inch&timeformat=unixtime",
+        "https://api.open-meteo.com/v1/forecast?current=temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m&hourly=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&precipitation_unit=inch&timeformat=unixtime",
         {
           params: {
             latitude: lat,
@@ -191,6 +191,7 @@ export async function fetchWeatherForecast(
     const {
       temperature_2m: currentTemp,
       wind_speed_10m: windSpeed,
+      wind_gusts_10m: windGust,
       weather_code: iconCode,
     } = current;
     const {
@@ -208,6 +209,7 @@ export async function fetchWeatherForecast(
       highFeelsLike: Math.round(maxFeelsLike),
       lowFeelsLike: Math.round(minFeelsLike),
       windSpeed: Math.round(windSpeed),
+      windGust:Math.round(windGust),
       precip: Math.round(precip * 100) / 100,
       iconCode: iconCode,
     };

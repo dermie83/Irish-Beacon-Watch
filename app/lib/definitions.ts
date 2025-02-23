@@ -27,6 +27,7 @@ export type WeatherHeaderProps = {
   highFeelsLike: number | undefined;
   lowFeelsLike: number | undefined;
   windSpeed: number | undefined;
+  windGust: number | undefined;
   precip: number | undefined;
   iconCode: number | undefined;
 };
@@ -94,6 +95,7 @@ export type CurrentWeatherType = {
   highFeelsLike: number;
   lowFeelsLike: number;
   windSpeed: number;
+  windGust:number;
   precip: number;
   iconCode: number;
 };

@@ -66,6 +66,7 @@ export default async function Page(props: {
                     highFeelsLike={current?.highFeelsLike}
                     lowFeelsLike={current?.lowFeelsLike}
                     windSpeed={current?.windSpeed}
+                    windGust={current?.windGust}
                     precip={current?.precip}
                     iconCode={current?.iconCode}
                   />
