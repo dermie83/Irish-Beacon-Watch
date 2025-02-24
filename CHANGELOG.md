@@ -1,8 +1,14 @@
 # Irish Beacon Watch Changelog
 
+## verson 0.4.0
+Added Landing Page
+
 ## verson 0.3.0
 Added Pagination component to all pages
 Added Search bar component to allow search by Lighthouse name
+Added Current Visibilty metric to Forecast Page Header
+Added Wind and Visibilty number to text conversion function
+Added styling and new layout to Marine page
 
 ## verson 0.2.0
 Added linegraph to Historical page to show wind metrics
@@ -10,7 +16,7 @@ Added linegraph to Marine page to show waveheight metrics
 Added map to Forecast page
 Changed lighthouse data from database fetch to placeholder-data for map on home page
 Added Chart to Home page
-Added styling and layout to forecast
+Added styling and layout to forecast Page
 
 ## verson 0.1.1
 Added map to home page

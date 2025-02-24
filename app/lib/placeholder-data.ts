@@ -32,7 +32,7 @@ const lighthouses = [
     id: '410544b6-4001-4271-9855-fec4b6a6442a',
     name: 'Blackrock',
     latitude: 53.581456,
-    longitude: -7.1500728,
+    longitude: -6.1500728,
     towerHeight: 15,
     lightHeight: 18,
     range: 20,

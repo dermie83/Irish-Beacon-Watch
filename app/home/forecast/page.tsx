@@ -26,8 +26,12 @@ export default async function Page(props: {
     <>
       {lighthouses.map(async(lighthouse) => {
         const { current, daily, hourly } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
-        // console.log("Current....",current);
-        // console.log(lighthouse.name);
+        // console.log("hourly....",hourly.visibility);
+        const visibility = hourly.map((visible)=> visible.visibility);
+        // console.log("visibility....",visibility.slice(0)[0]);
+        // console.log("visibility....",visibility);
+        
+        // console.log(lighthouse.name)
 
         return (
           <>
@@ -69,6 +73,7 @@ export default async function Page(props: {
                     windGust={current?.windGust}
                     precip={current?.precip}
                     iconCode={current?.iconCode}
+                    visibility={visibility?.slice(-1)[0]}
                   />
               </div>
             </div>

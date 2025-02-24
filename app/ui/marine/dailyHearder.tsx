@@ -1,3 +1,4 @@
+import { convertWindDirectionToText } from "@/app/lib/convertNumberToText";
 import { MarineHeaderProps } from "@/app/lib/definitions";
   
 export default function Header({
@@ -9,6 +10,9 @@ export default function Header({
   ocean_current_velocity=2,
   ocean_current_direction=2,
 }: MarineHeaderProps) {
+
+  const waveDirection = convertWindDirectionToText(wave_direction);
+  const oceanDirection = convertWindDirectionToText(ocean_current_direction);
   
   return (
     <header className="flex items-center my-4 mx-10">
@@ -16,7 +20,7 @@ export default function Header({
         <div className="text-2xl ml-4">
             <p> Current Height </p>
           <span data-current-waveheight>{waveHeight}</span>
-          <span className="font-normal text-sm"> meters</span>
+          <span className="font-normal text-sm">m</span>
         </div>
       </div>
       <div className="grid w-1/2 gap-4 justify-around grid-cols-3 grid-rows-2">
@@ -26,7 +30,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-wind-wave>{wind_wave_height}</span>
-            <span className="font-normal text-sm"> meters</span>
+            <span className="font-normal text-sm">m</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -35,7 +39,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-swell-wave>{swell_wave_height}</span>
-            <span className="font-normal text-sm"> meters</span>
+            <span className="font-normal text-sm">m</span>
           </div>
         </div>
         <div className="flex flex-col items-center ">
@@ -43,7 +47,7 @@ export default function Header({
             Direction
           </div>
           <div>
-            <span data-current-wave-direction>{wave_direction}</span>&deg;
+            <span data-current-wave-direction>{waveDirection}</span>&deg;
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -51,7 +55,8 @@ export default function Header({
             Periods
           </div>
           <div>
-            <span data-current-low>{wave_period}</span>&deg;
+            <span data-current-low>{wave_period}</span>
+            <span className="font-normal text-sm">sec</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -60,7 +65,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-current-velocity>{ocean_current_velocity}</span>
-            <span className="font-normal text-sm"> m/sec</span>
+            <span className="font-normal text-sm">m/sec</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -68,7 +73,7 @@ export default function Header({
             Ocean Direction
           </div>
           <div>
-            <span data-current-ocean-direction>{ocean_current_direction}</span>&deg;
+            <span data-current-ocean-direction>{oceanDirection}</span>&deg;
           </div>
         </div>
       </div>

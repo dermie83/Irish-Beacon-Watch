@@ -1,5 +1,6 @@
 import { WeatherHeaderProps } from "@/app/lib/definitions";
 import { getIcon } from "@/app/lib/IconCode";
+import { convertVisibilityToText } from "@/app/lib/convertNumberToText";
   
 export default function Header({
   currentTemp = 31,
@@ -9,8 +10,10 @@ export default function Header({
   windGust =10,
   precip = 0.1,
   iconCode = 999,
+  visibility= 1000,
 }: WeatherHeaderProps) {
   const Icon = getIcon(iconCode);
+  const vizText = convertVisibilityToText(visibility);
   return (
     <header className="flex items-center my-4 mx-10">
       Weather Now....
@@ -43,7 +46,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-wind>{windSpeed}</span>
-            <span className="font-normal text-sm">mph</span>
+            <span className="font-normal text-sm">km/h</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -52,7 +55,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-wind-gust>{windGust}</span>
-            <span className="font-normal text-sm">mph</span>
+            <span className="font-normal text-sm">km/h</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -62,6 +65,15 @@ export default function Header({
           <div>
             <span data-current-precip>{precip}</span>
             <span className="font-normal text-sm">in</span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">
+          visibility
+          </div>
+          <div>
+            <span data-current-visibility>{vizText}</span>
+            {/* <span className="font-normal text-sm">m</span> */}
           </div>
         </div>
       </div>

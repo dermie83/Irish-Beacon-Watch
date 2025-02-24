@@ -30,6 +30,7 @@ export type WeatherHeaderProps = {
   windGust: number | undefined;
   precip: number | undefined;
   iconCode: number | undefined;
+  visibility: number | undefined;
 };
 
 export type DayCardWeatherProps = {
@@ -113,4 +114,5 @@ export type HourlyWeatherType = {
   feelsLike: number;
   windSpeed: number;
   precip: number;
+  visibility: number;
 };

@@ -168,7 +168,7 @@ export async function fetchWeatherForecast(
   
     return await axios
       .get(
-        "https://api.open-meteo.com/v1/forecast?current=temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m&hourly=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&precipitation_unit=inch&timeformat=unixtime",
+        "https://api.open-meteo.com/v1/forecast?current=temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m&hourly=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,visibility&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&precipitation_unit=inch&timeformat=unixtime",
         {
           params: {
             latitude: lat,
@@ -227,6 +227,7 @@ export async function fetchWeatherForecast(
   
   function parseHourlyWeather({ hourly, current }: any): HourlyWeatherType[] {
     // console.log(current.time * 1000);
+    // console.log("currentTime....",current.time);
     return hourly.time
       .map((time: number, index: number) => {
         return {
@@ -236,7 +237,8 @@ export async function fetchWeatherForecast(
           feelsLike: Math.round(hourly.apparent_temperature[index]),
           windSpeed: Math.round(hourly.wind_speed_10m[index]),
           precip: Math.round(hourly.precipitation[index] * 100) / 100,
+          visibility: Math.round(hourly.visibility[index])
         };
       })
-      .filter(({ timestamp }: any) => timestamp >= current.time * 1000);
+      .filter(({ timestamp }: any) => timestamp <= current.time * 1000);
   }
