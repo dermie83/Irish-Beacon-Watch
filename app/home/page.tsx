@@ -1,6 +1,8 @@
 import { fetchLighthouses, fetchLighthousePages } from "../lib/data";
 import Map from '@/app/ui/home/map/index';
 import RangeGraph from "../ui/home/rangeChart";
+import AboveWaterGraph from "../ui/home/aboveWaterChart";
+import TowerGraph from "../ui/home/towerChart";
 import Pagination from "../ui/pagination";
 import Search from "../ui/search";
 
@@ -25,13 +27,15 @@ export default async function Page(props: {
         <>
          <div className="grid grid-cols-3 grid-rows-3 gap-4">
             <div className="col-span-2 row-span-4"><Map/></div>
-            <div className="col-span-1 row-span-1"><RangeGraph characters={lighthouses}/></div>
-            <div className="col-span-1 row-span-1"><RangeGraph characters={lighthouses}/></div>
-            <div className="col-span-1 row-span-1"><RangeGraph characters={lighthouses}/></div>
-            <Search placeholder="Search Lighthouse..." />
-            <div className="mt-5 flex w-full justify-center">
+            <div className="col-span-1 row-span-1"><RangeGraph/></div>
+            <div className="col-span-1 row-span-1"><AboveWaterGraph/></div>
+            <div className="col-span-1 row-span-1"><TowerGraph/></div>
+            {/* <div className="mt-5 flex w-full justify-center">
                 <Pagination totalPages={totalPages} />
             </div>
+            <div className="mt-5 flex w-full justify-center">
+                <Search placeholder="Search Lighthouse..." />
+            </div> */}
          </div>
          {/* <div className="mt-5 flex w-full justify-center">
           <Pagination totalPages={totalPages} />

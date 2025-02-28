@@ -12,7 +12,7 @@ import {
 
 
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 5;
 export async function fetchLighthouses(
   currentPage: number,
   query: string,
@@ -24,14 +24,15 @@ export async function fetchLighthouses(
             lighthouse.id, 
             lighthouse.name, 
             lighthouse.latitude, 
-            lighthouse.longitude, 
+            lighthouse.longitude,
+            lighthouse.aboveWater,
             lighthouse.towerHeight, 
-            lighthouse.lightHeight, 
             lighthouse.range, 
             lighthouse.greatLighthouse,
             lighthouse.constructed,
             lighthouse.currentDate,
-            (lighthouse.currentDate - lighthouse.constructed)/365 AS "age"
+            (lighthouse.currentDate - lighthouse.constructed)/365 AS "age",
+            lighthouse.image_url
      FROM lighthouse
      WHERE
         lighthouse.name ILIKE ${`%${query}%`}
@@ -98,13 +99,13 @@ function parseCurrentMarineForecast({ current }: any): CurrentMarineType {
     ocean_current_direction: ocean_current_direction,
   } = current;
   return {
-    waveHeight: Math.round(waveHeight),
-    wind_wave_height: Math.round(wind_wave_height),
-    swell_wave_height: Math.round(swell_wave_height),
+    waveHeight: waveHeight,
+    wind_wave_height: wind_wave_height,
+    swell_wave_height: swell_wave_height,
     wave_direction: Math.round(wave_direction),
-    wave_period: Math.round(wave_period),
-    ocean_current_velocity: Math.round(ocean_current_velocity),
-    ocean_current_direction: Math.round(ocean_current_direction),
+    wave_period: wave_period,
+    ocean_current_velocity: ocean_current_velocity,
+    ocean_current_direction: ocean_current_direction,
   };
 }
 

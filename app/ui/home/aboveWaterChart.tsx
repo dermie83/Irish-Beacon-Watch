@@ -40,7 +40,7 @@ export default function BarGraph() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="range" stroke="#8884d8" />
+                  <Bar dataKey="aboveWater" stroke="#8884d8" />
                   {/* <Bar dataKey="towerheight" stroke="#8884d7" />
                   <Bar dataKey="lightheight" stroke="#8884d6" />
                   <Bar dataKey="age" stroke="#8884d5" /> */}
