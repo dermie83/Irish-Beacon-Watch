@@ -17,7 +17,6 @@ export default function TableRow({
 
   return (
     <tr className="[&>td]:p-2 [&>td>*]:gap-1 even:bg-sky-300/60 odd:bg-sky-300/30 ">
-      {/* [&>*:nth-child(even)]:bg-borwn-50 */}
       <td>
         <div className="flex flex-col items-center ">
           <div className="uppercase font-bold text-xs text-foregroundSecondaryColor">{dayDate}</div>
@@ -25,7 +24,6 @@ export default function TableRow({
         </div>
       </td>
       <td>
-        {/* <FaSun className="w-12 h-12 object-contain" /> */}
         <Icon className="w-12 h-12 object-contain" />
       </td>
       <td>

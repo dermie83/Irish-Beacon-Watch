@@ -1,6 +1,6 @@
 'use client';
 
-import { lighthouses } from  "@/app/lib/placeholder-data";
+// import { lighthouses } from  "@/app/lib/placeholder-data";
 
 import {
     CartesianGrid,
@@ -14,28 +14,22 @@ import {
   } from "recharts";
 
 
-// type LighthouseCharacterProps = {
-//   characters: {
-//     id: string;
-//     name: string;
-//     latitude: number;
-//     longitude: number;
-//     aboveWater:number;
-//     towerHeight:number;
-//     range:number;
-//     age:number;
-//   }[]
-// }
+type LighthouseRangeProps = {
+  rangeData: {
+    id: string;
+    name: string;
+    range:number;
+  }[]
+}
 
 
-export default function RangeGraph() {
-  const rangeData = [...lighthouses]
-  const sortedRangeData = rangeData.sort((a,b) => a.range - b.range);
+export default function RangeGraph({rangeData} : LighthouseRangeProps) {
+  // const sortedRangeData = data.sort((a,b) => a.range - b.range);
   // console.log("range...", sortedRangeData.map(item => item.range));
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
-              <BarChart data={sortedRangeData}
+              <BarChart data={rangeData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />

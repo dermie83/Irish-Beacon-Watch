@@ -1,6 +1,6 @@
 'use client';
 
-import { lighthouses } from  "@/app/lib/placeholder-data";
+// import { lighthouses } from  "@/app/lib/placeholder-data";
 
 import {
     CartesianGrid,
@@ -14,34 +14,27 @@ import {
   } from "recharts";
 
 
-// type LighthouseCharacterProps = {
-//   characters: {
-//     id: string;
-//     name: string;
-//     latitude: number;
-//     longitude: number;
-//     aboveWater:number;
-//     towerHeight:number;
-//     range:number;
-//     age:number;
-//   }[]
-// }
+type LighthouseABWProps = {
+  abwData: {
+    id: string;
+    name: string;
+    aboveWater: number;
+  }[]
+}
 
-export default function AboveWaterGraph() {
-  const aboveData = [...lighthouses]
-  const sortedData = aboveData.sort((a,b) => a.aboveWater - b.aboveWater);
-  // console.log("above...", sortedData);
+export default function AboveWaterGraph({abwData} : LighthouseABWProps) {
+  // console.log("abw data....",abwData);
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
-              <BarChart data={sortedData}
+              <BarChart data={abwData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="aboveWater" stroke="#8884d8"/>
+                  <Bar dataKey="abovewater" stroke="#8884d8"/>
               </BarChart>
             </ResponsiveContainer>
           </>

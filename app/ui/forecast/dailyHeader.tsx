@@ -74,7 +74,6 @@ export default function Header({
           </div>
           <div>
             <span data-current-visibility>{vizText}</span>
-            {/* <span className="font-normal text-sm">m</span> */}
           </div>
         </div>
       </div>

@@ -12,16 +12,47 @@ import {
 
 
 
-export async function fetchLighthouseRanges(
-  
-) {
+export async function fetchLighthouseRanges() {
   try {
     const data = await sql<LighthouseType>
     `SELECT 
             lighthouse.id, 
             lighthouse.name, 
             lighthouse.range
-      FROM lighthouse`;
+      FROM lighthouse
+      ORDER BY lighthouse.range`;
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch lighthouse location data.');
+  }
+}
+
+export async function fetchLighthouseABWMetrics() {
+  try {
+    const data = await sql<LighthouseType>
+    `SELECT 
+            lighthouse.id, 
+            lighthouse.name, 
+            lighthouse.aboveWater
+      FROM lighthouse
+      ORDER BY lighthouse.aboveWater`;
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch lighthouse location data.');
+  }
+}
+
+export async function fetchLighthouseTowerMetrics() {
+  try {
+    const data = await sql<LighthouseType>
+    `SELECT 
+            lighthouse.id, 
+            lighthouse.name, 
+            lighthouse.towerHeight
+      FROM lighthouse
+      ORDER BY lighthouse.towerHeight`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
