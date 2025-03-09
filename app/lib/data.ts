@@ -55,6 +55,7 @@ export async function fetchLighthouses(
      FROM lighthouse
      WHERE
         lighthouse.name ILIKE ${`%${query}%`}
+        ORDER BY lighthouse.name
         LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
     return data.rows;
   } catch (error) {

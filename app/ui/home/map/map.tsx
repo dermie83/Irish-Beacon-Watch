@@ -22,7 +22,7 @@ export default function Map() {
         {lighthouses.map((lighthouse)=>
             <Marker key = {lighthouse.id} position={{lat: lighthouse.latitude , lng: lighthouse.longitude}} draggable={false}>
                 <Popup> 
-                    Name: {lighthouse.name}
+                    {lighthouse.name}
                 </Popup>
             </Marker>
         )}

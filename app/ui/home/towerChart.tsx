@@ -1,7 +1,6 @@
 'use client';
 
 import { lighthouses } from  "@/app/lib/placeholder-data";
-import { dynamicSort } from "@/app/lib/utils";
 
 import {
     CartesianGrid,
@@ -32,14 +31,14 @@ import {
 export default function TowerGraph() {
   const towerData = [...lighthouses]
   const sortedData = towerData.sort((a,b) => a.towerHeight - b.towerHeight);
-  console.log("tower...", sortedData);
+  // console.log("tower...", sortedData);
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
               <BarChart data={sortedData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="towerHeight" />
+                  <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
                   <Legend />

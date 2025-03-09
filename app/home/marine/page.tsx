@@ -17,7 +17,8 @@ export default async function Page(props: {
     const totalPages = await fetchLighthousePages(query);
   return (
     <>
-      <h1>Current Marine Forecast</h1>
+     <h1>Current Marine Forecast</h1>
+      <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
       const { current, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         
@@ -45,7 +46,6 @@ export default async function Page(props: {
           </>
         )
       })}
-      <Search placeholder="Search Lighthouse..." />
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>

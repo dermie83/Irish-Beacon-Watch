@@ -2,6 +2,8 @@
 
 ## verson 0.4.0
 Added Landing Page
+Added 3 Charts to Home page with sort function applied
+Updated lighthouse placeholder-data with actual data
 
 ## verson 0.3.0
 Added Pagination component to all pages
