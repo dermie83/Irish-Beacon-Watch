@@ -1,4 +1,4 @@
-import { fetchLighthouses, fetchLighthousePages } from "../lib/data";
+import { fetchLighthouses, fetchLighthousePages,fetchLighthouseRanges } from "../lib/data";
 import Map from '@/app/ui/home/map/index';
 import RangeGraph from "../ui/home/rangeChart";
 import AboveWaterGraph from "../ui/home/aboveWaterChart";
@@ -6,22 +6,9 @@ import TowerGraph from "../ui/home/towerChart";
 import Pagination from "../ui/pagination";
 import Search from "../ui/search";
 
-export default async function Page(props: {
-    searchParams?: Promise<{
-      page?: string;
-      query?:string;
-    }>;
-    }){
-        const searchParams = await props.searchParams;
-        // console.log("searchparams...",searchParams)
-        const currentPage = Number(searchParams?.page) || 1;
-        // console.log("currentPage...",currentPage)
-        const query = searchParams?.query || '';
-        console.log("query...",query)
-        const lighthouses = await fetchLighthouses(currentPage, query);
-        const totalPages = await fetchLighthousePages(query);
-        // console.log("totalpages....",totalPages)
-        console.log("fetch....",lighthouses)
+export default async function Page(){
+    // const ranges = await fetchLighthouseRanges();
+    // console.log("fetch Ranges.....", ranges);
 
     return (
         <>
@@ -30,16 +17,7 @@ export default async function Page(props: {
             <div className="col-span-1 row-span-1"><RangeGraph/></div>
             <div className="col-span-1 row-span-1"><AboveWaterGraph/></div>
             <div className="col-span-1 row-span-1"><TowerGraph/></div>
-            {/* <div className="mt-5 flex w-full justify-center">
-                <Pagination totalPages={totalPages} />
-            </div>
-            <div className="mt-5 flex w-full justify-center">
-                <Search placeholder="Search Lighthouse..." />
-            </div> */}
          </div>
-         {/* <div className="mt-5 flex w-full justify-center">
-          <Pagination totalPages={totalPages} />
-         </div> */}
         </>
     )
 }

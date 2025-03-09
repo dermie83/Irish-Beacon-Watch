@@ -12,6 +12,25 @@ import {
 
 
 
+export async function fetchLighthouseRanges(
+  
+) {
+  try {
+    const data = await sql<LighthouseType>
+    `SELECT 
+            lighthouse.id, 
+            lighthouse.name, 
+            lighthouse.range
+      FROM lighthouse`;
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch lighthouse location data.');
+  }
+}
+
+
+
 const ITEMS_PER_PAGE = 5;
 export async function fetchLighthouses(
   currentPage: number,
@@ -36,7 +55,7 @@ export async function fetchLighthouses(
      FROM lighthouse
      WHERE
         lighthouse.name ILIKE ${`%${query}%`}
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
+        LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);

@@ -1,6 +1,7 @@
 'use client';
 
 import { lighthouses } from  "@/app/lib/placeholder-data";
+import { dynamicSort } from "@/app/lib/utils";
 
 import {
     CartesianGrid,
@@ -27,13 +28,17 @@ import {
 //   }[]
 // }
 
-const Lighthouse = lighthouses
 
-export default function BarGraph() {
+export default function RangeGraph() {
+
+  const rangeData = [...lighthouses]
+  const sortedRangeData = rangeData.sort((a,b) => a.range - b.range);
+  // const Lighthouse = lighthouses.sort(dynamicSort("range"));
+  console.log("range...", sortedRangeData.map(item => item.range));
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
-              <BarChart data={Lighthouse}
+              <BarChart data={sortedRangeData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
@@ -41,9 +46,6 @@ export default function BarGraph() {
                   <Tooltip />
                   <Legend />
                   <Bar dataKey="range" stroke="#8884d8" />
-                  {/* <Bar dataKey="towerheight" stroke="#8884d7" />
-                  <Bar dataKey="lightheight" stroke="#8884d6" />
-                  <Bar dataKey="age" stroke="#8884d5" /> */}
               </BarChart>
             </ResponsiveContainer>
           </>

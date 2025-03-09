@@ -28,7 +28,7 @@ export default function LineGraph({hourly} : hourlyMarinetForecastProps) {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line dot={false} type="monotone" dataKey="waveHeight" stroke="#8884d8" />
+                  <Line activeDot={{ r: 8 }} type="monotone" dataKey="waveHeight" stroke="#8884d8" />
                   {/* <Line dot={false} type="monotone" dataKey="maxWind" stroke="#82ca9d" /> */}
               </LineChart>
             </ResponsiveContainer>
