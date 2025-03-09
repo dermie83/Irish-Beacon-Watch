@@ -1,7 +1,6 @@
 'use client';
 
 import { lighthouses } from  "@/app/lib/placeholder-data";
-import { dynamicSort } from "@/app/lib/utils";
 
 import {
     CartesianGrid,
@@ -30,7 +29,6 @@ import {
 
 export default function AboveWaterGraph() {
   const aboveData = [...lighthouses]
-
   const sortedData = aboveData.sort((a,b) => a.aboveWater - b.aboveWater);
   // console.log("above...", sortedData);
         return (

@@ -14,26 +14,18 @@ export default async function Page(props: {
   }>;
   })  {
     const searchParams = await props.searchParams;
-    // console.log("searchparams...",searchParams)
     const query = searchParams?.query || '';
     console.log("query...",query)
     const currentPage = Number(searchParams?.page) || 1;
-    // console.log("currentPage...",currentPage)
     const lighthouses = await fetchLighthouses(currentPage, query);
+    console.log("forecast...",lighthouses);
     const totalPages = await fetchLighthousePages(query);
-    // console.log("totalpages....",totalPages)
-    // console.log("fetch....",lighthouses)
   return (
     <>
+     <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
         const { current, daily, hourly } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
-        // console.log("hourly....",hourly.visibility);
         const visibility = hourly.map((visible)=> visible.visibility);
-        // console.log("visibility....",visibility.slice(0)[0]);
-        // console.log("visibility....",visibility);
-        
-        // console.log(lighthouse.name)
-
         return (
           <>
             <div className="grid grid-cols-4 grid-rows-2 gap-4 flex items-center border-2 shadow-md">
@@ -89,7 +81,6 @@ export default async function Page(props: {
           </>
         )
       })}
-      <Search placeholder="Search Lighthouse..." />
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>

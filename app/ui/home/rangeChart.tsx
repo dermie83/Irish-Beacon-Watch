@@ -1,7 +1,6 @@
 'use client';
 
 import { lighthouses } from  "@/app/lib/placeholder-data";
-import { dynamicSort } from "@/app/lib/utils";
 
 import {
     CartesianGrid,
@@ -30,11 +29,9 @@ import {
 
 
 export default function RangeGraph() {
-
   const rangeData = [...lighthouses]
   const sortedRangeData = rangeData.sort((a,b) => a.range - b.range);
-  // const Lighthouse = lighthouses.sort(dynamicSort("range"));
-  console.log("range...", sortedRangeData.map(item => item.range));
+  // console.log("range...", sortedRangeData.map(item => item.range));
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
