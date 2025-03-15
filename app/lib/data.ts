@@ -34,9 +34,9 @@ export async function fetchLighthouseABWMetrics() {
     `SELECT 
             lighthouse.id, 
             lighthouse.name, 
-            lighthouse.aboveWater
+            lighthouse.abovewater
       FROM lighthouse
-      ORDER BY lighthouse.aboveWater`;
+      ORDER BY lighthouse.abovewater`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -50,9 +50,27 @@ export async function fetchLighthouseTowerMetrics() {
     `SELECT 
             lighthouse.id, 
             lighthouse.name, 
-            lighthouse.towerHeight
+            lighthouse.towerheight
       FROM lighthouse
-      ORDER BY lighthouse.towerHeight`;
+      ORDER BY lighthouse.towerheight`;
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch lighthouse location data.');
+  }
+}
+
+export async function fetchLighthouseAges() {
+  try {
+    const data = await sql<LighthouseType>
+    `SELECT 
+            lighthouse.id, 
+            lighthouse.name, 
+            lighthouse.constructed,
+            lighthouse.currentdate,
+            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age"
+      FROM lighthouse
+      ORDER BY age`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -75,13 +93,13 @@ export async function fetchLighthouses(
             lighthouse.name, 
             lighthouse.latitude, 
             lighthouse.longitude,
-            lighthouse.aboveWater,
-            lighthouse.towerHeight, 
+            lighthouse.abovewater,
+            lighthouse.towerheight, 
             lighthouse.range, 
-            lighthouse.greatLighthouse,
+            lighthouse.greatlighthouse,
             lighthouse.constructed,
-            lighthouse.currentDate,
-            (lighthouse.currentDate - lighthouse.constructed)/365 AS "age",
+            lighthouse.currentdate,
+            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
             lighthouse.image_url
      FROM lighthouse
      WHERE

@@ -1,7 +1,5 @@
 'use client';
 
-import { lighthouses } from  "@/app/lib/placeholder-data";
-
 import {
     CartesianGrid,
     XAxis,
@@ -18,15 +16,12 @@ type LighthouseTowerProps = {
   towerData: {
     id: string;
     name: string;
-    towerHeight:number;
+    towerheight:number;
   }[]
 }
 
 
 export default function TowerGraph({towerData} : LighthouseTowerProps) {
-  // const towerData_ = [...towerData]
-  // const sortedData = towerData.sort((a,b) => a.towerHeight - b.towerHeight);
-  // console.log("tower sorted...", towerData);
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
@@ -37,7 +32,7 @@ export default function TowerGraph({towerData} : LighthouseTowerProps) {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="towerheight" stroke="#8884d8" />
+                  <Bar dataKey="towerheight" stroke="#4484d8" />
               </BarChart>
             </ResponsiveContainer>
           </>

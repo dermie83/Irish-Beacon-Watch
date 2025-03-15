@@ -1,7 +1,5 @@
 'use client';
 
-// import { lighthouses } from  "@/app/lib/placeholder-data";
-
 import {
     CartesianGrid,
     XAxis,
@@ -18,12 +16,11 @@ type LighthouseABWProps = {
   abwData: {
     id: string;
     name: string;
-    aboveWater: number;
+    abovewater: number;
   }[]
 }
 
 export default function AboveWaterGraph({abwData} : LighthouseABWProps) {
-  // console.log("abw data....",abwData);
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
@@ -34,7 +31,7 @@ export default function AboveWaterGraph({abwData} : LighthouseABWProps) {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="abovewater" stroke="#8884d8"/>
+                  <Bar dataKey="abovewater" stroke="#2284d8"/>
               </BarChart>
             </ResponsiveContainer>
           </>

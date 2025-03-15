@@ -10,12 +10,12 @@ export type LighthouseType = {
   name: string;
   latitude: number;
   longitude: number;
-  aboveWater:number;
-  towerHeight:number;
+  abovewater:number;
+  towerheight:number;
   range:number;
-  greatLighthouse:boolean;
+  greatlighthouse:boolean;
   constructed:string;
-  currentDate:string;
+  currentdate:string;
   age:number;
   image_url:string;
 };
