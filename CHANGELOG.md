@@ -6,6 +6,7 @@ Added 1 ageChart component to Home page with sort function applied
 Added table with a list of lighthouse max metrics
 Updated lighthouse placeholder-data with actual data
 Added Footer component
+Added max wind and gudt metrics to Historical page
 
 ## verson 0.4.0
 Added Landing Page
