@@ -78,8 +78,8 @@ export type CurrentMarineType = {
 
 export type DailyHistoricaltWeatherType = {
   timestamp: string;
-  maxWind: number;
-  maxGust: number;
+  wind: number;
+  gust: number;
 };
 
 export type WeatherDetailProps = {

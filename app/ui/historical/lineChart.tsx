@@ -13,8 +13,8 @@ import {
 type DailyHistoricaltWeatherType = {
   daily: {
     timestamp:string
-    maxWind:number
-    maxGust:number
+    gust:number
+    wind:number
   }[]
 }
 
@@ -29,8 +29,8 @@ export default function LineGraph({daily} : DailyHistoricaltWeatherType) {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line dot={false} type="monotone" dataKey="maxGust" stroke="#8884d8" />
-                  <Line dot={false} type="monotone" dataKey="maxWind" stroke="#82ca9d" />
+                  <Line dot={false} type="monotone" dataKey="gust" stroke="#8884d8" />
+                  <Line dot={false} type="monotone" dataKey="wind" stroke="#82ca9d" />
               </LineChart>
             </ResponsiveContainer>
           </>

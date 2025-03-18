@@ -218,8 +218,8 @@ function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherTyp
   return daily.time.map((time: number, index: number) => {
     return {
       timestamp: time, //second to milliseconds
-      maxWind: Math.round(daily.wind_speed_10m_max[index]),
-      maxGust: Math.round(daily.wind_gusts_10m_max[index]),
+      wind: Math.round(daily.wind_speed_10m_max[index]),
+      gust: Math.round(daily.wind_gusts_10m_max[index]),
     };
   });
 }
