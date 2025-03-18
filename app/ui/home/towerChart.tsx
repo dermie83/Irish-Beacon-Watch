@@ -20,7 +20,6 @@ type LighthouseTowerProps = {
   }[]
 }
 
-
 export default function TowerGraph({towerData} : LighthouseTowerProps) {
         return (
           <>

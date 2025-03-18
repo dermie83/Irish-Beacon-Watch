@@ -20,7 +20,6 @@ type LighthouseRangeProps = {
   }[]
 }
 
-
 export default function RangeGraph({rangeData} : LighthouseRangeProps) {
         return (
           <>

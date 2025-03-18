@@ -171,6 +171,7 @@ const lighthouses = [
     greatlighthouse: false,
     constructed: '1800-01-01',
     currentdate: date,
+
     image_url: '/lighthouses/Horse Rock 1905.jpg',
   },
   {
