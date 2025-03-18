@@ -11,7 +11,6 @@ import {
     ResponsiveContainer,
   } from "recharts";
 
-
 type LighthouseABWProps = {
   abwData: {
     id: string;
