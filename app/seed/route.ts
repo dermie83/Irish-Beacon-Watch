@@ -14,12 +14,12 @@ async function seedLighthouse() {
       name VARCHAR(255) NOT NULL,
       latitude float(10) NOT NULL,
       longitude float(10) NOT NULL,
-      aboveWater float(10) NOT NULL,
-      towerHeight float(10) NOT NULL,
+      abovewater float(10) NOT NULL,
+      towerheight float(10) NOT NULL,
       range float(10) NOT NULL,
-      greatLighthouse boolean,
+      greatlighthouse boolean,
       constructed DATE NOT NULL,
-      currentDate DATE NOT NULL,
+      currentdate DATE NOT NULL,
       image_url VARCHAR(255) NOT NULL
     );
   `;
@@ -35,10 +35,10 @@ async function seedLighthouse() {
     lighthouses.map(
       (lighthouse) => client.sql`
         INSERT INTO lighthouse (id, name, latitude, longitude, 
-        aboveWater, towerHeight, range, greatLighthouse, constructed, currentDate, image_url)
+        abovewater, towerheight, range, greatlighthouse, constructed, currentdate, image_url)
         VALUES (${lighthouse.id}, ${lighthouse.name}, ${lighthouse.latitude}, ${lighthouse.longitude},
-                ${lighthouse.aboveWater}, ${lighthouse.towerHeight}, ${lighthouse.range}, 
-                ${lighthouse.greatLighthouse}, ${lighthouse.constructed}, ${lighthouse.currentDate},${lighthouse.image_url})
+                ${lighthouse.abovewater}, ${lighthouse.towerheight}, ${lighthouse.range}, 
+                ${lighthouse.greatlighthouse}, ${lighthouse.constructed}, ${lighthouse.currentdate},${lighthouse.image_url})
         ON CONFLICT (id) DO NOTHING;
       `,
     ),

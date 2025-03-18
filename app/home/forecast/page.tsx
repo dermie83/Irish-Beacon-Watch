@@ -53,12 +53,12 @@ export default async function Page(props: {
                   name={lighthouse.name} 
                   latitude={lighthouse.latitude} 
                   longitude={lighthouse.longitude} 
-                  aboveWater={lighthouse.aboveWater}
-                  towerHeight={lighthouse.towerHeight}
+                  abovewater={lighthouse.abovewater}
+                  towerheight={lighthouse.towerheight}
                   range={lighthouse.range}
-                  greatLighthouse={lighthouse.greatLighthouse}
+                  greatlighthouse={lighthouse.greatlighthouse}
                   constructed={formatDateToLocal(lighthouse.constructed)}
-                  currentDate= {lighthouse.currentDate}
+                  currentdate= {lighthouse.currentdate}
                   age={lighthouse.age}
                   image_url={lighthouse.image_url}
               />

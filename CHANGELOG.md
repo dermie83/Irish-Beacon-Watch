@@ -1,5 +1,12 @@
 # Irish Beacon Watch Changelog
 
+## verson 0.4.1
+Added Landing Page
+Added 1 ageChart component to Home page with sort function applied
+Added table with a list of lighthouse max metrics
+Updated lighthouse placeholder-data with actual data
+Added Footer component
+
 ## verson 0.4.0
 Added Landing Page
 Added 3 Charts to Home page with sort function applied

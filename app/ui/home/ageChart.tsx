@@ -12,26 +12,27 @@ import {
   } from "recharts";
 
 
-type LighthouseRangeProps = {
-  rangeData: {
+type LighthouseTowerProps = {
+  ageData: {
     id: string;
     name: string;
-    range:number;
+    age:number;
   }[]
 }
 
-export default function RangeGraph({rangeData} : LighthouseRangeProps) {
+
+export default function AgeGraph({ageData} : LighthouseTowerProps) {
         return (
           <>
             <ResponsiveContainer width="100%" minHeight={180}>
-              <BarChart data={rangeData}
+              <BarChart data={ageData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="range" stroke="#3384d8" />
+                  <Bar dataKey="age" stroke="#1184d8" />
               </BarChart>
             </ResponsiveContainer>
           </>

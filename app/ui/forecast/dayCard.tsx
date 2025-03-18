@@ -4,7 +4,6 @@ import { formatTimestampToDay } from "@/app/lib/utils";
 
 
 export default function DayCard({
-  // icon = <FaSun className="w-16 h-16" />,
   iconCode = 999,
   timestamp = 999,
   degree = 32,
