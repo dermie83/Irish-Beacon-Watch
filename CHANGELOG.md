@@ -1,4 +1,7 @@
 # Irish Beacon Watch Changelog
+## verson 0.4.2
+Added Buttons to Historical page
+Added basic About Page
 
 ## verson 0.4.1
 Added Landing Page

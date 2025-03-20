@@ -4,18 +4,19 @@ import {
   HomeIcon,
   CloudIcon,
   CalendarIcon,
-  RadioIcon
+  RadioIcon,
+  InformationCircleIcon
 } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
+
 const links = [
   { name: 'Home', href: '/home', icon: HomeIcon },
-  { name: 'Forecast',href: '/home/forecast',icon: CloudIcon,},
+  { name: 'Forecast', href: '/home/forecast',icon: CloudIcon,},
   { name: 'Marine', href: '/home/marine', icon: RadioIcon },
   { name: 'Historical', href: '/home/historical', icon: CalendarIcon },
+  { name: 'About', href: '/home/about', icon: InformationCircleIcon },
 ];
 
 export default function NavLinks() {

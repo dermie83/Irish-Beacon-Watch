@@ -10,4 +10,4 @@ const LineGraph = dynamic(
     }
 )
 
-  export default LineGraph;
+export default LineGraph;

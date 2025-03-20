@@ -4,6 +4,7 @@ import { LineChart } from "recharts";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
+import Button from "@/app/ui/historical/button/index";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -17,13 +18,18 @@ export default async function Page(props: {
     console.log("query...",query)
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
+  
+
    
   return (
     <>
       <h1>Historical Weather</h1>
+      <div style={{ padding: '20px' }}>
+        <Button/>
+      </div>
       <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
-        const { daily } = await fetchHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
+        const { daily } = await fetchHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
         const maxWind = daily.map(item => item.wind);
         const maxWindValue = Math.max(...maxWind);
         // console.log("maxWind......",maxWindValue);
