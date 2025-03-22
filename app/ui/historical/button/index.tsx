@@ -1,31 +1,31 @@
 'use client';
 
-import Button from './button'
-import { useState } from 'react';
+import Button from './button';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-const ButtonClick = () => {
-  const [message, setDate] = useState<{start:string, end:string}>(); // state to hold the message
+const YearRangeButtons = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const handleClick1 = () => {
-    setDate({start:'2000-01-01', end:'2009-12-31'});
+  const handleYearRangeChange = (start: string, end: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('startDate', start);
+    params.set('endDate', end);
+    
+    // Preserve existing query params like page and search
+    router.push(`?${params.toString()}`);
   };
-
-  const handleClick2 = () => {
-    setDate({start:'2010-01-01', end:'2019-12-31'});
-  };
-
 
   return (
     <>
-    <div style={{ padding: '20px' }}>
-      <Button label="2000-2009" onClick={handleClick1} />
-    </div>
-    <div style={{ padding: '20px' }}>
-      <Button label="2010-20019" onClick={handleClick2} />
-    </div>
-    {message && <p>Start Date: {message.start} End Date: {message.end}</p>}
-  </>
+      <div style={{ padding: '20px' }}>
+        <Button label="2000-2009" onClick={()=>handleYearRangeChange('2000-01-01', '2009-12-31')} />
+      </div>
+      <div style={{ padding: '20px' }}>
+        <Button label="2010-2019" onClick={()=>handleYearRangeChange('2010-01-01', '2019-12-31')} />
+      </div>
+    </>
   );
 };
 
-export default ButtonClick;
+export default YearRangeButtons;

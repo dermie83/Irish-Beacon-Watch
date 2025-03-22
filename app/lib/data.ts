@@ -192,17 +192,21 @@ export async function fetchHistoricalWeather(
   lat: number,
   lon: number,
   timezone: string,
+  startDate: string,
+  endDate: string,
   // Promise<{current:object, daily:object, hourly:object}> {
 ): Promise<{
   daily: DailyHistoricaltWeatherType[];
 }> {
   return await axios
-  .get("https://archive-api.open-meteo.com/v1/archive?start_date=2000-01-01&end_date=2001-12-31&daily=wind_speed_10m_max,wind_gusts_10m_max",
+  .get("https://archive-api.open-meteo.com/v1/archive?daily=wind_speed_10m_max,wind_gusts_10m_max",
       {
         params: {
           latitude: lat,
           longitude: lon,
           timezone,
+          start_date: startDate,
+          end_date: endDate,
         },
       }
     )

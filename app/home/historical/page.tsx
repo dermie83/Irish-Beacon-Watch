@@ -4,17 +4,21 @@ import { LineChart } from "recharts";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
-import Button from "@/app/ui/historical/button/index";
+import YearRangeButtons from "@/app/ui/historical/button/index";
 
 export default async function Page(props: {
   searchParams?: Promise<{
     page?: string;
     query?:string;
+    startDate?: string;
+    endDate?: string;
   }>;
   }) {
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;
     const query = searchParams?.query || '';
+    const startDate = searchParams?.startDate || '';
+    const endDate = searchParams?.endDate || '';
     console.log("query...",query)
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
@@ -25,11 +29,18 @@ export default async function Page(props: {
     <>
       <h1>Historical Weather</h1>
       <div style={{ padding: '20px' }}>
-        <Button/>
+      <YearRangeButtons />
       </div>
+      <div>{startDate}</div>
       <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
-        const { daily } = await fetchHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
+        const { daily } = await fetchHistoricalWeather(
+          lighthouse.latitude, 
+          lighthouse.longitude, 
+          'Europe/Dublin', 
+          startDate,
+          endDate
+        );
         const maxWind = daily.map(item => item.wind);
         const maxWindValue = Math.max(...maxWind);
         // console.log("maxWind......",maxWindValue);
