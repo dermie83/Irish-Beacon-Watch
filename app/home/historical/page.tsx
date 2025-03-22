@@ -28,10 +28,15 @@ export default async function Page(props: {
   return (
     <>
       <h1>Historical Weather</h1>
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '10px' }}>
       <YearRangeButtons />
       </div>
-      <div>{startDate}</div>
+      <div className="col-span-1 row-span-1 text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+        Start Date: {startDate}
+      </div>
+      <div className="col-span-1 row-span-1 text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+        End Date: {endDate}
+      </div>
       <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
         const { daily } = await fetchHistoricalWeather(

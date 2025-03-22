@@ -1,6 +1,6 @@
 'use client';
 
-import Button from './button';
+import Button from './yearlyRangeChangebutton';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 const YearRangeButtons = () => {
@@ -18,12 +18,32 @@ const YearRangeButtons = () => {
 
   return (
     <>
-      <div style={{ padding: '20px' }}>
+    <div className="flex space-x-4">
+      <div style={{ padding: '10px' }}>
         <Button label="2000-2009" onClick={()=>handleYearRangeChange('2000-01-01', '2009-12-31')} />
       </div>
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '10px' }}>
         <Button label="2010-2019" onClick={()=>handleYearRangeChange('2010-01-01', '2019-12-31')} />
       </div>
+      <div style={{ padding: '10px' }}>
+        <Button label="2020" onClick={()=>handleYearRangeChange('2020-01-01', '2020-12-31')} />
+      </div>
+      <div style={{ padding: '10px' }}>
+        <Button label="2021" onClick={()=>handleYearRangeChange('2021-01-01', '2021-12-31')} />
+      </div>
+      <div style={{ padding: '10px' }}>
+        <Button label="2022" onClick={()=>handleYearRangeChange('2022-01-01', '2022-12-31')} />
+      </div>
+      <div style={{ padding: '10px' }}>
+        <Button label="2023" onClick={()=>handleYearRangeChange('2023-01-01', '2023-12-31')} />
+      </div>
+      <div style={{ padding: '10px' }}>
+        <Button label="2024" onClick={()=>handleYearRangeChange('2024-01-01', '2024-12-31')} />
+      </div>
+      <div style={{ padding: '10px' }}>
+        <Button label="2025" onClick={()=>handleYearRangeChange('2025-01-01', '2025-12-31')} />
+      </div>
+    </div>
     </>
   );
 };
