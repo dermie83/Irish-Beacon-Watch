@@ -5,33 +5,24 @@ export default async function Page(){
     <div className="max-w-4xl mx-auto p-6">
       {/* Header Section */}
       <header className="text-center mb-10">
-        <h1 className="text-3xl font-bold text-gray-900">About Us</h1>
+        <h1 className="text-3xl font-bold text-gray-900">About Me</h1>
       </header>
-
       {/* Introduction Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Introduction</h2>
         <p className="text-lg text-gray-700">
-          We are a passionate team focused on delivering high-quality web solutions to help businesses thrive online.
+          I am student of computer science with a keen interest in Lighthouses, education and open source technology.
         </p>
       </section>
-
       {/* Mission Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">My Mission</h2>
         <p className="text-lg text-gray-700">
-          Our mission is to provide innovative and affordable digital tools that empower small and medium-sized businesses to reach their full potential.
+        My mission is to create an affordable, educational application that harnesses open-source software to enhance 
+        accessibility and value. This project aims to continuously evolve, with regular updates and new features, 
+        and may eventually expand to showcase lighthouse data from around the world.
         </p>
       </section>
-
-      {/* Story Section */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Story</h2>
-        <p className="text-lg text-gray-700">
-          Founded in 2015, we started with a small team of developers working out of a shared office. Since then, we've grown to become a trusted partner for businesses worldwide.
-        </p>
-      </section>
-
       {/* Team Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Meet the Team</h2>
@@ -46,7 +37,6 @@ export default async function Page(){
           </div>
         </div>
       </section>
-
       {/* Call to Action Section */}
       <section className="text-center">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Get In Touch</h2>
