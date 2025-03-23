@@ -17,13 +17,12 @@ export default async function Page(props: {
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;
     const query = searchParams?.query || '';
-    const startDate = searchParams?.startDate || '';
-    const endDate = searchParams?.endDate || '';
+    const startDate = searchParams?.startDate || '2000-01-01';
+    const endDate = searchParams?.endDate || '2009-12-31';
     console.log("query...",query)
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
-  
-
+    
    
   return (
     <>

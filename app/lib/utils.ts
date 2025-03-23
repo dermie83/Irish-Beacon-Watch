@@ -1,6 +1,11 @@
 const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long" });
 const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, {hour: "numeric", minute: "numeric", hour12:true});
 
+export function reformatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toISOString().split('T')[0];
+}
+
 export function formatTimestampToDay(timestamp: number): string {
   let day = "";
   if (timestamp) {

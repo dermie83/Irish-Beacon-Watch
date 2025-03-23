@@ -193,29 +193,34 @@ export async function fetchHistoricalWeather(
   lon: number,
   timezone: string,
   startDate: string,
-  endDate: string,
-  // Promise<{current:object, daily:object, hourly:object}> {
+  endDate: string
 ): Promise<{
   daily: DailyHistoricaltWeatherType[];
+  errorMessage?: string;
 }> {
-  return await axios
-  .get("https://archive-api.open-meteo.com/v1/archive?daily=wind_speed_10m_max,wind_gusts_10m_max",
-      {
-        params: {
-          latitude: lat,
-          longitude: lon,
-          timezone,
-          start_date: startDate,
-          end_date: endDate,
-        },
-      }
-    )
-    .then((response:any) => {
-      return {
-        daily: parseHistoricalDailyWeather(response.data),
-      };
+  try {
+    const response = await axios.get("https://archive-api.open-meteo.com/v1/archive?daily=wind_speed_10m_max,wind_gusts_10m_max", {
+      params: {
+        latitude: lat,
+        longitude: lon,
+        timezone,
+        start_date: startDate,
+        end_date: endDate,
+      },
     });
+
+    return {
+      daily: parseHistoricalDailyWeather(response.data),
+    };
+  } catch (error) {
+    console.error("Error fetching historical weather data:", error);
+    return {
+      daily: [],  // Return an empty array in case of error
+      errorMessage: "An error occurred while fetching the historical weather data. Please try again later.",
+    };
+  }
 }
+
 
 function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherType[] {
   // console.log("Daily historical time.....",daily.time);

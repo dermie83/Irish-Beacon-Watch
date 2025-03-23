@@ -8,7 +8,7 @@ import Image from 'next/image';
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-top rounded-lg bg-black-500 p-2 md:h-52">
+      <div className="flex h-20 shrink-0 items-top justify-center rounded-lg bg-black-500 p-5 md:h-52">
         <BeaconLogo />
       </div>
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
@@ -17,14 +17,14 @@ export default function Page() {
           className={styles.shape}/>
           <p className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}>
             Welcome to
-            <strong> Irish Beacon Watch </strong>where you can explore Irelands 
-            lighthouses and their real-time weather and marine forecast.
+            <strong> Irish Beacon Watch </strong> (IBW) where you can explore Irelands 
+            lighthouses and their historical, real-time weather and marine forecast.
           </p>
           <Link
             href="/home"
             className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
           >
-            <span>Explore</span> <ArrowRightIcon className="w-5 md:w-6" />
+            <span>Explore IBW</span> <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">

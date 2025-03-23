@@ -6,7 +6,7 @@ export default function BeaconLogo() {
     <div
       className={`${lusitana.className} flex flex-row items-center leading-none text-black`}
     >
-      <p className="text-[40px]">Irish Beacon Watch <GiLighthouse className="h-16 w-16" /> </p>
+      <p className="text-[50px]">I B W <GiLighthouse className="h-16 w-16" /> </p>
       
     </div>
   );

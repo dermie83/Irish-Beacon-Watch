@@ -1,5 +1,6 @@
 'use client';
 
+import { reformatDate } from '@/app/lib/utils';
 import Button from './yearlyRangeChangebutton';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -15,6 +16,10 @@ const YearRangeButtons = () => {
     // Preserve existing query params like page and search
     router.push(`?${params.toString()}`);
   };
+
+  const date = new Date().toISOString();
+  const formattedDate = reformatDate(date);
+  
 
   return (
     <>
@@ -41,7 +46,7 @@ const YearRangeButtons = () => {
         <Button label="2024" onClick={()=>handleYearRangeChange('2024-01-01', '2024-12-31')} />
       </div>
       <div style={{ padding: '10px' }}>
-        <Button label="2025" onClick={()=>handleYearRangeChange('2025-01-01', '2025-12-31')} />
+        <Button label="2025" onClick={()=>handleYearRangeChange('2025-01-01', formattedDate)} />
       </div>
     </div>
     </>
