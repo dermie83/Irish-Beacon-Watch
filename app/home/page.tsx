@@ -12,7 +12,13 @@ import Search from "../ui/search";
 import MetricsTable from "../ui/home/metricsTable";
 import AgeGraph from "../ui/home/ageChart";
 
-export default async function Page(){
+export default async function getServerSideProps(){
+
+  if (typeof window == "undefined") {
+    console.log("Application is on server side");
+  } else {
+    alert("Application is on client side");}
+
     const ranges = await fetchLighthouseRanges();
     const maxRangeName = ranges.map((item)=> item.name);
     const maxRange = ranges.map((item)=> item.range);

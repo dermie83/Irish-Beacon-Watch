@@ -2,6 +2,7 @@
 ## verson 0.4.2
 Added Buttons to Historical page
 Added basic About Page
+Began to implement image upload to database
 
 ## verson 0.4.1
 Added Landing Page

@@ -4,12 +4,17 @@ import LineGraph from "@/app/ui/marine";
 import Search from "@/app/ui/search";
 import Header from "@/app/ui/marine/dailyHearder";
 
-export default async function Page(props: {
+export default async function getServerSideProps(props: {
   searchParams?: Promise<{
     page?: string;
     query?: string;
   }>;
   })  {
+
+    if (typeof window == "undefined") {
+      console.log("Application is on server side");
+    } else {
+      alert("Application is on client side");}
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;
     const query = searchParams?.query || '';

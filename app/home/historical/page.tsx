@@ -6,7 +6,7 @@ import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
 import YearRangeButtons from "@/app/ui/historical/button/index";
 
-export default async function Page(props: {
+export default async function getServerSideProps(props: {
   searchParams?: Promise<{
     page?: string;
     query?:string;

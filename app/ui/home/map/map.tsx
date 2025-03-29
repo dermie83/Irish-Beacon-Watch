@@ -6,7 +6,7 @@ import {lighthouses} from  "@/app/lib/placeholder-data";
 
 //lat: 53.4462988 , lng: -7.5265753
 
-export default function Map() {
+export default function getServerSideProps() {
     const zoom = 7;
     return (
         <MapContainer

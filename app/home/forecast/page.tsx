@@ -7,7 +7,7 @@ import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import Image from 'next/image';
 
-export default async function Page(props: {
+export default async function getServerSideProps(props: {
   searchParams?: Promise<{
     page?: string;
     query?: string;
