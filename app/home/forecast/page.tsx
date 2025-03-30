@@ -1,5 +1,6 @@
 import { fetchLighthouses, fetchLighthousePages, fetchWeatherForecast } from "@/app/lib/data";
 import { formatDateToLocal } from "@/app/lib/utils";
+import Footer from "@/app/ui/footer";
 import Header from "@/app/ui/forecast/dailyHeader";
 import DayCard from "@/app/ui/forecast/dayCard";
 import Map from "@/app/ui/forecast/map";
@@ -22,14 +23,15 @@ export default async function getServerSideProps(props: {
     const totalPages = await fetchLighthousePages(query);
   return (
     <>
+    <h1 className="text-xl md:text-2xl font-bold text-center my-4">Weather Forecast</h1>
      <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
         const { current, daily, hourly } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         const visibility = hourly.map((visible)=> visible.visibility);
         return (
           <>
-            <div className="grid grid-cols-4 grid-rows-2 gap-4 flex items-center border-2 shadow-md">
-              <section className="grid col-span-3 row-span-1 grid-cols-[repeat(auto-fit,100px)] gap-2">
+            <div className="grid grid-cols-3 grid-rows-1 gap-2 flex items-center border-2 shadow-md">
+              <section className="grid col-span-3 row-span-1 grid-cols-[repeat(auto-fit,100px)] gap-2 items-center">
                 {daily.map((item, index) => (
                   <DayCard
                     key={index}
@@ -39,7 +41,7 @@ export default async function getServerSideProps(props: {
                   />
                 ))}
               </section>
-              <div className="col-span-1 row-span-1 text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+              <div className="col-span-2 row-span-1 text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400">
               <Image
                     src={lighthouse.image_url}
                     className="sqaure-full"
@@ -84,6 +86,9 @@ export default async function getServerSideProps(props: {
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
+      <footer className="w-full bg-gray-800 text-white text-center p-4 mt-4 text-sm md:text-base">
+        <Footer />
+      </footer>
     </>
   )
 }

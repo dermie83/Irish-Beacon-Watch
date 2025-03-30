@@ -5,6 +5,7 @@ import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
 import YearRangeButtons from "@/app/ui/historical/button/index";
+import Footer from "@/app/ui/footer";
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -26,16 +27,19 @@ export default async function getServerSideProps(props: {
    
   return (
     <>
-      <h1>Historical Weather</h1>
-      <div style={{ padding: '10px' }}>
-      <YearRangeButtons />
+      <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center my-4">
+        Historical Weather
+      </h1>
+      <div className="p-2 sm:p-4">
+        <YearRangeButtons />
       </div>
-      <div className="col-span-1 row-span-1 text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+      <div className="col-span-1 row-span-1 text-sm sm:text-lg md:text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
         Start Date: {startDate}
       </div>
-      <div className="col-span-1 row-span-1 text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+      <div className="col-span-1 row-span-1 text-sm sm:text-lg md:text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
         End Date: {endDate}
       </div>
+
       <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
         const { daily } = await fetchHistoricalWeather(
@@ -55,8 +59,10 @@ export default async function getServerSideProps(props: {
         return (
           <>
           <div className="grid grid-cols-8 grid-rows-2 gap-1 flex items-center border-2 shadow-md">
-              <div className="col-span-1 row-span-1 text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">{ lighthouse.name }
-              </div>
+          <div className="col-span-1 row-span-1 text-lg sm:text-xl md:text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+            {lighthouse.name}
+          </div>
+
               <div className="col-span-7 row-span-1">
               <MetricsTable 
                 maxGust={maxGustValue} 
@@ -66,13 +72,16 @@ export default async function getServerSideProps(props: {
               <div className="col-span-8 row-span-1">
                 <LineGraph daily = {daily}/>
               </div>
-            </div>
+          </div>
           </>
         )
       })}
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
+      <footer className="w-full bg-gray-800 text-white text-center p-4 mt-4 text-sm md:text-base">
+        <Footer />
+      </footer>
     </>
   )
 }

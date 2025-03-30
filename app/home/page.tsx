@@ -7,10 +7,9 @@ import Map from '@/app/ui/home/map/index';
 import RangeGraph from "../ui/home/rangeChart";
 import AboveWaterGraph from "../ui/home/aboveWaterChart";
 import TowerGraph from "../ui/home/towerChart";
-import Pagination from "../ui/pagination";
-import Search from "../ui/search";
 import MetricsTable from "../ui/home/metricsTable";
 import AgeGraph from "../ui/home/ageChart";
+import Footer from "../ui/footer";
 
 export default async function getServerSideProps(){
 
@@ -38,25 +37,40 @@ export default async function getServerSideProps(){
     // console.log(maxage.slice(-1)[0]);
 
     return (
-        <>
-         <div className="grid grid-cols-3 grid-rows-5 gap-4">
-         <div className="col-span-3 row-span-1"><MetricsTable 
-                maxabovewater={maxABW.slice(-1)[0]}
-                abovewatername={maxABWName.slice(-1)[0]}
-                maxtowerheight={maxTower.slice(-1)[0]}
-                towerheightname={maxTowerName.slice(-1)[0]} 
-                maxrange={maxRange.slice(-1)[0]}
-                rangename={maxRangeName.slice(-1)[0]}
-                agename={maxAgeName.slice(-1)[0]}
-                maxage={maxage.slice(-1)[0]}
-              />
-            </div>
-            <div className="col-span-2 row-span-4"><Map/></div>
-            <div className="col-span-1 row-span-1"><RangeGraph rangeData={ranges}/></div>
-            <div className="col-span-1 row-span-1"><AboveWaterGraph abwData={abwMetrics}/></div>
-            <div className="col-span-1 row-span-1"><TowerGraph towerData={towerHeights}/></div>
-            <div className="col-span-1 row-span-1"><AgeGraph ageData={ages}/></div>
-         </div>
-        </>
-    )
+      <>
+    <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-5 md:grid-rows-3 gap-4 min-h-screen">
+      <div className="col-span-1 md:col-span-3 row-span-1">
+        <MetricsTable
+          maxabovewater={maxABW.slice(-1)[0]}
+          abovewatername={maxABWName.slice(-1)[0]}
+          maxtowerheight={maxTower.slice(-1)[0]}
+          towerheightname={maxTowerName.slice(-1)[0]}
+          maxrange={maxRange.slice(-1)[0]}
+          rangename={maxRangeName.slice(-1)[0]}
+          agename={maxAgeName.slice(-1)[0]}
+          maxage={maxage.slice(-1)[0]}
+        />
+      </div>
+      <div className="col-span-1 md:col-span-2 row-span-4 md:row-span-2">
+        <Map />
+      </div>
+      <div className="col-span-1 row-span-1">
+        <RangeGraph rangeData={ranges} />
+      </div>
+      <div className="col-span-1 row-span-1">
+        <AboveWaterGraph abwData={abwMetrics} />
+      </div>
+      <div className="col-span-1 row-span-1">
+        <TowerGraph towerData={towerHeights} />
+      </div>
+      <div className="col-span-1 row-span-1">
+        <AgeGraph ageData={ages} />
+      </div>
+    </div>
+    <footer className="w-full bg-gray-800 text-white text-center p-4 mt-4">
+     <Footer/>
+    </footer>
+  </>
+    );
+    
 }

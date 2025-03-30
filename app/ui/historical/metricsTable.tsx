@@ -10,21 +10,21 @@ export default function MetricsTable({
 }: WindMetricsPropr) {
 
   return (
-    <header className="flex items-center my-4 mx-10">
-    <div className="flex w-1/2 justify-center items-center m-0.5 p-0.5 border-r-2 border-foregroundColor">
-      <div className="text-2xl ml-4">
-          <p> Max Wind </p>
-        <span data-maxwind>{maxWind}</span>
-        <span className="font-normal text-sm">km/h</span>
+    <header className="flex flex-col md:flex-row items-center my-4 mx-4 md:mx-10">
+      <div className="flex w-full md:w-1/2 justify-center items-center m-1 p-1 border-b md:border-r-2 border-foregroundColor">
+        <div className="text-lg sm:text-xl md:text-2xl ml-2 md:ml-4">
+          <p className="text-sm sm:text-base md:text-lg">Max Wind</p>
+          <span data-maxwind>{maxWind}</span>
+          <span className="font-normal text-xs sm:text-sm">km/h</span>
+        </div>
       </div>
-    </div>
-    <div className="flex w-1/2 justify-center items-center m-0.5 p-0.5 border-r-2 border-foregroundColor">
-      <div className="text-2xl ml-4">
-          <p> Max Gust </p>
-        <span data-maxgust>{maxGust}</span>
-        <span className="font-normal text-sm">km/h</span>
+      <div className="flex w-full md:w-1/2 justify-center items-center m-1 p-1 border-b md:border-r-2 border-foregroundColor">
+        <div className="text-lg sm:text-xl md:text-2xl ml-2 md:ml-4">
+          <p className="text-sm sm:text-base md:text-lg">Max Gust</p>
+          <span data-maxgust>{maxGust}</span>
+          <span className="font-normal text-xs sm:text-sm">km/h</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
   );
 }
