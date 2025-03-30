@@ -1,9 +1,13 @@
+import ErrorMessage from '@/app/ui/error';
 import Footer from '@/app/ui/footer';
 import React from 'react';
 
 export default async function getServerSideProps(){
+  const error = false;
+  const errorMessage = "Failed to load data. Please refresh the page.";
+
   return (
-      <>
+      <>{error && <ErrorMessage message={errorMessage} />}
         <div className="max-w-4xl mx-auto p-6">
           {/* Header Section */}
           <header className="text-center mb-10">

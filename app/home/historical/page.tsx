@@ -6,6 +6,7 @@ import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
 import YearRangeButtons from "@/app/ui/historical/button/index";
 import Footer from "@/app/ui/footer";
+import ErrorMessage from "@/app/ui/error";
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -23,10 +24,13 @@ export default async function getServerSideProps(props: {
     console.log("query...",query)
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
+
+    const error = false;
+    const errorMessage = "Failed to load data. Please refresh the page.";
     
    
   return (
-    <>
+    <>{error && <ErrorMessage message={errorMessage} />}
       <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-center my-4">
         Historical Weather
       </h1>
@@ -39,7 +43,6 @@ export default async function getServerSideProps(props: {
       <div className="col-span-1 row-span-1 text-sm sm:text-lg md:text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
         End Date: {endDate}
       </div>
-
       <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
         const { daily } = await fetchHistoricalWeather(
@@ -51,11 +54,8 @@ export default async function getServerSideProps(props: {
         );
         const maxWind = daily.map(item => item.wind);
         const maxWindValue = Math.max(...maxWind);
-        // console.log("maxWind......",maxWindValue);
         const maxGust = daily.map(item => item.gust);
         const maxGustValue = Math.max(...maxGust);
-        // console.log("maxGust......",maxGustValue);
-        
         return (
           <>
           <div className="grid grid-cols-8 grid-rows-2 gap-1 flex items-center border-2 shadow-md">

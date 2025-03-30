@@ -2,7 +2,8 @@
 ## verson 0.4.2
 Added Buttons to Historical page
 Added basic About Page
-Began to implement image upload to database
+Dedided that added images to database is not necessary due to the site being static
+Enabled the pages to resize between desktop and mobile view
 
 ## verson 0.4.1
 Added Landing Page

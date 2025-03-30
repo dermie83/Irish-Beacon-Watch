@@ -4,6 +4,7 @@ import LineGraph from "@/app/ui/marine";
 import Search from "@/app/ui/search";
 import Header from "@/app/ui/marine/dailyHearder";
 import Footer from "@/app/ui/footer";
+import ErrorMessage from "@/app/ui/error";
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -21,8 +22,13 @@ export default async function getServerSideProps(props: {
     const query = searchParams?.query || '';
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
+
+    const error = false;
+    const errorMessage = "Failed to load data. Please refresh the page.";
+
+
   return (
-    <>
+    <>{error && <ErrorMessage message={errorMessage} />}
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Current Marine Forecast</h1>
     <Search placeholder="Search Lighthouse..."/>
     <div className="space-y-4">

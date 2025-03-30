@@ -1,5 +1,6 @@
 import { fetchLighthouses, fetchLighthousePages, fetchWeatherForecast } from "@/app/lib/data";
 import { formatDateToLocal } from "@/app/lib/utils";
+import ErrorMessage from "@/app/ui/error";
 import Footer from "@/app/ui/footer";
 import Header from "@/app/ui/forecast/dailyHeader";
 import DayCard from "@/app/ui/forecast/dayCard";
@@ -21,8 +22,12 @@ export default async function getServerSideProps(props: {
     const lighthouses = await fetchLighthouses(currentPage, query);
     console.log("forecast...",lighthouses);
     const totalPages = await fetchLighthousePages(query);
+
+    const error = false;
+    const errorMessage = "Failed to load data. Please refresh the page.";
+    
   return (
-    <>
+    <>{error && <ErrorMessage message={errorMessage} />}
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Weather Forecast</h1>
      <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse) => {
