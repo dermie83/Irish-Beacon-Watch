@@ -1,9 +1,10 @@
 # Irish Beacon Watch Changelog
-## verson 0.4.2
+## verson 0.5.0
 Added Buttons to Historical page
 Added basic About Page
-Dedided that added images to database is not necessary due to the site being static
+Rechanged dicision to add images to database due to the site being static
 Enabled the pages to resize between desktop and mobile view
+Added generic error massesge component
 
 ## verson 0.4.1
 Added Landing Page
