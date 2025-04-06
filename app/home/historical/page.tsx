@@ -4,9 +4,13 @@ import { LineChart } from "recharts";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
+<<<<<<< HEAD
 import YearRangeButtons from "@/app/ui/historical/button/index";
 import Footer from "@/app/ui/footer";
 import ErrorMessage from "@/app/ui/error";
+=======
+import Button from "@/app/ui/historical/button/index";
+>>>>>>> origin/dev
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -24,6 +28,7 @@ export default async function getServerSideProps(props: {
     console.log("query...",query)
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
+<<<<<<< HEAD
 
     const error = false;
     const errorMessage = "Failed to load data. Please refresh the page.";
@@ -52,6 +57,20 @@ export default async function getServerSideProps(props: {
           startDate,
           endDate
         );
+=======
+  
+
+   
+  return (
+    <>
+      <h1>Historical Weather</h1>
+      <div style={{ padding: '20px' }}>
+        <Button/>
+      </div>
+      <Search placeholder="Search Lighthouse..." />
+      {lighthouses.map(async(lighthouse) => {
+        const { daily } = await fetchHistoricalWeather(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
+>>>>>>> origin/dev
         const maxWind = daily.map(item => item.wind);
         const maxWindValue = Math.max(...maxWind);
         const maxGust = daily.map(item => item.gust);
