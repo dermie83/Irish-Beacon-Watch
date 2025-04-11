@@ -35,15 +35,15 @@ pnpm install
 Create a .env file in the root of your project:
 
 Add your PostgreSQL database credentials: 
-You will be required to set up a Vercel account and create a new database connection for the project. Visit https://vercel.com/
+You will be required to set up a Vercel account and create a new database connection for the project. Visit [Vercel](https://vercel.com/)
 
-POSTGRES_URL=
-POSTGRES_URL_NON_POOLING=
-POSTGRES_USER=
-POSTGRES_HOST=
-POSTGRES_PASSWORD=
-POSTGRES_DATABASE=
-POSTGRES_PRISMA_URL=
+#### POSTGRES_URL=
+#### POSTGRES_URL_NON_POOLING=
+#### POSTGRES_USER=
+#### POSTGRES_HOST=
+#### POSTGRES_PASSWORD=
+#### POSTGRES_DATABASE=
+#### POSTGRES_PRISMA_URL=
 
 ### 🧪 Development
 Start the development server:
