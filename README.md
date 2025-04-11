@@ -14,6 +14,13 @@ This project is built with **Next.js**, deployed on **Vercel**, and uses **Postg
 
 ---
 
+## 🌐 API Connectivity
+
+This application integrates with external APIs to enhance functionality and provide real-time data. It uses the [Open-Meteo](https://open-meteo.com/) API to fetch weather information based on location data. For mapping and geolocation, the app leverages [OpenStreetMap](https://www.openstreetmap.org/), an open-source and community-driven mapping service. These APIs enable dynamic user experiences such as location-based weather forecasts and interactive maps.
+
+--- 
+
+=======
 ## 🛠️ Getting Started
 
 ### 1. Clone the Repository
@@ -57,6 +64,10 @@ pnpm dev
 
 The app will be available at http://localhost:3000
 
+---
+
+=======
+
 ## 🧰 Useful Links
 Next.js Docs
 
@@ -65,6 +76,11 @@ Vercel Dashboard
 Neon Dashboard
 
 pnpm Docs
+
+
+---
+
+=======
 
 ## Learning and Development
 ### More useful links  
