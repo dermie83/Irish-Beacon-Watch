@@ -25,45 +25,6 @@ async function seedLighthouse() {
       image_url VARCHAR(255) NOT NULL
     );
   `;
-  
-//   const insertedLighthouses = await Promise.all(
-//     lighthouses.map(async (lighthouse) => {
-//       try{
-//         const imagePath = path.join(process.cwd(), lighthouse.image_url);
-//         console.log("imagePath....",imagePath);
-//         const imageBuffer = fs.readFileSync(imagePath);
-//         console.log("imageBuffer....",imageBuffer);
-//         const imageData = Buffer.from(imageBuffer);
-//         console.log("imageData....",imageData);
-//         return client.sql`
-//           INSERT INTO lighthouse (id, name, latitude, longitude, 
-//                                   abovewater, towerheight, range, 
-//                                   greatlighthouse, constructed, 
-//                                   currentdate, image_url)
-//           VALUES (${lighthouse.id}, ${lighthouse.name}, ${lighthouse.latitude}, ${lighthouse.longitude},
-//             ${lighthouse.abovewater}, ${lighthouse.towerheight}, ${lighthouse.range}, 
-//             ${lighthouse.greatlighthouse}, ${lighthouse.constructed}, ${lighthouse.currentdate}, ${lighthouse.image_url})
-//           ON CONFLICT (id) DO NOTHING;
-//         `;
-//       } catch (error) {
-//         console.error("Error fetching or inserting image:", error);
-//         return client.sql`
-//           INSERT INTO lighthouse (id, name, latitude, longitude, 
-//                                    abovewater, towerheight, range, 
-//                                    greatlighthouse, constructed, 
-//                                    currentdate, image_url)
-//           VALUES (${lighthouse.id}, ${lighthouse.name}, ${lighthouse.latitude}, ${lighthouse.longitude},
-//             ${lighthouse.abovewater}, ${lighthouse.towerheight}, ${lighthouse.range}, 
-//             ${lighthouse.greatlighthouse}, ${lighthouse.constructed}, ${lighthouse.currentdate}, null)
-//           ON CONFLICT (id) DO NOTHING;
-//         `;
-
-//       }
-//     }),
-//   );
-
-//   return insertedLighthouses;
-// }
 
   const insertedLighthouses = await Promise.all(
     lighthouses.map(
