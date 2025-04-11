@@ -5,6 +5,7 @@ Added basic About Page
 Rechanged dicision to add images to database due to the site being static
 Enabled the pages to resize between desktop and mobile view
 Added generic error massesge component
+README file updated
 
 ## verson 0.4.1
 Added Landing Page

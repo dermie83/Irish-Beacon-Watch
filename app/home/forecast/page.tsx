@@ -30,7 +30,7 @@ export default async function getServerSideProps(props: {
     <>{error && <ErrorMessage message={errorMessage} />}
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Weather Forecast</h1>
      <Search placeholder="Search Lighthouse..." />
-      {lighthouses.map(async(lighthouse) => {
+      {lighthouses.map(async(lighthouse, index) => {
         const { current, daily, hourly } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         const visibility = hourly.map((visible)=> visible.visibility);
         return (
@@ -56,6 +56,7 @@ export default async function getServerSideProps(props: {
                     />
               </div>
               <Map
+                  key={index}
                   id={lighthouse.id}
                   name={lighthouse.name} 
                   latitude={lighthouse.latitude} 
