@@ -39,7 +39,16 @@ You will be required to set up a Vercel account and create a new database connec
 
 This project used the following API connection type
 
-![alt text](image.png)
+# Parameters for Vercel Postgres Templates
+POSTGRES_URL=************  
+POSTGRES_URL_NON_POOLING=************************  
+POSTGRES_USER=*************  
+POSTGRES_HOST=*************  
+POSTGRES_PASSWORD=*****************  
+POSTGRES_DATABASE=*****************  
+POSTGRES_URL_NO_SSL=*******************  
+POSTGRES_PRISMA_URL=*******************  
+
 
 ### 🧪 Development
 Start the development server:
