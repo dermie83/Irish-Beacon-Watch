@@ -20,6 +20,7 @@ This application integrates with external APIs to enhance functionality and prov
 
 --- 
 
+=======
 ## 🛠️ Getting Started
 
 ### 1. Clone the Repository
@@ -65,6 +66,8 @@ The app will be available at http://localhost:3000
 
 ---
 
+=======
+
 ## 🧰 Useful Links
 Next.js Docs
 
@@ -74,7 +77,10 @@ Neon Dashboard
 
 pnpm Docs
 
+
 ---
+
+=======
 
 ## Learning and Development
 ### More useful links  
