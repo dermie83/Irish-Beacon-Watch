@@ -13,10 +13,10 @@ export default async function getServerSideProps(props: {
   }>;
   })  {
 
-    if (typeof window == "undefined") {
-      console.log("Application is on server side");
-    } else {
-      alert("Application is on client side");}
+    // if (typeof window == "undefined") {
+    //   console.log("Application is on server side");
+    // } else {
+    //   alert("Application is on client side");}
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;
     const query = searchParams?.query || '';

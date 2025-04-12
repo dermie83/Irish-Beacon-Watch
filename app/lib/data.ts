@@ -11,7 +11,6 @@ import {
       } from './definitions';
 
 
-
 export async function fetchLighthouseRanges() {
   try {
     const data = await sql<LighthouseType>
@@ -79,7 +78,6 @@ export async function fetchLighthouseAges() {
 }
 
 
-
 const ITEMS_PER_PAGE = 5;
 export async function fetchLighthouses(
   currentPage: number,
@@ -112,7 +110,6 @@ export async function fetchLighthouses(
     throw new Error('Failed to fetch lighthouse location data.');
   }
 }
-
 
 export async function fetchLighthousePages(
   query: string,
@@ -212,15 +209,20 @@ export async function fetchHistoricalWeather(
     return {
       daily: parseHistoricalDailyWeather(response.data),
     };
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error fetching historical weather data:", error);
+    // Check if the error is an Axios error
+    const errorMessage = error.response 
+      ? `Error: ${error.response.status} - ${error.response.data.message || 'Request failed'}`
+      : 'An error occurred while fetching the historical weather data. Please try again later.';
+
+    // Return the error message to be displayed
     return {
       daily: [],  // Return an empty array in case of error
-      errorMessage: "An error occurred while fetching the historical weather data. Please try again later.",
+      errorMessage,
     };
   }
 }
-
 
 function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherType[] {
   // console.log("Daily historical time.....",daily.time);
@@ -232,7 +234,6 @@ function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherTyp
     };
   });
 }
-
 
 export async function fetchWeatherForecast(
     lat: number,
