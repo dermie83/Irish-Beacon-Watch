@@ -30,8 +30,10 @@ git clone https://github.com/dermie83/Irish-Beacon-Watch.git
 cd Irish-Beacon-Watch
 
 
-You can view the official Webpage here: https://irish-beacon-watch.vercel.app/
+You can view the official Webpage here: https://irish-beacon-watch.vercel.app/  
 
+
+You can view the overview here: https://youtu.be/ZJ0iTu0Gg-o
 
 ### 2. Install Dependencies
 Make sure you have pnpm installed:
@@ -78,12 +80,6 @@ The app will be available at http://localhost:3000
 
 ---
 
-=======
-
-
----
-
-=======
 
 ## Learning and Development
 ### More useful links 
