@@ -1,6 +1,5 @@
 import { fetchLighthouses, fetchLighthousePages, fetchHistoricalWeather} from "@/app/lib/data";
 import LineGraph from "@/app/ui/historical";
-import { LineChart } from "recharts";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";

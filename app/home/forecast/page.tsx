@@ -17,10 +17,10 @@ export default async function getServerSideProps(props: {
   })  {
     const searchParams = await props.searchParams;
     const query = searchParams?.query || '';
-    console.log("query...",query)
+    // console.log("query...",query)
     const currentPage = Number(searchParams?.page) || 1;
     const lighthouses = await fetchLighthouses(currentPage, query);
-    console.log("forecast...",lighthouses);
+    // console.log("forecast...",lighthouses);
     const totalPages = await fetchLighthousePages(query);
 
     const error = false;

@@ -1,10 +1,8 @@
 // This file contains type definitions for your data.
 // It describes the shape of the data, and what data type each property should accept.
-// For simplicity of teaching, we're manually defining these types.
 
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-// However, these types are generated automatically if you're using an ORM such as Prisma.
 export type LighthouseType = {
   id: string;
   name: string;
@@ -19,7 +17,6 @@ export type LighthouseType = {
   age:number;
   image_url:string;
 };
-
 
 export type WeatherHeaderProps = {
   currentTemp: number | undefined;
@@ -40,7 +37,6 @@ export type DayCardWeatherProps = {
   timestamp: number | undefined;
   degree: number;
 } & DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-
 
 export type TableRowWeatherProps = {
   timestamp: number | undefined;

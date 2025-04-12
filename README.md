@@ -69,13 +69,16 @@ The app will be available at http://localhost:3000
 =======
 
 ## 🧰 Useful Links
-Next.js Docs
 
-Vercel Dashboard
+- [Next.js Docs](https://nextjs.org/docs)
+- [Vercel Dashboard](https://vercel.com/dashboard)
+- [Neon Dashboard](https://neon.tech/dashboard)
+- [pnpm Docs](https://pnpm.io/)
 
-Neon Dashboard
 
-pnpm Docs
+---
+
+=======
 
 
 ---
@@ -83,7 +86,9 @@ pnpm Docs
 =======
 
 ## Learning and Development
-### More useful links  
+### More useful links 
+This project was develpoed from the following boilerplate from Next.js:  
+
 https://nextjs.org/learn/dashboard-app
 
 
