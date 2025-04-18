@@ -29,8 +29,8 @@ export default function AboveWaterGraph({abwData} : LighthouseABWProps) {
                   <XAxis dataKey="name" />
                   <YAxis label={{ value: 'Meters', angle: -90, position: 'upper left', offset: 1000 }} />
                   <Tooltip formatter={(value, name) => [`${value} m`, name === 'abovewater' ? 'ABW':'ABW']}/>
-                  <Legend />
-                  <Bar dataKey="abovewater" fill="#0099FF" name="Aove Water"/>
+                  <Legend verticalAlign="top" height={36}/>
+                  <Bar dataKey="abovewater" fill="#0099FF" name="Above Water"/>
               </BarChart>
             </ResponsiveContainer>
           </>

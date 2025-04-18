@@ -59,11 +59,20 @@ export default async function getServerSideProps(props: {
         const maxGustValue = Math.max(...maxGust);
         return (
           <>
-            <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-3 md:grid-rows-[auto_auto] gap-4 border-2 shadow-md p-4 md:p-6">
-              <div className="col-span-1 md:col-span-8 row-span-1 text-lg md:text-3xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+            <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-4 md:grid-rows-2 gap-4 border-2 shadow-md p-4 md:p-6">
+              <div className="col-span-1 md:col-span-8 row-span-1 text-lg md:text-3xl text-center tracking-narrow text-blue-600 dark:text-sky-400">
                 {lighthouse.name}
               </div>
-              <div className="col-span-1 md:col-span-3 row-span-1">
+              <div className="col-span-1 md:col-span-8 row-span-1">
+                <MetricsTable 
+                  maxGust={maxGustValue} 
+                  maxWind={maxWindValue}
+                />
+              </div>
+              <div className="col-span-1 md:col-span-6 row-span-1">
+                <LineGraph daily = {daily}/>
+              </div>
+              <div className="col-span-1 md:col-span-2 row-span-1">
                 <Map
                   key={index}
                   id={lighthouse.id}
@@ -80,15 +89,6 @@ export default async function getServerSideProps(props: {
                   age={lighthouse.age}
                   image_url={lighthouse.image_url}
                 />
-              </div>
-              <div className="col-span-1 md:col-span-5 row-span-1">
-                <MetricsTable 
-                  maxGust={maxGustValue} 
-                  maxWind={maxWindValue}
-                />
-              </div>
-              <div className="col-span-1 md:col-span-8 row-span-1">
-                <LineGraph daily = {daily}/>
               </div>
             </div>
           </>
