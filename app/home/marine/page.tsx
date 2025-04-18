@@ -1,10 +1,12 @@
 import { fetchLighthousePages, fetchLighthouses, fetchMarineForecast} from "@/app/lib/data";
 import Pagination from "@/app/ui/pagination";
 import LineGraph from "@/app/ui/marine";
+import Map from "@/app/ui/marine/map";
 import Search from "@/app/ui/search";
 import Header from "@/app/ui/marine/dailyHearder";
 import Footer from "@/app/ui/footer";
 import ErrorMessage from "@/app/ui/error";
+import { formatDateToLocal } from "@/app/lib/utils";
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -32,15 +34,33 @@ export default async function getServerSideProps(props: {
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Current Marine Forecast</h1>
     <Search placeholder="Search Lighthouse..."/>
     <div className="space-y-4">
-      {lighthouses.map(async (lighthouse) => {
+      {lighthouses.map(async (lighthouse, index) => {
         const { current, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
 
         return (
-          <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-2 gap-1 border-2 shadow-md p-4 md:p-6 items-center">
-            <div className="col-span-1 row-span-1 text-lg md:text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
+          <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-3 md:grid-rows-2 gap-4 border-2 shadow-md p-4 md:p-6">
+            <div className="col-span-1 md:col-span-8 row-span-1 text-lg md:text-3xl text-center tracking-wide text-blue-600 dark:text-sky-400">
               {lighthouse.name}
             </div>
-            <div className="col-span-7 row-span-1">
+            <div className="col-span-1 md:col-span-3 row-span-1">
+              <Map
+                key={index}
+                id={lighthouse.id}
+                name={lighthouse.name}
+                latitude={lighthouse.latitude}
+                longitude={lighthouse.longitude}
+                abovewater={lighthouse.abovewater}
+                towerheight={lighthouse.towerheight}
+                range_w={lighthouse.range_w}
+                range_r={lighthouse.range_r}
+                coast={lighthouse.coast}
+                constructed={formatDateToLocal(lighthouse.constructed)}
+                currentdate={lighthouse.currentdate}
+                age={lighthouse.age}
+                image_url={lighthouse.image_url}
+              />
+            </div>
+            <div className="col-span-1 md:col-span-5 row-span-1">
               <Header
                 waveHeight={current?.waveHeight}
                 wind_wave_height={current?.wind_wave_height}

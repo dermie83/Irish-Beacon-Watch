@@ -21,7 +21,7 @@ export default async function getServerSideProps(){
 
     const ranges = await fetchLighthouseRanges();
     const maxRangeName = ranges.map((item)=> item.name);
-    const maxRange = ranges.map((item)=> item.range);
+    const maxRange = ranges.map((item)=> item.range_w);
 
     const abwMetrics = await fetchLighthouseABWMetrics();
     const maxABWName = abwMetrics.map((item)=> item.name);
@@ -54,7 +54,7 @@ export default async function getServerSideProps(){
             maxage={maxage.slice(-1)[0]}
           />
         </div>
-        <div className="col-span-1 md:col-span-2 row-span-4 md:row-span-2">
+        <div className="col-span-1 md:col-span-1 row-span-4 md:row-span-2">
           <Map />
         </div>
         <div className="col-span-1 row-span-1">

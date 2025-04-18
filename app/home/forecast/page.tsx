@@ -36,7 +36,7 @@ export default async function getServerSideProps(props: {
         return (
           <>
             <div className="grid grid-cols-3 grid-rows-1 gap-2 flex items-center border-2 shadow-md">
-              <section className="grid col-span-3 row-span-1 grid-cols-[repeat(auto-fit,100px)] gap-2 items-center">
+              <section className="grid col-span-2 row-span-1 grid-cols-[repeat(auto-fit,100px)] gap-2 items-center">
                 {daily.map((item, index) => (
                   <DayCard
                     key={index}
@@ -46,7 +46,7 @@ export default async function getServerSideProps(props: {
                   />
                 ))}
               </section>
-              <div className="col-span-2 row-span-1 text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400">
+              <div className="col-span-1 row-span-1 text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400">
               <Image
                     src={lighthouse.image_url}
                     className="sqaure-full"
@@ -63,14 +63,15 @@ export default async function getServerSideProps(props: {
                   longitude={lighthouse.longitude} 
                   abovewater={lighthouse.abovewater}
                   towerheight={lighthouse.towerheight}
-                  range={lighthouse.range}
-                  greatlighthouse={lighthouse.greatlighthouse}
+                  range_w={lighthouse.range_w}
+                  range_r={lighthouse.range_r}
+                  coast={lighthouse.coast}
                   constructed={formatDateToLocal(lighthouse.constructed)}
                   currentdate= {lighthouse.currentdate}
                   age={lighthouse.age}
                   image_url={lighthouse.image_url}
               />
-              <div className="col-span-3 row-span-1">
+              <div className="col-span-2 row-span-1">
                 <Header
                     currentTemp={current?.currentTemp}
                     highTemp={current?.highTemp}
@@ -83,6 +84,7 @@ export default async function getServerSideProps(props: {
                     iconCode={current?.iconCode}
                     visibility={visibility?.slice(-1)[0]}
                     name={lighthouse.name}
+                    coast={lighthouse.coast}
                   />
               </div>
             </div>
