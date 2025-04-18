@@ -80,8 +80,6 @@ The app will be available at http://localhost:3000
 
 ---
 
-=======
-
 ## Learning and Development
 ### More useful links 
 This project was develpoed from the following boilerplate from Next.js:  
