@@ -90,9 +90,6 @@ export default async function getServerSideProps(props: {
                   image_url={lighthouse.image_url}
                 />
               </div>
-              <div className="col-span-1 md:col-span-8 row-span-1">
-                <LineGraph daily = {daily}/>
-              </div>
             </div>
           </>
         )
