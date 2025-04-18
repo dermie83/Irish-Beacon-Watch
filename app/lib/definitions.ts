@@ -10,8 +10,9 @@ export type LighthouseType = {
   longitude: number;
   abovewater:number;
   towerheight:number;
-  range:number;
-  greatlighthouse:boolean;
+  range_w:number;
+  range_r:number;
+  coast:string;
   constructed:string;
   currentdate:string;
   age:number;
@@ -30,6 +31,7 @@ export type WeatherHeaderProps = {
   iconCode: number | undefined;
   visibility: number | undefined;
   name: string | undefined;
+  coast: string | undefined;
 };
 
 export type DayCardWeatherProps = {

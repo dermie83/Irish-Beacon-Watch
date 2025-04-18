@@ -4,9 +4,9 @@ import { formatTimestampToDay } from "@/app/lib/utils";
 
 
 export default function DayCard({
-  iconCode = 999,
-  timestamp = 999,
-  degree = 32,
+  iconCode = 0,
+  timestamp = 0,
+  degree = 0,
   ...props
 }: DayCardWeatherProps) {
   const Icon = getIcon(iconCode);

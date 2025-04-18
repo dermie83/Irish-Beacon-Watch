@@ -17,9 +17,10 @@ export async function fetchLighthouseRanges() {
     `SELECT 
             lighthouse.id, 
             lighthouse.name, 
-            lighthouse.range
+            lighthouse.range_w,
+            lighthouse.range_r
       FROM lighthouse
-      ORDER BY lighthouse.range`;
+      ORDER BY lighthouse.range_w`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -93,8 +94,9 @@ export async function fetchLighthouses(
             lighthouse.longitude,
             lighthouse.abovewater,
             lighthouse.towerheight, 
-            lighthouse.range, 
-            lighthouse.greatlighthouse,
+            lighthouse.range_w,
+            lighthouse.range_r,
+            lighthouse.coast,
             lighthouse.constructed,
             lighthouse.currentdate,
             (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",

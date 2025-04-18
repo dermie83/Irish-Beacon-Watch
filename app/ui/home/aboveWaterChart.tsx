@@ -27,10 +27,10 @@ export default function AboveWaterGraph({abwData} : LighthouseABWProps) {
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
+                  <YAxis label={{ value: 'Meters', angle: -90, position: 'upper left', offset: 1000 }} />
+                  <Tooltip formatter={(value, name) => [`${value} m`, name === 'abovewater' ? 'ABW':'ABW']}/>
                   <Legend />
-                  <Bar dataKey="abovewater" stroke="#2284d8"/>
+                  <Bar dataKey="abovewater" fill="#0099FF" name="Aove Water"/>
               </BarChart>
             </ResponsiveContainer>
           </>

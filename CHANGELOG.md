@@ -1,4 +1,9 @@
 # Irish Beacon Watch Changelog
+## verson 0.5.1
+Added Map to Marine and Historical Pages
+Updated lighthouse data
+Added a "coast" attribute to the lighthouse type 
+
 ## verson 0.5.0
 Added Buttons to Historical page
 Added basic About Page
