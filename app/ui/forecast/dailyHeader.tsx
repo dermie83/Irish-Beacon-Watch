@@ -17,11 +17,11 @@ export default function Header({
   const Icon = getIcon(iconCode);
   const vizText = convertVisibilityToText(visibility);
   return (
-    <header className="flex items-center my-4 mx-10">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-x-4">
-        <div className="flex-shrink-0">
-          <p className="text-base md:text-lg font-semibold">Weather Now at <span className="font-bold">{name}</span></p>
-          <p className="text-sm md:text-md">Coastal Area <span className="font-semibold">{coast}</span></p>
+    <header className="flex flex-col md:flex-row items-center my-4 mx-2 md:mx-10">
+      <div className="flex items-center justify-center w-full md:w-auto my-4 md:my-0">
+        <div className="text-center">
+          <p className="text-lg font-semibold">Weather Now at <span className="font-bold">{name}</span></p>
+          <p className="text-sm">Coastal Area <span className="font-semibold">{coast}</span></p>
         </div>
         <div className="flex flex-row items-center m-1 p-1 sm:border-r border-foregroundColor">
           {Icon && <Icon className="w-12 h-12 md:w-20 md:h-20 object-contain" />}
@@ -57,5 +57,6 @@ export default function Header({
         </div>
       </div>
     </header>
+
   );
 }
