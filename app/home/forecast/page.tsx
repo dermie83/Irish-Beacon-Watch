@@ -17,10 +17,8 @@ export default async function getServerSideProps(props: {
   })  {
     const searchParams = await props.searchParams;
     const query = searchParams?.query || '';
-    // console.log("query...",query)
     const currentPage = Number(searchParams?.page) || 1;
     const lighthouses = await fetchLighthouses(currentPage, query);
-    // console.log("forecast...",lighthouses);
     const totalPages = await fetchLighthousePages(query);
 
     const error = false;
@@ -34,61 +32,61 @@ export default async function getServerSideProps(props: {
         const { current, daily, hourly } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         const visibility = hourly.map((visible)=> visible.visibility);
         return (
-          <>
-            <div className="grid grid-cols-3 grid-rows-1 gap-2 flex items-center border-2 shadow-md">
-              <section className="grid col-span-2 row-span-1 grid-cols-[repeat(auto-fit,100px)] gap-2 items-center">
-                {daily.map((item, index) => (
-                  <DayCard
-                    key={index}
-                    iconCode={item.iconCode}
-                    timestamp={item.timestamp}
-                    degree={item.maxTemp}
-                  />
-                ))}
-              </section>
-              <div className="col-span-1 row-span-1 text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400">
-              <Image
-                    src={lighthouse.image_url}
-                    className="sqaure-full"
-                    alt={lighthouse.name}
-                    width={250}
-                    height={150}
-                    />
-              </div>
-              <Map
+        <>
+          <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-1 gap-2 md:flex md:items-center border-2 shadow-md">
+            <section className="flex flex-col md:grid md:col-span-2 md:row-span-1 md:grid-cols-[repeat(auto-fit,100px)] gap-2 md:items-center">
+              {daily.map((item, index) => (
+                <DayCard
                   key={index}
-                  id={lighthouse.id}
-                  name={lighthouse.name} 
-                  latitude={lighthouse.latitude} 
-                  longitude={lighthouse.longitude} 
-                  abovewater={lighthouse.abovewater}
-                  towerheight={lighthouse.towerheight}
-                  range_w={lighthouse.range_w}
-                  range_r={lighthouse.range_r}
-                  coast={lighthouse.coast}
-                  constructed={formatDateToLocal(lighthouse.constructed)}
-                  currentdate= {lighthouse.currentdate}
-                  age={lighthouse.age}
-                  image_url={lighthouse.image_url}
+                  iconCode={item.iconCode}
+                  timestamp={item.timestamp}
+                  degree={item.maxTemp}
+                />
+              ))}
+            </section>
+            <div className="text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400 my-4 md:my-0">
+              <Image
+                src={lighthouse.image_url}
+                className="rounded-full"
+                alt={lighthouse.name}
+                width={250}
+                height={150}
               />
-              <div className="col-span-2 row-span-1">
-                <Header
-                    currentTemp={current?.currentTemp}
-                    highTemp={current?.highTemp}
-                    lowTemp={current?.lowTemp}
-                    highFeelsLike={current?.highFeelsLike}
-                    lowFeelsLike={current?.lowFeelsLike}
-                    windSpeed={current?.windSpeed}
-                    windGust={current?.windGust}
-                    precip={current?.precip}
-                    iconCode={current?.iconCode}
-                    visibility={visibility?.slice(-1)[0]}
-                    name={lighthouse.name}
-                    coast={lighthouse.coast}
-                  />
-              </div>
             </div>
-          </>
+            <Map
+              key={index}
+              id={lighthouse.id}
+              name={lighthouse.name}
+              latitude={lighthouse.latitude}
+              longitude={lighthouse.longitude}
+              abovewater={lighthouse.abovewater}
+              towerheight={lighthouse.towerheight}
+              range_w={lighthouse.range_w}
+              range_r={lighthouse.range_r}
+              coast={lighthouse.coast}
+              constructed={formatDateToLocal(lighthouse.constructed)}
+              currentdate={lighthouse.currentdate}
+              age={lighthouse.age}
+              image_url={lighthouse.image_url}
+            />
+            <div className="col-span-2 row-span-1">
+              <Header
+                currentTemp={current?.currentTemp}
+                highTemp={current?.highTemp}
+                lowTemp={current?.lowTemp}
+                highFeelsLike={current?.highFeelsLike}
+                lowFeelsLike={current?.lowFeelsLike}
+                windSpeed={current?.windSpeed}
+                windGust={current?.windGust}
+                precip={current?.precip}
+                iconCode={current?.iconCode}
+                visibility={visibility?.slice(-1)[0]}
+                name={lighthouse.name}
+                coast={lighthouse.coast}
+              />
+            </div>
+          </div>
+        </>
         )
       })}
       <div className="mt-5 flex w-full justify-center">
