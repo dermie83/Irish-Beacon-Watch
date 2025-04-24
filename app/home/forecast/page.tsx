@@ -4,7 +4,7 @@ import ErrorMessage from "@/app/ui/error";
 import Footer from "@/app/ui/footer";
 import Header from "@/app/ui/forecast/dailyHeader";
 import DayCard from "@/app/ui/forecast/dayCard";
-import Map from "@/app/ui/forecast/map";
+import Map from "@/app/ui/map";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import Image from 'next/image';
@@ -16,9 +16,11 @@ export default async function getServerSideProps(props: {
   }>;
   })  {
     const searchParams = await props.searchParams;
-    const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
+    // console.log("currentpage....",currentPage);
+    const query = searchParams?.query || '';
     const lighthouses = await fetchLighthouses(currentPage, query);
+    // console.log("lighthouses....",lighthouses);
     const totalPages = await fetchLighthousePages(query);
 
     const error = false;
@@ -33,7 +35,7 @@ export default async function getServerSideProps(props: {
         const visibility = hourly.map((visible)=> visible.visibility);
         return (
         <>
-          <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-1 gap-2 md:flex md:items-center border-2 shadow-md">
+          <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-1 gap-2 md:flex md:items-center border-4 shadow-md">
             <section className="flex flex-col md:grid md:col-span-2 md:row-span-1 md:grid-cols-[repeat(auto-fit,100px)] gap-2 md:items-center">
               {daily.map((item, index) => (
                 <DayCard

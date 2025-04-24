@@ -3,7 +3,7 @@ import { fetchLighthouseABWMetrics,
         fetchLighthouseRanges, 
         fetchLighthouseTowerMetrics } 
 from "../lib/data";
-import Map from '@/app/ui/home/map/index';
+import Map from '@/app/ui/home/map';
 import RangeGraph from "../ui/home/rangeChart";
 import AboveWaterGraph from "../ui/home/aboveWaterChart";
 import TowerGraph from "../ui/home/towerChart";

@@ -4,7 +4,7 @@ import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import MetricsTable from "@/app/ui/historical/metricsTable";
 import YearRangeButtons from "@/app/ui/historical/button/index";
-import Map from "@/app/ui/historical/map";
+import Map from "@/app/ui/map";
 import Footer from "@/app/ui/footer";
 import ErrorMessage from "@/app/ui/error";
 import { formatDateToLocal } from "@/app/lib/utils";
@@ -12,7 +12,7 @@ import { formatDateToLocal } from "@/app/lib/utils";
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
     page?: string;
-    query?:string;
+    query?: string;
     startDate?: string;
     endDate?: string;
   }>;

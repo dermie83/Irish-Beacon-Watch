@@ -1,7 +1,7 @@
 import { fetchLighthousePages, fetchLighthouses, fetchMarineForecast} from "@/app/lib/data";
 import Pagination from "@/app/ui/pagination";
 import LineGraph from "@/app/ui/marine";
-import Map from "@/app/ui/marine/map";
+import Map from "@/app/ui/map";
 import Search from "@/app/ui/search";
 import Header from "@/app/ui/marine/dailyHearder";
 import Footer from "@/app/ui/footer";

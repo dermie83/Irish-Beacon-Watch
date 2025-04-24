@@ -81,7 +81,6 @@ function PaginationNumber({
       'text-gray-300': position === 'middle',
     },
   );
-
   return isActive || position === 'middle' ? (
     <div className={className}>{page}</div>
   ) : (
