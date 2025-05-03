@@ -41,8 +41,8 @@ export default async function getServerSideProps(){
 
     return (
     <>{error && <ErrorMessage message={errorMessage} />}
-      <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-5 md:grid-rows-3 gap-4 min-h-screen">
-        <div className="col-span-1 md:col-span-3 row-span-1">
+      <div className="grid grid-cols-1 md:grid-cols-1 grid-rows-6 gap-4 min-h-screen">
+        <div className="col-span-1 row-span-1">
           <MetricsTable
             maxabovewater={maxABW.slice(-1)[0]}
             abovewatername={maxABWName.slice(-1)[0]}
@@ -54,7 +54,7 @@ export default async function getServerSideProps(){
             maxage={maxage.slice(-1)[0]}
           />
         </div>
-        <div className="col-span-1 md:col-span-1 row-span-4 md:row-span-2">
+        <div className="col-span-1 row-span-1">
           <Map />
         </div>
         <div className="col-span-1 row-span-1">
