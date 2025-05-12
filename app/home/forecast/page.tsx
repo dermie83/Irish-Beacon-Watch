@@ -46,7 +46,7 @@ export default async function getServerSideProps(props: {
                 />
               ))}
             </section>
-            <div className="text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400 my-4 md:my-0">
+            <div className="md:row-span-1 text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400 my-4 md:my-0">
               <Image
                 src={lighthouse.image_url}
                 className="rounded-full"
@@ -55,22 +55,22 @@ export default async function getServerSideProps(props: {
                 height={150}
               />
             </div>
-            <Map
-              key={index}
-              id={lighthouse.id}
-              name={lighthouse.name}
-              latitude={lighthouse.latitude}
-              longitude={lighthouse.longitude}
-              abovewater={lighthouse.abovewater}
-              towerheight={lighthouse.towerheight}
-              range_w={lighthouse.range_w}
-              range_r={lighthouse.range_r}
-              coast={lighthouse.coast}
-              constructed={formatDateToLocal(lighthouse.constructed)}
-              currentdate={lighthouse.currentdate}
-              age={lighthouse.age}
-              image_url={lighthouse.image_url}
-            />
+              <Map
+                key={index}
+                id={lighthouse.id}
+                name={lighthouse.name}
+                latitude={lighthouse.latitude}
+                longitude={lighthouse.longitude}
+                abovewater={lighthouse.abovewater}
+                towerheight={lighthouse.towerheight}
+                range_w={lighthouse.range_w}
+                range_r={lighthouse.range_r}
+                coast={lighthouse.coast}
+                constructed={formatDateToLocal(lighthouse.constructed)}
+                currentdate={lighthouse.currentdate}
+                age={lighthouse.age}
+                image_url={lighthouse.image_url}
+              />
             <div className="col-span-2 row-span-1">
               <Header
                 currentTemp={current?.currentTemp}
