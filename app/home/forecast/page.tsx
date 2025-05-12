@@ -35,18 +35,11 @@ export default async function getServerSideProps(props: {
         const visibility = hourly.map((visible)=> visible.visibility);
         return (
         <>
-          <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-1 gap-2 md:flex md:items-center border-4 shadow-md">
-            <section className="flex flex-col md:grid md:col-span-2 md:row-span-1 md:grid-cols-[repeat(auto-fit,100px)] gap-2 md:items-center">
-              {daily.map((item, index) => (
-                <DayCard
-                  key={index}
-                  iconCode={item.iconCode}
-                  timestamp={item.timestamp}
-                  degree={item.maxTemp}
-                />
-              ))}
-            </section>
-            <div className="md:row-span-1 text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400 my-4 md:my-0">
+          <div className="grid grid-cols-1 md:grid-cols-8 grid-rows-[auto_auto_1fr_auto] md:grid-rows-2 gap-4 border-4 shadow-md p-4 md:p-6">
+            <div className="col-span-1 md:col-span-6 row-span-1 text-lg md:text-3xl text-center tracking-narrow text-blue-600 dark:text-sky-400">
+              {lighthouse.name}
+            </div>
+             <div className="col-span-1 md:col-span-2 row-span-1 flex items-center justify-center">
               <Image
                 src={lighthouse.image_url}
                 className="rounded-full"
@@ -55,23 +48,17 @@ export default async function getServerSideProps(props: {
                 height={150}
               />
             </div>
-              <Map
-                key={index}
-                id={lighthouse.id}
-                name={lighthouse.name}
-                latitude={lighthouse.latitude}
-                longitude={lighthouse.longitude}
-                abovewater={lighthouse.abovewater}
-                towerheight={lighthouse.towerheight}
-                range_w={lighthouse.range_w}
-                range_r={lighthouse.range_r}
-                coast={lighthouse.coast}
-                constructed={formatDateToLocal(lighthouse.constructed)}
-                currentdate={lighthouse.currentdate}
-                age={lighthouse.age}
-                image_url={lighthouse.image_url}
-              />
-            <div className="col-span-2 row-span-1">
+            <div className="col-span-1 md:col-span-8 row-span-1 flex flex-row overflow-x-auto md:grid md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] md:gap-2 md:items-center">
+              {daily.map((item, index) => (
+                <DayCard
+                  key={index}
+                  iconCode={item.iconCode}
+                  timestamp={item.timestamp}
+                  degree={item.maxTemp}
+                />
+              ))}
+            </div>
+            <div className="col-span-1 md:col-span-6 row-span-1">
               <Header
                 currentTemp={current?.currentTemp}
                 highTemp={current?.highTemp}
@@ -87,6 +74,24 @@ export default async function getServerSideProps(props: {
                 coast={lighthouse.coast}
               />
             </div>
+            <div className="col-span-1 md:col-span-2 row-span-1">
+                <Map
+                  key={index}
+                  id={lighthouse.id}
+                  name={lighthouse.name}
+                  latitude={lighthouse.latitude}
+                  longitude={lighthouse.longitude}
+                  abovewater={lighthouse.abovewater}
+                  towerheight={lighthouse.towerheight}
+                  range_w={lighthouse.range_w}
+                  range_r={lighthouse.range_r}
+                  coast={lighthouse.coast}
+                  constructed={formatDateToLocal(lighthouse.constructed)}
+                  currentdate={lighthouse.currentdate}
+                  age={lighthouse.age}
+                  image_url={lighthouse.image_url}
+                />
+              </div>
           </div>
         </>
         )
