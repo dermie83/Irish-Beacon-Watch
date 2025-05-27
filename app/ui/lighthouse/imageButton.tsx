@@ -41,7 +41,6 @@ const ImageButton: React.FC<ButtonProps> = ({
         alt={imageAlt}
         width={width}
         height={height}
-        objectFit="contain" // Good for icons/logos to show full image
         priority={false} // Only set to true for very important images above the fold
       />
       {textLabel && ( // Conditionally render text label if provided
