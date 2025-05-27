@@ -34,13 +34,6 @@ export default async function getServerSideProps(props: {
           <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-1 gap-2 md:flex md:items-center border-4 shadow-md">
             <div className="text-2xl text-center tracking-narrow text-blue-600 dark:text-sky-400 my-4 md:my-0">
               <LighthouseImageButtons id={lighthouse.id} name={lighthouse.name} latitude={0} longitude={0} abovewater={0} towerheight={0} range_w={0} range_r={0} coast={""} constructed={""} currentdate={""} age={0} image_url={lighthouse.image_url}/>
-              {/* <Image
-                src={lighthouse.image_url}
-                className="rounded-full"
-                alt={lighthouse.name}
-                width={250}
-                height={150}
-              /> */}
             </div>
           </div>
         </>
