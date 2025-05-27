@@ -79,6 +79,37 @@ export async function fetchLighthouseAges() {
 }
 
 
+export async function fetchLighthouse(
+  query: string,
+) {
+  try {
+    const data = await sql<LighthouseType>
+    `SELECT 
+            lighthouse.id, 
+            lighthouse.name, 
+            lighthouse.latitude, 
+            lighthouse.longitude,
+            lighthouse.abovewater,
+            lighthouse.towerheight, 
+            lighthouse.range_w,
+            lighthouse.range_r,
+            lighthouse.coast,
+            lighthouse.constructed,
+            lighthouse.currentdate,
+            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
+            lighthouse.image_url
+     FROM lighthouse
+     WHERE
+        lighthouse.name ILIKE ${`%${query}%`}
+        ORDER BY lighthouse.name`;
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch lighthouse location data.');
+  }
+}
+
+
 const ITEMS_PER_PAGE = 5;
 export async function fetchLighthouses(
   currentPage: number,

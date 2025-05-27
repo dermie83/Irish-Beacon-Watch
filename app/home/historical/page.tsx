@@ -44,7 +44,7 @@ export default async function getServerSideProps(props: {
       <div className="col-span-1 row-span-1 text-sm sm:text-lg md:text-2xl text-center tracking-wide text-blue-600 dark:text-sky-400">
         End Date: {endDate}
       </div>
-      <Search placeholder="Search Lighthouse..." />
+      <Search placeholder="Search For Lighthouse..." />
       {lighthouses.map(async(lighthouse, index) => {
         const { daily } = await fetchHistoricalWeather(
           lighthouse.latitude, 

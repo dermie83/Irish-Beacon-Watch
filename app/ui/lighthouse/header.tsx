@@ -13,11 +13,11 @@ export default function Header({
       <div className="grid w-full md:w-full gap-2 md:gap-2 justify-around grid-cols-3 grid-rows-1 text-center">
         <div>
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Tower Height</div>
-          <div><span>{towerheight}</span>meters</div>
+          <div><span>{towerheight}</span> Meters</div>
         </div>
         <div>
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Red Light Range</div>
-          <div><span>{range_r}</span> <span className="text-sm">nautical miles</span></div>
+          <div><span>{range_r}</span> <span className="text-sm"> Nautical Miles</span></div>
         </div>
         <div>
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Constructed</div>
@@ -25,15 +25,15 @@ export default function Header({
         </div>
         <div>
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Above Water</div>
-          <div><span>{abovewater}</span>meters</div>
+          <div><span>{abovewater}</span> Meters</div>
         </div>
         <div>
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">White Light Range</div>
-          <div><span>{range_w}</span> <span className="text-sm">nautical miles</span></div>
+          <div><span>{range_w}</span> <span className="text-sm"> Nautical Miles</span></div>
         </div>
         <div>
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Age</div>
-          <div><span>{age}</span>years</div>
+          <div><span>{age}</span> Years</div>
         </div>
       </div>
     </header>

@@ -20,17 +20,17 @@ export default function Header({
         <div className="text-lg md:text-2xl ml-4">
           <p> Current Height </p>
           <span data-current-waveheight>{waveHeight}</span>
-          <span className="font-normal text-xs md:text-sm">m</span>
+          <span className="font-normal text-xs md:text-sm"> m</span>
         </div>
       </div>
-      <div className="grid w-full md:w-1/2 gap-2 md:gap-4 justify-around grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2">
+      <div className="grid w-full md:w-full gap-2 md:gap-4 justify-around grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2">
         <div className="flex flex-col items-center">
           <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">
             Wind Wave Height
           </div>
           <div>
             <span data-current-wind-wave>{wind_wave_height}</span>
-            <span className="font-normal text-xs md:text-sm">m</span>
+            <span className="font-normal text-xs md:text-sm"> m</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -39,7 +39,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-swell-wave>{swell_wave_height}</span>
-            <span className="font-normal text-xs md:text-sm">m</span>
+            <span className="font-normal text-xs md:text-sm"> m</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -56,7 +56,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-low>{wave_period}</span>
-            <span className="font-normal text-xs md:text-sm">sec</span>
+            <span className="font-normal text-xs md:text-sm"> sec</span>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -65,7 +65,7 @@ export default function Header({
           </div>
           <div>
             <span data-current-current-velocity>{ocean_current_velocity}</span>
-            <span className="font-normal text-xs md:text-sm">m/sec</span>
+            <span className="font-normal text-xs md:text-sm"> m/sec</span>
           </div>
         </div>
         <div className="flex flex-col items-center">

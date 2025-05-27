@@ -14,8 +14,8 @@ const ImageButton: React.FC<ButtonProps> = ({
   imageSrc, 
   imageAlt, 
   onClick, 
-  width = 50, // Default width
-  height = 50, // Default height
+  width = 100, // Default width
+  height = 100, // Default height
   textLabel 
 }) => {
   return (

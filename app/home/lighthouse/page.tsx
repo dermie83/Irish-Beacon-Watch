@@ -28,13 +28,14 @@ export default async function getServerSideProps(props: {
   return (
     <>{error && <ErrorMessage message={errorMessage} />}
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Aids To Navigation</h1>
-     <Search placeholder="Search Lighthouse..." />
+     <Search placeholder="Search For Lighthouse..." />
       {lighthouses.map(async(lighthouse, index) => {
         return (
         <>
           <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-3 md:grid-rows-1 gap-2 border-2 shadow-md p-4 md:p-4">
               <div className="col-span-1 md:col-span-2 row-span-1">
-                <LighthouseImageButtons 
+                <LighthouseImageButtons
+                  key={index}
                   id={lighthouse.id} 
                   name={lighthouse.name} 
                   latitude={0} 

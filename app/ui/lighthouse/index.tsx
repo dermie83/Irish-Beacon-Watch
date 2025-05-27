@@ -14,15 +14,15 @@ export default function LighthouseImageButtons(lighthouse: LighthouseType) {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '20px', padding: '50px', justifyContent: 'center', flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', gap: '20px', padding: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
         <ImageButton
           key={lighthouse.id} // Essential for mapping over arrays in React
           imageSrc={lighthouse.image_url}
           imageAlt={lighthouse.name}
           textLabel={lighthouse.name} // Display the lighthouse name as a text label
           onClick={() => handleImageClick(lighthouse.name)} // Pass the dynamic name to the handler
-          width={150} // Example size
-          height={100} // Example size
+          width={250} // Example size
+          height={300} // Example size
         />
     </div>
   );
