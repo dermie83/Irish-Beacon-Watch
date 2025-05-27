@@ -45,7 +45,7 @@ export default async function getServerSideProps(props: {
                 className="rounded-full"
                 alt={lighthouse.name}
                 width={250}
-                height={150}
+                height={130}
               />
             </div>
             <div className="col-span-1 md:col-span-8 row-span-1 flex flex-row overflow-x-auto md:grid md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] md:gap-2 md:items-center">
