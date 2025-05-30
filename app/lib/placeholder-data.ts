@@ -646,7 +646,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.jpg',
+    image_url: '/lighthouses/loop head.JPG',
   },
   {
     id: '07310616-d222-4629-9334-b50cddbd23c2',
