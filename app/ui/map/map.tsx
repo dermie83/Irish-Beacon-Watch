@@ -31,7 +31,7 @@ export default function Map(lighthouse: LighthouseType) {
                     position={{lat: lighthouse.latitude , lng: lighthouse.longitude}} 
                     draggable={false}>
                 <Popup> 
-                    Name: {lighthouse.name}, Constructed: {lighthouse.constructed}, Age: {lighthouse.age} years
+                    {lighthouse.name}
                 </Popup>
             </Marker>
             <MapView />

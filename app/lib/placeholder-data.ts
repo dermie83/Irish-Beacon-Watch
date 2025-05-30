@@ -1,4 +1,4 @@
-// This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
+/ This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
 // https://nextjs.org/learn/dashboard-app/fetching-data
 
 const date = new Date().toISOString();
@@ -114,7 +114,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '2b88cbe7-2578-4b67-ae88-e4e5e747a7bc',
@@ -170,7 +170,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '91ef6ec7-9b34-4931-8c8e-4a9a91c1c86f',
@@ -268,7 +268,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '2a473cf3-d7c9-4402-b902-7f55c4b9b72b',
@@ -282,7 +282,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '49cf5d77-1e43-496f-b303-f5b4d44d6431',
@@ -296,7 +296,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '9f4e0ae7-ea26-4693-bb4f-3d680a77eabb',
@@ -310,7 +310,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '8f1b2263-d9a9-41f1-a580-04148f5f2f74',
@@ -324,7 +324,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'db44368f-0b35-4dbd-9e25-b4eb4e21a9fa',
@@ -338,7 +338,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '5d8ff51a-dcf7-48ff-91b9-b8b7a7f6b7d0',
@@ -352,7 +352,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '5ab81c4f-370b-4d1e-9fe4-4b717b9c1d0a',
@@ -366,7 +366,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'ec619c3f-6821-45da-8c72-7bff1e4435d9',
@@ -380,7 +380,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'bd3b5298-3951-4d3a-b159-21a75b1050cd',
@@ -394,7 +394,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'f5bde298-cf32-49b5-9a9b-d40e430a2fef',
@@ -408,7 +408,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '433a049e-b456-4870-b2f1-3125a67fbc7c',
@@ -422,7 +422,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '50339f9f-478f-4ac6-b703-91f5b5a02ef5',
@@ -436,7 +436,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '8c08d16f-1ab7-4b63-89e7-b4fbbcb2f897',
@@ -450,7 +450,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '0b66bcb6-d6da-43d9-9ebd-5c8b07ffba61',
@@ -464,7 +464,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'b93ff7a2-9df2-4575-bfbb-64925bb87d42',
@@ -478,7 +478,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'cfd5718e-592f-4fc0-bc48-2a06064db6b0',
@@ -492,7 +492,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '5609c00c-d6be-4c84-bbb1-7bb82862c240',
@@ -506,7 +506,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '8e582f23-d618-4965-87a5-5b8a1744b198',
@@ -520,7 +520,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '82d0a953-c832-4a79-b9db-6b74c28345f1',
@@ -534,7 +534,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '4b8f6ff6-c8f5-4e9a-a0a9-1e890f91a8e0',
@@ -562,7 +562,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'b14b0561-d68b-4970-ae95-b14c1e5f537f',
@@ -576,7 +576,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '8a1a0bb2-486b-4603-91fc-cf87e544ef98',
@@ -590,7 +590,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'f466bfc4-3d6b-41c1-bc80-2a15d9532cc6',
@@ -604,7 +604,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'f1ef5ad4-99e5-429f-90a6-ef76836e2548',
@@ -618,7 +618,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'c5e442b8-07db-47fc-b3ad-77b9b2d8042c',
@@ -632,7 +632,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '7fcdb964-c232-43b5-88a9-05f2b45649fa',
@@ -646,7 +646,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/loop.jpg',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '07310616-d222-4629-9334-b50cddbd23c2',
@@ -660,7 +660,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '6a2c3151-0cf7-4f6e-8be9-94ee833fdb1b',
@@ -674,7 +674,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '4fcb32e9-8c4d-4172-9376-c466a93f3a65',
@@ -688,7 +688,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'f7094ab0-b746-4714-9fa2-063f4d6fa94f',
@@ -702,7 +702,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '00442a27-1f9f-41fe-b4b1-86f85abf0c1a',
@@ -730,7 +730,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '19a0c616-7648-4622-829b-b617af7f67be',
@@ -744,7 +744,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '99f9d64f-b395-4db6-b190-e3bb6ac38301',
@@ -758,7 +758,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '4049ad65-2f63-4d17-b6fe-95d9b8f6f400',
@@ -772,7 +772,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '2cc8c6fc-7c29-4d44-b346-2b4e8a674be7',
@@ -786,7 +786,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '6c7f9c32-218f-495b-b8a0-25bb6bc07dfe',
@@ -800,7 +800,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'b8a6e9c9-6e53-4372-bf90-5d7026318c77',
@@ -814,7 +814,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'bc519e89-1f90-4874-8a43-1f16592c1b1b',
@@ -828,7 +828,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'a9c9b3fa-c54f-44cd-ae78-15d56ae32599',
@@ -842,7 +842,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'dfe476dd-e58b-45a2-bcdc-bcf79b276f6f',
@@ -856,7 +856,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'd8429e69-4d5b-4681-b62a-5d700e9c10d3',
@@ -870,7 +870,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '81b82c0d-7e8c-45fa-95f0-3c78ea5f68f2',
@@ -884,7 +884,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '206a1197-d601-4cbb-b120-cc83a9bb15d9',
@@ -898,7 +898,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'e8eae5a0-b2b5-4646-9c84-cab8cc6d8581',
@@ -912,7 +912,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '14a0be87-e4cd-41a7-a508-3bfe4677d9b3',
@@ -926,7 +926,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'ea869772-e9f9-4a3c-8b9f-08f3fd6e2047',
@@ -940,7 +940,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'ac4315ab-c100-4428-9c86-e37a046c68fa',
@@ -954,7 +954,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'a689aa7f-2a6d-41d9-b8a6-5a5f5e5b4b6e',
@@ -968,7 +968,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: 'c1b04be9-5053-44b5-88f9-b8b9574172f6',
@@ -982,7 +982,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   },
   {
     id: '846245ea-fc7e-43a0-8d86-84d073e88cc4',
@@ -996,9 +996,8 @@ const lighthouses = [
     coast: 'South East - Irish Sea',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/placeholder-image.png',
+    image_url: '/lighthouses/placeholder-image.jpg',
   }
 ]
 
 export {lighthouses};
-          

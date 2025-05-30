@@ -13,8 +13,9 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { name: 'Home', href: '/home', icon: HomeIcon },
-  { name: 'Forecast', href: '/home/forecast',icon: CloudIcon,},
-  { name: 'Marine', href: '/home/marine', icon: RadioIcon },
+  { name: 'Lighthouses', href: '/home/lighthouse',icon: CloudIcon},
+  // { name: 'Forecast', href: '/home/forecast',icon: CloudIcon},
+  // { name: 'Marine', href: '/home/marine', icon: RadioIcon },
   { name: 'Historical', href: '/home/historical', icon: CalendarIcon },
   { name: 'About', href: '/home/about', icon: InformationCircleIcon },
 ];
