@@ -79,35 +79,35 @@ export async function fetchLighthouseAges() {
 }
 
 
-export async function fetchLighthouse(
-  query: string,
-) {
-  try {
-    const data = await sql<LighthouseType>
-    `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.latitude, 
-            lighthouse.longitude,
-            lighthouse.abovewater,
-            lighthouse.towerheight, 
-            lighthouse.range_w,
-            lighthouse.range_r,
-            lighthouse.coast,
-            lighthouse.constructed,
-            lighthouse.currentdate,
-            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
-            lighthouse.image_url
-     FROM lighthouse
-     WHERE
-        lighthouse.name ILIKE ${`%${query}%`}
-        ORDER BY lighthouse.name`;
-    return data.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch lighthouse location data.');
-  }
-}
+// export async function fetchLighthouse(
+//   query: string,
+// ) {
+//   try {
+//     const data = await sql<LighthouseType>
+//     `SELECT 
+//             lighthouse.id, 
+//             lighthouse.name, 
+//             lighthouse.latitude, 
+//             lighthouse.longitude,
+//             lighthouse.abovewater,
+//             lighthouse.towerheight, 
+//             lighthouse.range_w,
+//             lighthouse.range_r,
+//             lighthouse.coast,
+//             lighthouse.constructed,
+//             lighthouse.currentdate,
+//             (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
+//             lighthouse.image_url
+//      FROM lighthouse
+//      WHERE
+//         lighthouse.id ILIKE ${`%${query}%`}
+//         ORDER BY lighthouse.name`;
+//     return data.rows;
+//   } catch (error) {
+//     console.error('Database Error:', error);
+//     throw new Error('Failed to fetch lighthouse location data.');
+//   }
+// }
 
 
 const ITEMS_PER_PAGE = 5;
@@ -166,7 +166,7 @@ export async function fetchMarineForecast(
   lon: number,
   timezone: string,
 ): Promise<{
-  current: CurrentMarineType;
+  currentMarine: CurrentMarineType;
   hourly: HourlyMarineType[];
 }> {
   return await axios
@@ -181,7 +181,7 @@ export async function fetchMarineForecast(
   )
   .then((response:any) => {
     return {
-      current: parseCurrentMarineForecast(response.data),
+      currentMarine: parseCurrentMarineForecast(response.data),
       hourly: parseHourlyMarineForecase(response.data),
     };
   });
@@ -276,7 +276,7 @@ export async function fetchWeatherForecast(
   ): Promise<{
     current: CurrentWeatherType;
     daily: DailytWeatherType[];
-    hourly: HourlyWeatherType[];
+    hourlyWeather: HourlyWeatherType[];
   }> {
   
     return await axios
@@ -295,7 +295,7 @@ export async function fetchWeatherForecast(
         return {
           current: parseCurrentWeather(response.data),
           daily: parseDailyWeather(response.data),
-          hourly: parseHourlyWeather(response.data),
+          hourlyWeather: parseHourlyWeather(response.data),
         };
       });
   }

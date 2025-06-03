@@ -36,7 +36,7 @@ export default async function getServerSideProps(props: {
         <Search placeholder="Search Lighthouse..."/>
       <div className="space-y-4">
         {lighthouses.map(async (lighthouse, index) => {
-          const { current, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
+          const { currentMarine, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
         return (
         <>
           <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-4 md:grid-rows-2 gap-4 border-2 shadow-md p-4 md:p-6">
@@ -45,13 +45,13 @@ export default async function getServerSideProps(props: {
             </div>
             <div className="col-span-1 md:col-span-8 row-span-1">
               <Header
-                waveHeight={current?.waveHeight}
-                wind_wave_height={current?.wind_wave_height}
-                swell_wave_height={current?.swell_wave_height}
-                wave_direction={current?.wave_direction}
-                wave_period={current?.wave_period}
-                ocean_current_velocity={current?.ocean_current_velocity}
-                ocean_current_direction={current?.ocean_current_direction}
+                waveHeight={currentMarine?.waveHeight}
+                wind_wave_height={currentMarine?.wind_wave_height}
+                swell_wave_height={currentMarine?.swell_wave_height}
+                wave_direction={currentMarine?.wave_direction}
+                wave_period={currentMarine?.wave_period}
+                ocean_current_velocity={currentMarine?.ocean_current_velocity}
+                ocean_current_direction={currentMarine?.ocean_current_direction}
               />
             </div>
             <div className="col-span-1 md:col-span-6 row-span-1">

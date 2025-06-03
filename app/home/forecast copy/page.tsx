@@ -31,8 +31,8 @@ export default async function getServerSideProps(props: {
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Weather Forecast</h1>
      <Search placeholder="Search Lighthouse..." />
       {lighthouses.map(async(lighthouse, index) => {
-        const { current, daily, hourly } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
-        const visibility = hourly.map((visible)=> visible.visibility);
+        const { current, daily, hourlyWeather } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
+        const visibility = hourlyWeather.map((visible)=> visible.visibility);
         return (
         <>
           <div className="grid grid-cols-1 md:grid-cols-8 grid-rows-[auto_auto_1fr_auto] md:grid-rows-2 gap-4 border-4 shadow-md p-4 md:p-6">

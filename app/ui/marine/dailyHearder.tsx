@@ -19,7 +19,7 @@ export default function Header({
       <div className="flex w-full md:w-1/2 justify-center items-center m-0.5 p-0.5 border-r-0 md:border-r-2 border-foregroundColor">
         <div className="text-lg md:text-2xl ml-4">
           <p> Current Height </p>
-          <span data-current-waveheight>{waveHeight}</span>
+          <span>{waveHeight}</span>
           <span className="font-normal text-xs md:text-sm"> m</span>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function Header({
             Wind Wave Height
           </div>
           <div>
-            <span data-current-wind-wave>{wind_wave_height}</span>
+            <span>{wind_wave_height}</span>
             <span className="font-normal text-xs md:text-sm"> m</span>
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function Header({
             Swell Height
           </div>
           <div>
-            <span data-current-swell-wave>{swell_wave_height}</span>
+            <span>{swell_wave_height}</span>
             <span className="font-normal text-xs md:text-sm"> m</span>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function Header({
             Direction
           </div>
           <div>
-            <span data-current-wave-direction>{waveDirection}</span>&deg;
+            <span>{waveDirection}</span>&deg;
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -55,7 +55,7 @@ export default function Header({
             Periods
           </div>
           <div>
-            <span data-current-low>{wave_period}</span>
+            <span>{wave_period}</span>
             <span className="font-normal text-xs md:text-sm"> sec</span>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function Header({
             Current Velocity
           </div>
           <div>
-            <span data-current-current-velocity>{ocean_current_velocity}</span>
+            <span>{ocean_current_velocity}</span>
             <span className="font-normal text-xs md:text-sm"> m/sec</span>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function Header({
             Ocean Direction
           </div>
           <div>
-            <span data-current-ocean-direction>{oceanDirection}</span>&deg;
+            <span>{oceanDirection}</span>&deg;
           </div>
         </div>
       </div>
