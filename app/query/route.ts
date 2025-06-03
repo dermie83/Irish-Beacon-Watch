@@ -4,7 +4,16 @@ const client = await db.connect();
 
 async function listLighthouses() {
 	const data = await client.sql`
-    SELECT *
+    SELECT 
+            lighthouse.name, 
+            lighthouse.latitude, 
+            lighthouse.longitude,
+            lighthouse.abovewater,
+            lighthouse.towerheight, 
+            lighthouse.range_w,
+            lighthouse.range_r,
+            lighthouse.coast,
+            lighthouse.constructed
     FROM lighthouse;
   `;
 
