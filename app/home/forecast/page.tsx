@@ -32,7 +32,7 @@ export default async function getServerSideProps(props: {
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
       </div>
-     {/* <Search placeholder="Search For Lighthouse..." /> */}
+     {<Search placeholder="Search For Lighthouse..." />}
       {lighthouses.map(async(lighthouse, index) => {
         const { current, daily, hourlyWeather } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin' );
         const { currentMarine, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
