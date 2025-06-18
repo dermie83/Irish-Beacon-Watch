@@ -114,7 +114,7 @@ const lighthouses = [
     coast: 'North East - Irish Sea',
     constructed: '1905-01-01',
     currentdate: date,
-    image_url: '/lighthouses/barr point.JPG',
+    image_url: '/lighthouses/barr-point.png',
   },
   {
     id: '2b88cbe7-2578-4b67-ae88-e4e5e747a7bc',
@@ -324,7 +324,7 @@ const lighthouses = [
     coast: "South - North Atlantic",
     constructed: '1864-01-01',
     currentdate: date,
-    image_url: '/lighthouses/Copper Point.JPG',
+    image_url: '/lighthouses/Copper-Point-PT.png',
   },
   {
     id: 'db44368f-0b35-4dbd-9e25-b4eb4e21a9fa',
