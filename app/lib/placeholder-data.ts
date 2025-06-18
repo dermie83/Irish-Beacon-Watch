@@ -408,7 +408,7 @@ const lighthouses = [
     coast: "North - North Atlantic",
     constructed: '1875-01-01',
     currentdate: date,
-    image_url: '/lighthouses/Dunree.JPG',
+    image_url: '/lighthouses/Dunree.png',
   },
   {
     id: '433a049e-b456-4870-b2f1-3125a67fbc7c',
@@ -646,7 +646,7 @@ const lighthouses = [
     coast: '',
     constructed: date,
     currentdate: date,
-    image_url: '/lighthouses/loop head.JPG',
+    image_url: '/lighthouses/loop head.jpg',
   },
   {
     id: '07310616-d222-4629-9334-b50cddbd23c2',
