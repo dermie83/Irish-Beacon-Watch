@@ -6,6 +6,13 @@ export function reformatDate(dateString: string): string {
   return date.toISOString().split('T')[0];
 }
 
+export function formatTimestampToDate(timestamp: number): string {
+  if (!timestamp) return "";
+  const date = new Date(timestamp);
+  // Format as YYYY-MM-DD
+  return date.toISOString().split('T')[0];
+}
+
 export function formatTimestampToDay(timestamp: number): string {
   let day = "";
   if (timestamp) {
