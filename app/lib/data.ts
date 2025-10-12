@@ -271,8 +271,7 @@ function parseHistoricalDailyWeather({ daily }: any): DailyHistoricaltWeatherTyp
 export async function fetchWeatherForecast(
     lat: number,
     lon: number,
-    timezone: string
-    // Promise<{current:object, daily:object, hourly:object}> {
+    // timezone: string
   ): Promise<{
     current: CurrentWeatherType;
     daily: DailytWeatherType[];
@@ -281,17 +280,16 @@ export async function fetchWeatherForecast(
   
     return await axios
       .get(
-        "https://api.open-meteo.com/v1/forecast?current=temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m&hourly=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,visibility&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&precipitation_unit=inch&timeformat=unixtime",
+        "https://api.open-meteo.com/v1/forecast?current=temperature_2m,weather_code,wind_speed_10m,wind_gusts_10m&hourly=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,visibility&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&precipitation_unit=inch&timezone=Europe/Dublin&timeformat=unixtime",
         {
           params: {
             latitude: lat,
             longitude: lon,
-            timezone,
+            // timezone,
           },
         }
       )
       .then((response:any) => {
-        //OR then(({data}))
         return {
           current: parseCurrentWeather(response.data),
           daily: parseDailyWeather(response.data),
@@ -327,16 +325,45 @@ export async function fetchWeatherForecast(
       iconCode: iconCode,
     };
   }
-  
+
   function parseDailyWeather({ daily }: any): DailytWeatherType[] {
-    return daily.time.map((time: number, index: number) => {
-      return {
-        timestamp: time * 1000, //second to milliseconds
-        iconCode: daily.weather_code[index],
-        maxTemp: Math.round(daily.temperature_2m_max[index]),
-      };
-    });
-  }
+  const tz = "Europe/Dublin";
+
+  return daily.time.map((time: number, index: number) => {
+    const utcDate = new Date(time * 1000);
+
+    // Use Intl.DateTimeFormat to extract local calendar date parts
+    const parts = new Intl.DateTimeFormat("en-IE", {
+      timeZone: tz,
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    }).formatToParts(utcDate);
+
+    const y = Number(parts.find(p => p.type === "year")?.value);
+    const m = Number(parts.find(p => p.type === "month")?.value) - 1;
+    const d = Number(parts.find(p => p.type === "day")?.value);
+
+    const localMidnight = new Date(y, m, d, 0, 0, 0, 0);
+
+    return {
+      timestamp: localMidnight.getTime(),
+      iconCode: daily.weather_code[index],
+      maxTemp: Math.round(daily.temperature_2m_max[index]),
+    };
+  });
+}
+
+  
+  // function parseDailyWeather({ daily }: any): DailytWeatherType[] {
+  //   return daily.time.map((time: number, index: number) => {
+  //     return {
+  //       timestamp: time * 1000, //second to milliseconds
+  //       iconCode: daily.weather_code[index],
+  //       maxTemp: Math.round(daily.temperature_2m_max[index]),
+  //     };
+  //   });
+  // }
   
   function parseHourlyWeather({ hourly, current }: any): HourlyWeatherType[] {
     // console.log(current.time * 1000);
