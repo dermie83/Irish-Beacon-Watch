@@ -1,10 +1,13 @@
 # Irish Beacon Watch Changelog
-## verson 0.5.1
+## version 0.5.2
+Added click action to map marker on homepage
+
+## version 0.5.1
 Added Map to Marine and Historical Pages
 Updated lighthouse data
 Added a "coast" attribute to the lighthouse type 
 
-## verson 0.5.0
+## version 0.5.0
 Added Buttons to Historical page
 Added basic About Page
 Rechanged dicision to add images to database due to the site being static
@@ -12,7 +15,7 @@ Enabled the pages to resize between desktop and mobile view
 Added generic error massesge component
 README file updated
 
-## verson 0.4.1
+## version 0.4.1
 Added Landing Page
 Added 1 ageChart component to Home page with sort function applied
 Added table with a list of lighthouse max metrics
@@ -20,19 +23,19 @@ Updated lighthouse placeholder-data with actual data
 Added Footer component
 Added max wind and gudt metrics to Historical page
 
-## verson 0.4.0
+## version 0.4.0
 Added Landing Page
 Added 3 Charts to Home page with sort function applied
 Updated lighthouse placeholder-data with actual data
 
-## verson 0.3.0
+## version 0.3.0
 Added Pagination component to all pages
 Added Search bar component to allow search by Lighthouse name
 Added Current Visibilty metric to Forecast Page Header
 Added Wind and Visibilty number to text conversion function
 Added styling and new layout to Marine page
 
-## verson 0.2.0
+## version 0.2.0
 Added linegraph to Historical page to show wind metrics
 Added linegraph to Marine page to show waveheight metrics
 Added map to Forecast page
@@ -40,7 +43,7 @@ Changed lighthouse data from database fetch to placeholder-data for map on home 
 Added Chart to Home page
 Added styling and layout to forecast Page
 
-## verson 0.1.1
+## version 0.1.1
 Added map to home page
 Added weather api data forecast page (graphs and tables are still to be decided on)
 Rendered weather data on forecast page
@@ -48,7 +51,7 @@ Implemented function to retrieve lighthouse data from database onto map page
 Added Historical API call to data file
 Added test historical weather table to Historical page
 
-## verson 0.1.0
+## version 0.1.0
 Clone example boiler plate from nextjs official web page https://nextjs.org/learn/dashboard-app/getting-started
 Run pnpm i to install the project's packages.
 Run pnpm dev
