@@ -1,9 +1,17 @@
 const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: "long" });
 const HOUR_FORMATTER = new Intl.DateTimeFormat(undefined, {hour: "numeric", minute: "numeric", hour12:true});
 
+export function formatTimestampToDate(timestamp: number): string {
+  if (!timestamp) return "";
+  const date = new Date(timestamp);
+  // Format as YYYY-MM-DD
+  return date.toISOString().split('T')[0];
+}
+
 export function reformatDate(dateString: string): string {
   const date = new Date(dateString);
-  return date.toISOString().split('T')[0];
+  const localDateStr = date.toLocaleDateString("en-IE", { timeZone: "Europe/Dublin" });
+  return localDateStr;
 }
 
 export function formatTimestampToDay(timestamp: number): string {
