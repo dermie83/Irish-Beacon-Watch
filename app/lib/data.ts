@@ -20,7 +20,8 @@ export async function fetchLighthouseRanges() {
             lighthouse.range_w,
             lighthouse.range_r
       FROM lighthouse
-      ORDER BY lighthouse.range_w`;
+      ORDER BY lighthouse.range_w DESC
+      LIMIT 15`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -36,7 +37,8 @@ export async function fetchLighthouseABWMetrics() {
             lighthouse.name, 
             lighthouse.abovewater
       FROM lighthouse
-      ORDER BY lighthouse.abovewater`;
+      ORDER BY lighthouse.abovewater DESC
+      LIMIT 15`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -52,7 +54,8 @@ export async function fetchLighthouseTowerMetrics() {
             lighthouse.name, 
             lighthouse.towerheight
       FROM lighthouse
-      ORDER BY lighthouse.towerheight`;
+      ORDER BY lighthouse.towerheight DESC
+      LIMIT 15`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -70,7 +73,8 @@ export async function fetchLighthouseAges() {
             lighthouse.currentdate,
             (lighthouse.currentdate - lighthouse.constructed)/365 AS "age"
       FROM lighthouse
-      ORDER BY age`;
+      ORDER BY age DESC
+      LIMIT 15`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
