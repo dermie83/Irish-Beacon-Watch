@@ -20,7 +20,7 @@ export default function MetricsTable({
   agename='none',
   maxage=0,
 }: LighthouseMetrcsPropr) {
-
+  
   return (
     <table className="min-w-full table-auto border-collapse border border-darkgray px-4 py-2 border-b text-left text-maritime">
   <thead style={{ backgroundColor: '#ADD8E6' }}>
