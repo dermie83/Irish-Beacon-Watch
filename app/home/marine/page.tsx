@@ -36,7 +36,7 @@ export default async function getServerSideProps(props: {
         <Search placeholder="Search Lighthouse..."/>
       <div className="space-y-4">
         {lighthouses.map(async (lighthouse, index) => {
-          const { currentMarine, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
+          const { currentMarine, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude);
         return (
         <>
           <div key={lighthouse.name} className="grid grid-cols-1 md:grid-cols-8 grid-rows-4 md:grid-rows-2 gap-4 border-2 shadow-md p-4 md:p-6">
