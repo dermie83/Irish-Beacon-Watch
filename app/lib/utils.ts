@@ -9,9 +9,21 @@ export function formatTimestampToDate(timestamp: number): string {
 }
 
 export function reformatDate(dateString: string): string {
+  if (!dateString) return "";
   const date = new Date(dateString);
-  const localDateStr = date.toLocaleDateString("en-IE", { timeZone: "Europe/Dublin" });
-  return localDateStr;
+  if (isNaN(date.getTime())) return "";
+  const parts = new Intl.DateTimeFormat("en-IE", {
+    timeZone: "Europe/Dublin",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+
+  const year = parts.find((p) => p.type === "year")?.value ?? "";
+  const month = parts.find((p) => p.type === "month")?.value ?? "";
+  const day = parts.find((p) => p.type === "day")?.value ?? "";
+
+  return `${year}-${month}-${day}`;
 }
 
 export function formatTimestampToDay(timestamp: number): string {

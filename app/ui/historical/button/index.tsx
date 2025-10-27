@@ -19,6 +19,7 @@ const YearRangeButtons = () => {
 
   const date = new Date().toISOString();
   const formattedDate = reformatDate(date);
+  console.log("formattedDate...",formattedDate);
   
 
   return (
