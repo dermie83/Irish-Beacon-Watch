@@ -48,8 +48,7 @@ export default async function getServerSideProps(props: {
       {lighthouses.map(async(lighthouse, index) => {
         const { daily } = await fetchHistoricalWeather(
           lighthouse.latitude, 
-          lighthouse.longitude, 
-          'Europe/Dublin', 
+          lighthouse.longitude,
           startDate,
           endDate
         );

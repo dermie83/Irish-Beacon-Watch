@@ -9,6 +9,7 @@ import Map from "@/app/ui/map";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import LineGraph from "@/app/ui/marine";
+import LighthouseArticles1 from "@/app/ui/forecast/lighthouseArticles";
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -35,7 +36,7 @@ export default async function getServerSideProps(props: {
      {<Search placeholder="Search For Lighthouse..." />}
       {lighthouses.map(async(lighthouse, index) => {
         const { current, daily, hourlyWeather } = await fetchWeatherForecast(lighthouse.latitude, lighthouse.longitude);
-        const { currentMarine, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude, 'Europe/Dublin');
+        const { currentMarine, hourly } = await fetchMarineForecast(lighthouse.latitude, lighthouse.longitude);
         const visibility = hourlyWeather.map((visible)=> visible.visibility);
         return (
         <>
@@ -107,8 +108,13 @@ export default async function getServerSideProps(props: {
               <LineGraph hourly={hourly} />
             </div>
           </div>
+          <div>
+            <h1>Articles for {lighthouse.name} Lighthouse</h1>
+            <LighthouseArticles1 lighthouseName= {lighthouse.name}/>
+          </div>
         </>
         )
+
       })}
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />

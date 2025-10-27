@@ -82,38 +82,6 @@ export async function fetchLighthouseAges() {
   }
 }
 
-
-// export async function fetchLighthouse(
-//   query: string,
-// ) {
-//   try {
-//     const data = await sql<LighthouseType>
-//     `SELECT 
-//             lighthouse.id, 
-//             lighthouse.name, 
-//             lighthouse.latitude, 
-//             lighthouse.longitude,
-//             lighthouse.abovewater,
-//             lighthouse.towerheight, 
-//             lighthouse.range_w,
-//             lighthouse.range_r,
-//             lighthouse.coast,
-//             lighthouse.constructed,
-//             lighthouse.currentdate,
-//             (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
-//             lighthouse.image_url
-//      FROM lighthouse
-//      WHERE
-//         lighthouse.id ILIKE ${`%${query}%`}
-//         ORDER BY lighthouse.name`;
-//     return data.rows;
-//   } catch (error) {
-//     console.error('Database Error:', error);
-//     throw new Error('Failed to fetch lighthouse location data.');
-//   }
-// }
-
-
 const ITEMS_PER_PAGE = 5;
 export async function fetchLighthouses(
   currentPage: number,
@@ -168,18 +136,16 @@ export async function fetchLighthousePages(
 export async function fetchMarineForecast(
   lat: number,
   lon: number,
-  timezone: string,
 ): Promise<{
   currentMarine: CurrentMarineType;
   hourly: HourlyMarineType[];
 }> {
   return await axios
-  .get("https://marine-api.open-meteo.com/v1/marine?hourly=wave_height&current=wave_height,wave_direction,wave_period,wind_wave_height,swell_wave_height,ocean_current_velocity,ocean_current_direction",
+  .get("https://marine-api.open-meteo.com/v1/marine?hourly=wave_height&current=wave_height,wave_direction,wave_period,wind_wave_height,swell_wave_height,ocean_current_velocity,ocean_current_direction&timezone=Europe/Dublin",
     {
       params: {
         latitude: lat,
         longitude: lon,
-        timezone,
       },
     }
   )
@@ -225,7 +191,6 @@ function parseHourlyMarineForecase({ hourly }: any): HourlyMarineType[] {
 export async function fetchHistoricalWeather(
   lat: number,
   lon: number,
-  timezone: string,
   startDate: string,
   endDate: string
 ): Promise<{
@@ -233,11 +198,10 @@ export async function fetchHistoricalWeather(
   errorMessage?: string;
 }> {
   try {
-    const response = await axios.get("https://archive-api.open-meteo.com/v1/archive?daily=wind_speed_10m_max,wind_gusts_10m_max", {
+    const response = await axios.get("https://archive-api.open-meteo.com/v1/archive?daily=wind_speed_10m_max,wind_gusts_10m_max&timezone=Europe/Dublin", {
       params: {
         latitude: lat,
         longitude: lon,
-        timezone,
         start_date: startDate,
         end_date: endDate,
       },
@@ -300,9 +264,9 @@ export async function fetchWeatherForecast(
           hourlyWeather: parseHourlyWeather(response.data),
         };
       });
-  }
+}
 
-  function parseCurrentWeather({ current, daily }: any): CurrentWeatherType {
+function parseCurrentWeather({ current, daily }: any): CurrentWeatherType {
     const {
       temperature_2m: currentTemp,
       wind_speed_10m: windSpeed,
@@ -328,9 +292,9 @@ export async function fetchWeatherForecast(
       precip: Math.round(precip * 100) / 100,
       iconCode: iconCode,
     };
-  }
+}
 
-  function parseDailyWeather({ daily }: any): DailytWeatherType[] {
+function parseDailyWeather({ daily }: any): DailytWeatherType[] {
   const tz = "Europe/Dublin";
 
   return daily.time.map((time: number, index: number) => {
@@ -357,19 +321,8 @@ export async function fetchWeatherForecast(
     };
   });
 }
-
   
-  // function parseDailyWeather({ daily }: any): DailytWeatherType[] {
-  //   return daily.time.map((time: number, index: number) => {
-  //     return {
-  //       timestamp: time * 1000, //second to milliseconds
-  //       iconCode: daily.weather_code[index],
-  //       maxTemp: Math.round(daily.temperature_2m_max[index]),
-  //     };
-  //   });
-  // }
-  
-  function parseHourlyWeather({ hourly, current }: any): HourlyWeatherType[] {
+function parseHourlyWeather({ hourly, current }: any): HourlyWeatherType[] {
     // console.log(current.time * 1000);
     // console.log("currentTime....",current.time);
     return hourly.time
@@ -385,4 +338,4 @@ export async function fetchWeatherForecast(
         };
       })
       .filter(({ timestamp }: any) => timestamp <= current.time * 1000);
-  }
+}

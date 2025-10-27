@@ -44,14 +44,14 @@ export default async function getServerSideProps(){
       <div className="grid grid-cols-1 md:grid-cols-1 grid-rows-6 gap-4 min-h-screen">
         <div className="col-span-1 row-span-1">
           <MetricsTable
-            maxabovewater={maxABW.slice(-1)[0]}
-            abovewatername={maxABWName.slice(-1)[0]}
-            maxtowerheight={maxTower.slice(-1)[0]}
-            towerheightname={maxTowerName.slice(-1)[0]}
-            maxrange={maxRange.slice(-1)[0]}
-            rangename={maxRangeName.slice(-1)[0]}
-            agename={maxAgeName.slice(-1)[0]}
-            maxage={maxage.slice(-1)[0]}
+            maxabovewater={maxABW.slice(0)[0]}
+            abovewatername={maxABWName.slice(0)[0]}
+            maxtowerheight={maxTower.slice(0)[0]}
+            towerheightname={maxTowerName.slice(0)[0]}
+            maxrange={maxRange.slice(0)[0]}
+            rangename={maxRangeName.slice(0)[0]}
+            agename={maxAgeName.slice(0)[0]}
+            maxage={maxage.slice(0)[0]}
           />
         </div>
         <div className="col-span-1 row-span-1">
