@@ -32,7 +32,7 @@ export default async function LighthouseArticles1({ lighthouseName }: Lighthouse
     }
 
     const data = await res.json();
-    console.log("Google API response data:", data);
+    // console.log("Google API response data:", data);
 
     const articles: Article[] = (data.items || []).map((item: any) => ({
       title: item.title,

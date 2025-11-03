@@ -2,6 +2,9 @@
 ## version 0.5.2
 Added click action to map marker on homepage
 Added Google Custom Search API to Forecast page
+Added Coastal select button to map on homepage
+Added Marker Clustering
+Added flytobounds action for selected coastal area
 
 ## version 0.5.1
 Added Map to Marine and Historical Pages

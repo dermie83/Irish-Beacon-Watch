@@ -40,40 +40,49 @@ export default async function getServerSideProps(){
     const errorMessage = "Failed to load data. Please refresh the page.";
 
     return (
-    <>{error && <ErrorMessage message={errorMessage} />}
-      <div className="grid grid-cols-1 md:grid-cols-1 grid-rows-6 gap-4 min-h-screen">
-        <div className="col-span-1 row-span-1">
-          <MetricsTable
-            maxabovewater={maxABW.slice(0)[0]}
-            abovewatername={maxABWName.slice(0)[0]}
-            maxtowerheight={maxTower.slice(0)[0]}
-            towerheightname={maxTowerName.slice(0)[0]}
-            maxrange={maxRange.slice(0)[0]}
-            rangename={maxRangeName.slice(0)[0]}
-            agename={maxAgeName.slice(0)[0]}
-            maxage={maxage.slice(0)[0]}
-          />
+      <>
+        {error && <ErrorMessage message={errorMessage} />}
+
+        {/* single column layout on all breakpoints */}
+        <div className="grid grid-cols-1 gap-4 min-h-screen">
+          <div className="w-full">
+            <Map />
+          </div>
+
+          <div className="w-full">
+            <MetricsTable
+              maxabovewater={maxABW?.slice(-1)[0] ?? ""}
+              abovewatername={maxABWName?.slice(-1)[0] ?? ""}
+              maxtowerheight={maxTower?.slice(-1)[0] ?? ""}
+              towerheightname={maxTowerName?.slice(-1)[0] ?? ""}
+              maxrange={maxRange?.slice(-1)[0] ?? ""}
+              rangename={maxRangeName?.slice(-1)[0] ?? ""}
+              agename={maxAgeName?.slice(-1)[0] ?? ""}
+              maxage={maxage?.slice(-1)[0] ?? ""}
+            />
+          </div>
+
+          <div className="w-full">
+            <RangeGraph rangeData={ranges} />
+          </div>
+
+          <div className="w-full">
+            <AboveWaterGraph abwData={abwMetrics} />
+          </div>
+
+          <div className="w-full">
+            <TowerGraph towerData={towerHeights} />
+          </div>
+
+          <div className="w-full">
+            <AgeGraph ageData={ages} />
+          </div>
         </div>
-        <div className="col-span-1 row-span-1">
-          <Map />
-        </div>
-        <div className="col-span-1 row-span-1">
-          <RangeGraph rangeData={ranges} />
-        </div>
-        <div className="col-span-1 row-span-1">
-          <AboveWaterGraph abwData={abwMetrics} />
-        </div>
-        <div className="col-span-1 row-span-1">
-          <TowerGraph towerData={towerHeights} />
-        </div>
-        <div className="col-span-1 row-span-1">
-          <AgeGraph ageData={ages} />
-        </div>
-      </div>
-      <footer className="w-full bg-gray-800 text-white text-center p-4 mt-4">
-        <Footer/>
-      </footer>
-  </>
-  );
+
+        <footer className="w-full bg-gray-800 text-white text-center p-4 mt-4">
+          <Footer />
+        </footer>
+      </>
+    );
     
 }
