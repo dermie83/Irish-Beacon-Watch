@@ -7,7 +7,11 @@ import YearRangeButtons from "@/app/ui/historical/button/index";
 import Map from "@/app/ui/map";
 import Footer from "@/app/ui/footer";
 import ErrorMessage from "@/app/ui/error";
-import { formatDateToLocal } from "@/app/lib/utils";
+import { reformatDate } from "@/app/lib/utils";
+
+const currentdate = new Date().toISOString();
+const formattedCurrentDate = reformatDate(currentdate);
+console.log("formattedDate...",formattedCurrentDate);
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -20,8 +24,8 @@ export default async function getServerSideProps(props: {
     const searchParams = await props.searchParams;
     const currentPage = Number(searchParams?.page) || 1;
     const query = searchParams?.query || '';
-    const startDate = searchParams?.startDate || '2000-01-01';
-    const endDate = searchParams?.endDate || '2009-12-31';
+    const startDate = searchParams?.startDate || '2025-01-01';
+    const endDate = searchParams?.endDate || formattedCurrentDate;
     console.log("query...",query)
     const lighthouses = await fetchLighthouses(currentPage, query);
     const totalPages = await fetchLighthousePages(query);
@@ -74,19 +78,12 @@ export default async function getServerSideProps(props: {
               <div className="col-span-1 md:col-span-2 row-span-1">
                 <Map
                   key={index}
-                  id={lighthouse.id}
-                  name={lighthouse.name}
-                  latitude={lighthouse.latitude}
-                  longitude={lighthouse.longitude}
-                  abovewater={lighthouse.abovewater}
-                  towerheight={lighthouse.towerheight}
-                  range_w={lighthouse.range_w}
-                  range_r={lighthouse.range_r}
-                  coast={lighthouse.coast}
-                  constructed={formatDateToLocal(lighthouse.constructed)}
-                  currentdate={lighthouse.currentdate}
-                  age={lighthouse.age}
-                  image_url={lighthouse.image_url}
+                  lighthouse={{
+                    id: lighthouse.id,
+                    name: lighthouse.name,
+                    latitude: lighthouse.latitude,
+                    longitude: lighthouse.longitude,
+                  }}
                 />
               </div>
             </div>

@@ -36,19 +36,11 @@ export default async function getServerSideProps(props: {
               <div className="col-span-1 md:col-span-2 row-span-1">
                 <LighthouseImageButtons
                   key={index}
-                  id={lighthouse.id} 
-                  name={lighthouse.name} 
-                  latitude={0} 
-                  longitude={0} 
-                  abovewater={0} 
-                  towerheight={0} 
-                  range_w={0} 
-                  range_r={0} 
-                  coast={""} 
-                  constructed={""} 
-                  currentdate={""} 
-                  age={0} 
-                  image_url={lighthouse.image_url}
+                  lighthouse={{
+                    id: lighthouse.id,
+                    name: lighthouse.name,
+                    image_url: lighthouse.image_url,
+                  }}
                 />
               </div>
               <div className="col-span-1 md:col-span-4 row-span-1 text-center my-5 md:p-2">
@@ -72,19 +64,12 @@ export default async function getServerSideProps(props: {
               <div className="col-span-1 md:col-span-2 row-span-1">
                 <Map
                   key={index}
-                  id={lighthouse.id}
-                  name={lighthouse.name}
-                  latitude={lighthouse.latitude}
-                  longitude={lighthouse.longitude}
-                  abovewater={lighthouse.abovewater}
-                  towerheight={lighthouse.towerheight}
-                  range_w={lighthouse.range_w}
-                  range_r={lighthouse.range_r}
-                  coast={lighthouse.coast}
-                  constructed={formatDateToLocal(lighthouse.constructed)}
-                  currentdate={lighthouse.currentdate}
-                  age={lighthouse.age}
-                  image_url={lighthouse.image_url}
+                  lighthouse={{
+                    id: lighthouse.id,
+                    name: lighthouse.name,
+                    latitude: lighthouse.latitude,
+                    longitude: lighthouse.longitude,
+                  }}
                 />
             </div>
            </div>

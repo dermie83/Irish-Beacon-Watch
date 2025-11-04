@@ -147,7 +147,7 @@ const lighthouses = [
   {
     id: '30f3ad9d-5e7e-4a2f-b04a-d45c6c3b177b',
     name: 'Blackhorse Rocks Beacon',
-    latitude: 51.47406,
+    latitude: 51.47395,
     longitude: -9.69472,
     abovewater: 9,
     towerheight: 9,

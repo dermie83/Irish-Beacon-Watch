@@ -5,8 +5,12 @@ import ImageButton from './imageButton'; // Assuming imageButton.tsx is in the s
 import { useRouter} from 'next/navigation';
 import { LighthouseType } from "@/app/lib/definitions";
 
+interface ImageProps {
+  lighthouse: Pick<LighthouseType, "id" | "name" | "image_url">;
+}
 
-export default function LighthouseImageButtons(lighthouse: LighthouseType) {
+
+export default function LighthouseImageButtons({ lighthouse } : ImageProps) {
   const router = useRouter();
 
   const handleImageClick = (lighthouseName: string) => {

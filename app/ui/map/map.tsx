@@ -4,10 +4,12 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import { LighthouseType } from "@/app/lib/definitions";
 
-//lat: 53.4462988 , lng: -7.5265753
+interface MapProps {
+  lighthouse: Pick<LighthouseType, "id" | "name" | "latitude" | "longitude">;
+}
 
-export default function Map(lighthouse: LighthouseType) {
-    const zoom = 10;
+export default function Map({ lighthouse }: MapProps) {
+    const zoom = 5;
     const center = { lat: lighthouse.latitude, lng: lighthouse.longitude };
     function MapView() {
         const map = useMap();

@@ -17,7 +17,7 @@ export default async function LighthouseArticles1({ lighthouseName }: Lighthouse
   }
 
   // Encode the search query
-  const query = encodeURIComponent(lighthouseName + " lighthouse");
+  const query = encodeURIComponent(lighthouseName + " lighthouse in Ireland");
 
   try {
     // Call Google Custom Search API

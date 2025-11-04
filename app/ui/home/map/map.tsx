@@ -10,9 +10,6 @@ import { lighthouses } from  "@/app/lib/placeholder-data";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-//lat: 53.4462988 , lng: -7.5265753
-
-const date = new Date().toISOString();
 
 export interface Lighthouse {
     id: string;

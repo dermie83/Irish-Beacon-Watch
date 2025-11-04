@@ -1,5 +1,4 @@
 import { fetchWeatherForecast, fetchMarineForecast, fetchLighthouses, fetchLighthousePages } from "@/app/lib/data";
-import { formatDateToLocal } from "@/app/lib/utils";
 import ErrorMessage from "@/app/ui/error";
 import Footer from "@/app/ui/footer";
 import Header from "@/app/ui/forecast/dailyHeader";
@@ -10,6 +9,7 @@ import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
 import LineGraph from "@/app/ui/marine";
 import LighthouseArticles1 from "@/app/ui/forecast/lighthouseArticles";
+
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
@@ -74,19 +74,12 @@ export default async function getServerSideProps(props: {
             <div className="col-span-1 md:col-span-2">
                 <Map
                   key={index}
-                  id={lighthouse.id}
-                  name={lighthouse.name}
-                  latitude={lighthouse.latitude}
-                  longitude={lighthouse.longitude}
-                  abovewater={lighthouse.abovewater}
-                  towerheight={lighthouse.towerheight}
-                  range_w={lighthouse.range_w}
-                  range_r={lighthouse.range_r}
-                  coast={lighthouse.coast}
-                  constructed={formatDateToLocal(lighthouse.constructed)}
-                  currentdate={lighthouse.currentdate}
-                  age={lighthouse.age}
-                  image_url={lighthouse.image_url}
+                  lighthouse={{
+                    id: lighthouse.id,
+                    name: lighthouse.name,
+                    latitude: lighthouse.latitude,
+                    longitude: lighthouse.longitude,
+                  }}
                 />
             </div>
           </div>
@@ -109,7 +102,14 @@ export default async function getServerSideProps(props: {
             </div>
           </div>
           <div>
-            <h1>Articles for {lighthouse.name} Lighthouse</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-left text-gray-900 leading-snug px-2">
+            Google Search Results for Articles Related to{" "}
+            <span className="text-teal-600 font-bold">{lighthouse.name}</span>{" "}
+            Lighthouse
+            <span className="block mt-1 text-sm sm:text-base font-normal text-gray-500">
+              — The results may include unrelated articles
+            </span>
+          </h1>
             <LighthouseArticles1 lighthouseName= {lighthouse.name}/>
           </div>
         </>
