@@ -60,19 +60,12 @@ export default async function getServerSideProps(props: {
             <div className="col-span-1 md:col-span-2 row-span-1">
               <Map
                 key={index}
-                id={lighthouse.id}
-                name={lighthouse.name}
-                latitude={lighthouse.latitude}
-                longitude={lighthouse.longitude}
-                abovewater={lighthouse.abovewater}
-                towerheight={lighthouse.towerheight}
-                range_w={lighthouse.range_w}
-                range_r={lighthouse.range_r}
-                coast={lighthouse.coast}
-                constructed={formatDateToLocal(lighthouse.constructed)}
-                currentdate={lighthouse.currentdate}
-                age={lighthouse.age}
-                image_url={lighthouse.image_url}
+                lighthouse={{
+                  id: lighthouse.id,
+                  name: lighthouse.name,
+                  latitude: lighthouse.latitude,
+                  longitude: lighthouse.longitude,
+                }}
               />
             </div>
           </div>
