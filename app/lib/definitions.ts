@@ -34,7 +34,7 @@ export type WeatherHeaderProps = {
   coast: string | undefined;
 };
 
-export type DayCardWeatherProps = {
+export type DailyWeatherCardProps = {
   iconCode: number | undefined;
   timestamp: number | undefined;
   degree: number;
@@ -49,7 +49,7 @@ export type TableRowWeatherProps = {
   precip: number | undefined;
 };
 
-export type MarineHeaderProps = {
+export type CurrentMarineType = {
   waveHeight: number | undefined;
   wind_wave_height: number | undefined;
   swell_wave_height: number | undefined;
@@ -62,16 +62,6 @@ export type MarineHeaderProps = {
 export type HourlyMarineType = {
   timestamp: string;
   waveHeight: number;
-};
-
-export type CurrentMarineType = {
-  waveHeight: number;
-  wind_wave_height: number;
-  swell_wave_height: number;
-  wave_direction: number;
-  wave_period: number;
-  ocean_current_velocity: number;
-  ocean_current_direction: number;
 };
 
 export type DailyHistoricaltWeatherType = {

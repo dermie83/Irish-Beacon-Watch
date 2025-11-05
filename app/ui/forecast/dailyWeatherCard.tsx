@@ -1,14 +1,14 @@
-import { DayCardWeatherProps } from "@/app/lib/definitions";
+import { DailyWeatherCardProps } from "@/app/lib/definitions";
 import { getIcon } from "@/app/lib/IconCode";
 import { reformatDate, formatTimestampToDay, formatTimestampToDate } from "@/app/lib/utils";
 
 
-export default function DayCard({
+export default function DailyWeatherCard({
   iconCode = 0,
   timestamp = 0,
   degree = 0,
   ...props
-}: DayCardWeatherProps) {
+}: DailyWeatherCardProps) {
   const Icon = getIcon(iconCode);
   const dayDate = formatTimestampToDay(timestamp);
   const formattedDate = formatTimestampToDate(timestamp);
@@ -18,7 +18,7 @@ export default function DayCard({
       <div><Icon className="w-10 h-10 md:w-16 md:h-16" /></div>
       <div className="text-xs md:text-base text-foregroundSecondaryColor mt-1">{dayLocalDate}</div>
       <div className="text-xs md:text-base text-foregroundSecondaryColor mt-1">{dayDate}</div>
-      <div className="text-sm md:text-xl">{degree}&deg;</div>
+      <div className="text-sm md:text-xl">{degree}&deg;C</div>
     </div>
   );
 }

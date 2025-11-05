@@ -6,26 +6,17 @@ import L, { Map as LeafletMap } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import { lighthouses } from  "@/app/lib/placeholder-data";
+import { LighthouseType } from "@/app/lib/definitions";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-
-export interface Lighthouse {
-    id: string;
-    name: string;
-    latitude: number;
-    longitude: number;
-    image_url: string;
-    abovewater: number;
-    towerheight: number;
-    range_w: number;
-    range_r: number;
-    coast: "North Atlantic Ocean" |
-            "North Channel" | "Irish Sea" | "Celtic Sea";
-    constructed: string;
-    currentdate: string;
-};
+// ✅ Define props for your map
+export interface MapProps {
+  lighthouses: Pick<
+    LighthouseType,
+    "id" | "name" | "latitude" | "longitude" | "coast"
+  >[];
+}
 
 const coasts = ["All", "North Atlantic Ocean",
                 "North Channel" , "Irish Sea" , "Celtic Sea"] as const;
@@ -34,7 +25,7 @@ const coasts = ["All", "North Atlantic Ocean",
 // Default center of Ireland
 const defaultCenter = { lat: 53.4462988, lng: -7.5265753 };
 
-export default function LighthouseMap() {
+export default function LighthouseMap({ lighthouses = [] }: MapProps) {
   const [selectedProvince, setSelectedProvince] =
     useState<(typeof coasts)[number]>("All");
 
@@ -51,7 +42,7 @@ export default function LighthouseMap() {
   const handleMarkerDoubleClick = useCallback(
     (lighthouseName: string) => {
       router.push(
-        `/home/forecast?page=1&query=${encodeURIComponent(lighthouseName)}`
+        `/home/lighthouse?page=1&query=${encodeURIComponent(lighthouseName)}`
       );
     },
     [router]
