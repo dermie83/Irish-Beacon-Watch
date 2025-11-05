@@ -57,16 +57,16 @@ export default async function getServerSideProps(){
               }))}
             />
           </div>
-          <div className="w-full">
+          <div className="text-sm md:text-base">
             <MetricsTable
-              maxabovewater={maxABW?.slice(-1)[0] ?? ""}
-              abovewatername={maxABWName?.slice(-1)[0] ?? ""}
-              maxtowerheight={maxTower?.slice(-1)[0] ?? ""}
-              towerheightname={maxTowerName?.slice(-1)[0] ?? ""}
-              maxrange={maxRange?.slice(-1)[0] ?? ""}
-              rangename={maxRangeName?.slice(-1)[0] ?? ""}
-              agename={maxAgeName?.slice(-1)[0] ?? ""}
-              maxage={maxage?.slice(-1)[0] ?? ""}
+              maxabovewater={Math.max(...maxABW) ?? ""}
+              abovewatername={maxABWName?.slice(0)[0] ?? ""}
+              maxtowerheight={Math.max(...maxTower) ?? ""}
+              towerheightname={maxTowerName?.slice(0)[0] ?? ""}
+              rangename={maxRangeName?.slice(0)[0] ?? ""}
+              maxrange={Math.max(...maxRange) ?? ""}
+              agename={maxAgeName?.slice(0)[0] ?? ""}
+              maxage={Math.max(...maxage) ?? ""}
             />
           </div>
 

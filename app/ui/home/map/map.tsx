@@ -69,22 +69,19 @@ export default function LighthouseMap({ lighthouses = [] }: MapProps) {
   return (
     <div className="space-y-1">
       {/* Filter Buttons */}
-      <div className="flex gap-2 flex-wrap">
-        {coasts.map((coast) => (
-          <button
-            key={coast}
-            className={`px-3 py-2 rounded ${
-              selectedProvince === coast
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200"
-            }`}
-            onClick={() => setSelectedProvince(coast)}
-          >
-            {coast}
-          </button>
-        ))}
+      <div className="space-y-1 w-full md:w-1/3 relative">
+        <select
+          value={selectedProvince}
+          onChange={(e) => setSelectedProvince(e.target.value as typeof coasts[number])}
+          className="w-full appearance-none bg-white border border-gray-300 text-gray-700 px-4 py-2 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer"
+        >
+          {coasts.map((coast) => (
+            <option key={coast} value={coast}>
+              {coast}
+            </option>
+          ))}
+        </select>
       </div>
-
       {/* Map container */}
       <div style={{ height: "500px", width: "100%" }}>
         <MapContainer
@@ -101,10 +98,45 @@ export default function LighthouseMap({ lighthouses = [] }: MapProps) {
 
           <MarkerClusterGroup
             chunkedLoading
-            maxClusterRadius={15}
+            maxClusterRadius={40} // adjust how far markers cluster together
             showCoverageOnHover={false}
+            iconCreateFunction={(cluster: any) => {
+              const count = cluster.getChildCount(); // number of markers in this cluster
+
+              // Dynamic size based on number of markers
+              let size = "30px";
+              if (count >= 10 && count < 50) size = "40px";
+              else if (count >= 50) size = "50px";
+
+              // Dynamic color based on count
+              let bgColor = "#06b6d4"; // teal
+              if (count >= 10 && count < 50) bgColor = "#3b82f6"; // blue
+              else if (count >= 50) bgColor = "#ef4444"; // red
+
+              return L.divIcon({
+                html: `
+                  <div style="
+                    background-color: ${bgColor};
+                    color: white;
+                    width: ${size};
+                    height: ${size};
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    border: 2px solid white;
+                    font-weight: bold;
+                    font-size: ${parseInt(size) / 2}px;
+                  ">
+                    ${count}
+                  </div>
+                `,
+                className: "", // remove default cluster styles
+                iconSize: L.point(parseInt(size), parseInt(size)),
+              });
+            }}
           >
-            {filtered.map((lighthouse) => (
+            {filtered.map((lighthouse: any) => (
               <Marker
                 key={lighthouse.id}
                 position={{ lat: lighthouse.latitude, lng: lighthouse.longitude }}
