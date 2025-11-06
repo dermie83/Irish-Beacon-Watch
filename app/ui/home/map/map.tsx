@@ -9,12 +9,14 @@ import "leaflet-defaulticon-compatibility";
 import { LighthouseType } from "@/app/lib/definitions";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import styles from '@/app/lib/LighthouseMap.module.css';
+
 
 // ✅ Define props for your map
 export interface MapProps {
   lighthouses: Pick<
     LighthouseType,
-    "id" | "name" | "latitude" | "longitude" | "coast"
+    "id" | "name" | "latitude" | "longitude" | "coast" | "image_url"
   >[];
 }
 
@@ -133,22 +135,52 @@ export default function LighthouseMap({ lighthouses = [] }: MapProps) {
                 `,
                 className: "", // remove default cluster styles
                 iconSize: L.point(parseInt(size), parseInt(size)),
-              });
+              });    
             }}
           >
-            {filtered.map((lighthouse: any) => (
-              <Marker
-                key={lighthouse.id}
-                position={{ lat: lighthouse.latitude, lng: lighthouse.longitude }}
-                draggable={false}
-                eventHandlers={{
-                  click: (e) => e.originalEvent.stopPropagation(),
-                  dblclick: () => handleMarkerDoubleClick(lighthouse.name),
-                }}
-              >
-                <Popup>{lighthouse.name}</Popup>
-              </Marker>
-            ))}
+            {filtered.map((lighthouse: any) => {
+
+              const lighthouseIcon = L.divIcon({
+                html: `
+                  <div style="
+                    width: 32px;
+                    height: 32px;
+                    text-align: center;
+                  ">
+                    <img src="/lighthouses/lighthouseIcon.png" 
+                        alt="Lighthouse" 
+                        style="width:100%; height:100%; object-fit:cover;" />
+                  </div>
+                `,
+                className: "",       // remove default Leaflet styles
+                iconSize: [32, 32],  // size of clickable area
+                iconAnchor: [16, 32], // bottom center
+              });
+              return (
+                <Marker
+                  key={lighthouse.id}
+                  position={{lat: lighthouse.latitude, lng: lighthouse.longitude}}
+                  icon={lighthouseIcon}
+                  draggable={false}
+                  eventHandlers={{
+                    click: (e) => e.originalEvent.stopPropagation(),
+                    dblclick: () =>
+                      handleMarkerDoubleClick(lighthouse.name),
+                  }}
+                >
+                  <Popup>
+                    <div className={styles.popup}>
+                      <img
+                        className={styles.popupImage}
+                        src={lighthouse.image_url}
+                        alt={lighthouse.name}
+                      />
+                      <div className={styles.popupName}>{lighthouse.name}</div>
+                    </div>
+                  </Popup>
+                </Marker>
+              );
+            })}
           </MarkerClusterGroup>
         </MapContainer>
       </div>

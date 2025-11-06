@@ -54,6 +54,7 @@ export default async function getServerSideProps(){
                 latitude: lighthouse.latitude,
                 longitude: lighthouse.longitude,
                 coast: lighthouse.coast,
+                image_url: lighthouse.image_url
               }))}
             />
           </div>

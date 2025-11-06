@@ -1,0 +1,13 @@
+.lighthouse-popup img {
+  width: 500px;       /* adjust as needed */
+  height: auto;       /* keeps aspect ratio */
+  border-radius: 8px; /* optional: rounded corners */
+  object-fit: cover;
+  display: block;
+}
+
+.lighthouse-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}

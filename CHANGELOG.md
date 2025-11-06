@@ -6,7 +6,7 @@ Image button unused (swithed off)
 Changed layout of Lighthouse page (Removed Lightouse age and coast fields from aids to navigation cards)
 The homepage now gets lighthouse data from database by Adding a fectAllLighthouse function in data.js file
 Naming convention changes and sminor code cleanup
-Added customised ClusterMarkers
+Added customised ClusterMarkers and popups to map
 
 ## version 0.5.2
 Added click action to map marker on homepage
