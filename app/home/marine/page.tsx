@@ -3,7 +3,7 @@ import Pagination from "@/app/ui/pagination";
 import LineGraph from "@/app/ui/marine";
 import Map from "@/app/ui/map";
 import Search from "@/app/ui/search";
-import Header from "@/app/ui/marine/dailyHearder";
+import Header from "@/app/ui/marine/currentMarineWeatherHearder";
 import Footer from "@/app/ui/footer";
 import ErrorMessage from "@/app/ui/error";
 import { formatDateToLocal } from "@/app/lib/utils";

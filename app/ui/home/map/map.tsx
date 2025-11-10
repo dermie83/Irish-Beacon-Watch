@@ -6,26 +6,19 @@ import L, { Map as LeafletMap } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-import { lighthouses } from  "@/app/lib/placeholder-data";
+import { LighthouseType } from "@/app/lib/definitions";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import styles from '@/app/lib/LighthouseMap.module.css';
 
 
-export interface Lighthouse {
-    id: string;
-    name: string;
-    latitude: number;
-    longitude: number;
-    image_url: string;
-    abovewater: number;
-    towerheight: number;
-    range_w: number;
-    range_r: number;
-    coast: "North Atlantic Ocean" |
-            "North Channel" | "Irish Sea" | "Celtic Sea";
-    constructed: string;
-    currentdate: string;
-};
+// ✅ Define props for your map
+export interface MapProps {
+  lighthouses: Pick<
+    LighthouseType,
+    "id" | "name" | "latitude" | "longitude" | "coast" | "image_url"
+  >[];
+}
 
 const coasts = ["All", "North Atlantic Ocean",
                 "North Channel" , "Irish Sea" , "Celtic Sea"] as const;
@@ -34,7 +27,7 @@ const coasts = ["All", "North Atlantic Ocean",
 // Default center of Ireland
 const defaultCenter = { lat: 53.4462988, lng: -7.5265753 };
 
-export default function LighthouseMap() {
+export default function LighthouseMap({ lighthouses = [] }: MapProps) {
   const [selectedProvince, setSelectedProvince] =
     useState<(typeof coasts)[number]>("All");
 
@@ -51,7 +44,7 @@ export default function LighthouseMap() {
   const handleMarkerDoubleClick = useCallback(
     (lighthouseName: string) => {
       router.push(
-        `/home/forecast?page=1&query=${encodeURIComponent(lighthouseName)}`
+        `/home/lighthouse?page=1&query=${encodeURIComponent(lighthouseName)}`
       );
     },
     [router]
@@ -78,22 +71,19 @@ export default function LighthouseMap() {
   return (
     <div className="space-y-1">
       {/* Filter Buttons */}
-      <div className="flex gap-2 flex-wrap">
-        {coasts.map((coast) => (
-          <button
-            key={coast}
-            className={`px-3 py-2 rounded ${
-              selectedProvince === coast
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200"
-            }`}
-            onClick={() => setSelectedProvince(coast)}
-          >
-            {coast}
-          </button>
-        ))}
+      <div className="space-y-1 w-full md:w-1/3 relative">
+        <select
+          value={selectedProvince}
+          onChange={(e) => setSelectedProvince(e.target.value as typeof coasts[number])}
+          className="w-full appearance-none bg-white border border-gray-300 text-gray-700 px-4 py-2 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer"
+        >
+          {coasts.map((coast) => (
+            <option key={coast} value={coast}>
+              {coast}
+            </option>
+          ))}
+        </select>
       </div>
-
       {/* Map container */}
       <div style={{ height: "500px", width: "100%" }}>
         <MapContainer
@@ -110,22 +100,87 @@ export default function LighthouseMap() {
 
           <MarkerClusterGroup
             chunkedLoading
-            maxClusterRadius={15}
+            maxClusterRadius={40} // adjust how far markers cluster together
             showCoverageOnHover={false}
+            iconCreateFunction={(cluster: any) => {
+              const count = cluster.getChildCount(); // number of markers in this cluster
+
+              // Dynamic size based on number of markers
+              let size = "30px";
+              if (count >= 10 && count < 50) size = "40px";
+              else if (count >= 50) size = "50px";
+
+              // Dynamic color based on count
+              let bgColor = "#06b6d4"; // teal
+              if (count >= 10 && count < 50) bgColor = "#3b82f6"; // blue
+              else if (count >= 50) bgColor = "#ef4444"; // red
+
+              return L.divIcon({
+                html: `
+                  <div style="
+                    background-color: ${bgColor};
+                    color: white;
+                    width: ${size};
+                    height: ${size};
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    border: 2px solid white;
+                    font-weight: bold;
+                    font-size: ${parseInt(size) / 2}px;
+                  ">
+                    ${count}
+                  </div>
+                `,
+                className: "", // remove default cluster styles
+                iconSize: L.point(parseInt(size), parseInt(size)),
+              });    
+            }}
           >
-            {filtered.map((lighthouse) => (
-              <Marker
-                key={lighthouse.id}
-                position={{ lat: lighthouse.latitude, lng: lighthouse.longitude }}
-                draggable={false}
-                eventHandlers={{
-                  click: (e) => e.originalEvent.stopPropagation(),
-                  dblclick: () => handleMarkerDoubleClick(lighthouse.name),
-                }}
-              >
-                <Popup>{lighthouse.name}</Popup>
-              </Marker>
-            ))}
+            {filtered.map((lighthouse: any) => {
+
+              const lighthouseIcon = L.divIcon({
+                html: `
+                  <div style="
+                    width: 32px;
+                    height: 32px;
+                    text-align: center;
+                  ">
+                    <img src="/lighthouses/lighthouseIcon.png" 
+                        alt="Lighthouse" 
+                        style="width:100%; height:100%; object-fit:cover;" />
+                  </div>
+                `,
+                className: "",       // remove default Leaflet styles
+                iconSize: [32, 32],  // size of clickable area
+                iconAnchor: [16, 32], // bottom center
+              });
+              return (
+                <Marker
+                  key={lighthouse.id}
+                  position={{lat: lighthouse.latitude, lng: lighthouse.longitude}}
+                  icon={lighthouseIcon}
+                  draggable={false}
+                  eventHandlers={{
+                    click: (e) => e.originalEvent.stopPropagation(),
+                    dblclick: () =>
+                      handleMarkerDoubleClick(lighthouse.name),
+                  }}
+                >
+                  <Popup>
+                    <div className={styles.popup}>
+                      <img
+                        className={styles.popupImage}
+                        src={lighthouse.image_url}
+                        alt={lighthouse.name}
+                      />
+                      <div className={styles.popupName}>{lighthouse.name}</div>
+                    </div>
+                  </Popup>
+                </Marker>
+              );
+            })}
           </MarkerClusterGroup>
         </MapContainer>
       </div>

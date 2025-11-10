@@ -1,9 +1,9 @@
 import { fetchWeatherForecast, fetchMarineForecast, fetchLighthouses, fetchLighthousePages } from "@/app/lib/data";
 import ErrorMessage from "@/app/ui/error";
 import Footer from "@/app/ui/footer";
-import Header from "@/app/ui/forecast/dailyHeader";
-import MarineHeader from "@/app/ui/marine/dailyHearder";
-import DayCard from "@/app/ui/forecast/dayCard";
+import Header from "@/app/ui/forecast/currentWeatherHeader";
+import MarineHeader from "@/app/ui/marine/currentMarineWeatherHearder";
+import DayCard from "@/app/ui/forecast/dailyWeatherCard";
 import Map from "@/app/ui/map";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
@@ -102,14 +102,14 @@ export default async function getServerSideProps(props: {
             </div>
           </div>
           <div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-left text-gray-900 leading-snug px-2">
-            Google Search Results for Articles Related to{" "}
-            <span className="text-teal-600 font-bold">{lighthouse.name}</span>{" "}
-            Lighthouse
-            <span className="block mt-1 text-sm sm:text-base font-normal text-gray-500">
-              — The results may include unrelated articles
-            </span>
-          </h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-left text-gray-900 leading-snug px-2">
+              Google Search Results for Articles Related to{" "}
+              <span className="text-teal-600 font-bold">{lighthouse.name}</span>{" "}
+              Lighthouse
+              <span className="block mt-1 text-sm sm:text-base font-normal text-gray-500">
+                — The results may include unrelated articles
+              </span>
+            </h1>
             <LighthouseArticles1 lighthouseName= {lighthouse.name}/>
           </div>
         </>

@@ -1,4 +1,4 @@
-import { fetchLighthouseABWMetrics, 
+import { fetchAllLighthouses, fetchLighthouseABWMetrics, 
         fetchLighthouseAges, 
         fetchLighthouseRanges, 
         fetchLighthouseTowerMetrics } 
@@ -19,6 +19,9 @@ export default async function getServerSideProps(){
   } else {
     alert("Application is on client side");}
 
+    const lighthouses = await fetchAllLighthouses();
+    // console.log("list of lighouses ",lighthouses)
+
     const ranges = await fetchLighthouseRanges();
     const maxRangeName = ranges.map((item)=> item.name);
     const maxRange = ranges.map((item)=> item.range_w);
@@ -38,27 +41,33 @@ export default async function getServerSideProps(){
     // console.log(maxage.slice(-1)[0]);
     const error = false;
     const errorMessage = "Failed to load data. Please refresh the page.";
-
+   
     return (
       <>
         {error && <ErrorMessage message={errorMessage} />}
-
-        {/* single column layout on all breakpoints */}
-        <div className="grid grid-cols-1 gap-4 min-h-screen">
-          <div className="w-full">
-            <Map />
+          <div className="grid grid-cols-1 gap-4 min-h-screen">
+            <div className="w-full">
+            <Map
+              lighthouses={lighthouses.map((lighthouse) => ({
+                id: lighthouse.id,
+                name: lighthouse.name,
+                latitude: lighthouse.latitude,
+                longitude: lighthouse.longitude,
+                coast: lighthouse.coast,
+                image_url: lighthouse.image_url
+              }))}
+            />
           </div>
-
-          <div className="w-full">
+          <div className="text-sm md:text-base">
             <MetricsTable
-              maxabovewater={maxABW?.slice(-1)[0] ?? ""}
-              abovewatername={maxABWName?.slice(-1)[0] ?? ""}
-              maxtowerheight={maxTower?.slice(-1)[0] ?? ""}
-              towerheightname={maxTowerName?.slice(-1)[0] ?? ""}
-              maxrange={maxRange?.slice(-1)[0] ?? ""}
-              rangename={maxRangeName?.slice(-1)[0] ?? ""}
-              agename={maxAgeName?.slice(-1)[0] ?? ""}
-              maxage={maxage?.slice(-1)[0] ?? ""}
+              maxabovewater={Math.max(...maxABW) ?? ""}
+              abovewatername={maxABWName?.slice(0)[0] ?? ""}
+              maxtowerheight={Math.max(...maxTower) ?? ""}
+              towerheightname={maxTowerName?.slice(0)[0] ?? ""}
+              rangename={maxRangeName?.slice(0)[0] ?? ""}
+              maxrange={Math.max(...maxRange) ?? ""}
+              agename={maxAgeName?.slice(0)[0] ?? ""}
+              maxage={Math.max(...maxage) ?? ""}
             />
           </div>
 

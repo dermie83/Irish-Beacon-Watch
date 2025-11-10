@@ -1,41 +1,35 @@
 import { LighthouseType } from "@/app/lib/definitions";
 
-export default function Header({
-  abovewater = 0,
-  towerheight = 0,
-  range_w = 0,
-  range_r = 0,
-  constructed = "None",
-  age = 0
-}: LighthouseType) {
+interface HeaderProps {
+  lighthouses: Pick<LighthouseType, "id" | "abovewater" | "towerheight" | "range_w" | "range_r">;
+}
+
+export default function Header({lighthouses}: HeaderProps) {
   return (
-    <header className="flex flex-col md:flex-row items-center my-4 mx-2 md:mx-10">
-      <div className="grid w-full md:w-full gap-2 md:gap-2 justify-around grid-cols-3 grid-rows-1 text-center">
-        <div>
-          <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Tower Height</div>
-          <div><span>{towerheight}</span> Meters</div>
-        </div>
-        <div>
-          <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Red Light Range</div>
-          <div><span>{range_r}</span> <span className="text-sm"> Nautical Miles</span></div>
-        </div>
-        <div>
-          <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Constructed</div>
-          <div><span>{constructed}</span> <span className="text-sm"></span></div>
-        </div>
-        <div>
-          <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Above Water</div>
-          <div><span>{abovewater}</span> Meters</div>
-        </div>
-        <div>
-          <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">White Light Range</div>
-          <div><span>{range_w}</span> <span className="text-sm"> Nautical Miles</span></div>
-        </div>
-        <div>
-          <div className="uppercase font-bold text-xs md:text-sm text-foregroundSecondaryColor">Age</div>
-          <div><span>{age}</span> Years</div>
-        </div>
+    <div className="w-full max-w-md mx-auto my-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+      {/* Tower Height */}
+      <div className="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center md:items-start text-center md:text-left shadow-sm">
+        <span className="uppercase font-bold text-xs md:text-sm text-gray-600">Tower Height</span>
+        <span className="mt-1 text-sm md:text-base">{lighthouses.towerheight} Meters</span>
       </div>
-    </header>
+
+      {/* Red Light Range */}
+      <div className="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center md:items-start text-center md:text-left shadow-sm">
+        <span className="uppercase font-bold text-xs md:text-sm text-gray-600">Red Light Range</span>
+        <span className="mt-1 text-sm md:text-base">{lighthouses.range_r} Nautical Miles</span>
+      </div>
+
+      {/* Above Water */}
+      <div className="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center md:items-start text-center md:text-left shadow-sm">
+        <span className="uppercase font-bold text-xs md:text-sm text-gray-600">Above Water</span>
+        <span className="mt-1 text-sm md:text-base">{lighthouses.abovewater} Meters</span>
+      </div>
+
+      {/* White Light Range */}
+      <div className="bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center md:items-start text-center md:text-left shadow-sm">
+        <span className="uppercase font-bold text-xs md:text-sm text-gray-600">White Light Range</span>
+        <span className="mt-1 text-sm md:text-base">{lighthouses.range_w} Nautical Miles</span>
+      </div>
+    </div>
   );
 }
