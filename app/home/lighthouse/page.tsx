@@ -2,16 +2,16 @@ import { fetchLighthouses, fetchLighthousePages, fetchWeatherForecast, fetchMari
 import { formatDateToLocal } from "@/app/lib/utils";
 import ErrorMessage from "@/app/ui/error";
 import Footer from "@/app/ui/footer";
-import DailyWeatherCard from "@/app/ui/forecast/dailyWeatherCard";
-import CurrentMarineWeather from "@/app/ui/marine/currentMarineWeatherHearder";
+import DailyWeatherCard from "@/app/ui/lighthouse/forecast/dailyWeatherCard";
+import CurrentMarineWeather from "@/app/ui/lighthouse/marine/currentMarineWeatherHearder";
 // import LighthouseImageButtons from "@/app/ui/lighthouse";
 import AidsToNavigation from "@/app/ui/lighthouse/header";
-import CurrentWeather from "@/app/ui/forecast/currentWeatherHeader";
+import CurrentWeather from "@/app/ui/lighthouse/forecast/currentWeatherHeader";
 import Map from "@/app/ui/map";
-import MarineWeatherLineGraph from "@/app/ui/marine";
+import MarineWeatherLineGraph from "@/app/ui/lighthouse/marine";
 import Pagination from "@/app/ui/pagination";
 import Search from "@/app/ui/search";
-import LighthouseArticles1 from "@/app/ui/forecast/lighthouseArticles";
+import LighthouseArticles1 from "@/app/ui/lighthouse/forecast/lighthouseArticles";
 
 export default async function getServerSideProps(props: {
   searchParams?: Promise<{
