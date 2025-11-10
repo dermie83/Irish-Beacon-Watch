@@ -22,9 +22,19 @@ export default async function LighthouseArticles1({ lighthouseName }: Lighthouse
   try {
     // Call Google Custom Search API
     const res = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_SEARCH_ENGINE_ID}&q=${query}&num=5`,
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_SEARCH_ENGINE_ID}&q=${query}&num=2`,
       { cache: "no-store" } // SSR always fresh
     );
+
+    // 🧭 Handle 429 Too Many Requests
+    if (res.status === 429) {
+      console.error("Limit exceeded");
+      return (
+        <p className="p-4 text-yellow-600">
+          Daily API request limit exceeded. Please try again later.
+        </p>
+      );
+    }
 
     if (!res.ok) {
       const text = await res.text();
