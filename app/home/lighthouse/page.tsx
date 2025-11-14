@@ -28,10 +28,11 @@ export default async function getServerSideProps(props: {
     const totalPages = await fetchLighthousePages(query);
 
     const error = false;
-    const errorMessage = "Failed to load data. Please refresh the page.";
+    // const errorMessage = ErrorMessage;
     
   return (
-    <>{error && <ErrorMessage message={errorMessage} />}
+    <>
+    {error && <ErrorMessage/>}
     <h1 className="text-xl md:text-2xl font-bold text-center my-4">Aids To Navigation</h1>
     <div className="mt-5 flex w-full justify-center">
       <Pagination totalPages={totalPages} />
@@ -133,7 +134,7 @@ export default async function getServerSideProps(props: {
             </div>
             <div className="col-span-1 md:col-span-8 row-span-1">
               <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-left text-gray-900 leading-snug px-2">
-                Google Search Results for Articles Related to{" "}
+                Google Search Results{" "}
                 <span className="text-teal-600 font-bold">{lighthouse.name}</span>{" "}
                 Lighthouse
                 <span className="block mt-1 text-sm sm:text-base font-normal text-gray-500">
