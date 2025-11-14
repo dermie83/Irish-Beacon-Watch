@@ -1,11 +1,9 @@
-// This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
-// https://nextjs.org/learn/dashboard-app/fetching-data
-
+// import { v4 as uuid } from "uuid";
 const date = new Date().toISOString();
+
 
 const lighthouses = [
   {
-    id: '417544b6-5322-3332-9216-fec4b6a6542a',
     name: 'Achillbeg',
     latitude: 53.85875,
     longitude: -9.94689,
@@ -17,9 +15,9 @@ const lighthouses = [
     constructed: '1965-01-01',
     currentdate: date,
     image_url: '/lighthouses/achillbeg.jpg',
+    country: "Ireland"
   },
   {
-    id: '4c84d6a2-b5a7-4dfe-8c60-515ca7f4faed',
     name: 'Ardnakinna',
     latitude: 55.01525,
     longitude: -8.56000,
@@ -31,9 +29,9 @@ const lighthouses = [
     constructed: '1850-01-01',
     currentdate: date,
     image_url: '/lighthouses/ardnakinna.jpg',
+    country: "Ireland"
   },
   {
-    id: '410544b6-4001-4271-9856-fec4b6a6542a',
     name: 'Aranmore',
     latitude: 54.9956698,
     longitude: -8.5689206,
@@ -45,9 +43,9 @@ const lighthouses = [
     constructed: '1859-01-01',
     currentdate: date,
     image_url: '/lighthouses/aranmore.jpg',
+    country: "Ireland"
   },
   {
-    id: '2fc7d4e2-d283-4a60-9d82-f7845758dfb5',
     name: 'Baily',
     latitude: 53.36108,
     longitude: -6.05086,
@@ -59,9 +57,9 @@ const lighthouses = [
     constructed: '1814-01-01',
     currentdate: date,
     image_url: '/lighthouses/baily.jpg',
+    country: "Ireland"
   },
   {
-    id: '8d66bc45-c4fc-4d04-aada-6c9bff6b7a67',
     name: 'Ballagh Rock',
     latitude: 55.00000,
     longitude: -8.48000,
@@ -73,9 +71,9 @@ const lighthouses = [
     constructed: '1875-01-01',
     currentdate: date,
     image_url: '/lighthouses/ballagh rocks.jpg',
+    country: "Ireland"
   },
   {
-    id: '7cfa9d70-87ac-4298-b14e-842d41a17332',
     name: 'Ballinacourty',
     latitude: 52.07817,
     longitude: -7.55194,
@@ -87,9 +85,9 @@ const lighthouses = [
     constructed: '1858-01-01',
     currentdate: date,
     image_url: '/lighthouses/ballinacourty.jpg',
+    country: "Ireland"
   },
   {
-    id: 'c6ef038f-1492-4cc5-9813-5427fdc92d50',
     name: 'Ballycotton',
     latitude: 51.82583,
     longitude: -7.98528,
@@ -101,9 +99,9 @@ const lighthouses = [
     constructed: '1848-01-01',
     currentdate: date,
     image_url: '/lighthouses/ballycotton.jpg',
+    country: "Ireland"
   },
   {
-    id: '502d3ad4-3b75-40ba-91b9-e4b5d1b1fffd',
     name: 'Barr Point Fog Signal',
     latitude: 54.85875,
     longitude: -5.77833,
@@ -115,9 +113,9 @@ const lighthouses = [
     constructed: '1905-01-01',
     currentdate: date,
     image_url: '/lighthouses/barr-point.png',
+    country: "Northern Ireland"
   },
   {
-    id: '2b88cbe7-2578-4b67-ae88-e4e5e747a7bc',
     name: 'Blackhead (Antrim)',
     latitude: 54.76667,
     longitude: -5.68528,
@@ -129,9 +127,9 @@ const lighthouses = [
     constructed: '1902-01-01',
     currentdate: date,
     image_url: '/lighthouses/blackhead (antrim).jpg',
+    country: "Northern Ireland"
   },
   {
-    id: '8b327d0d-764f-4928-b649-ec057d5f9d67',
     name: 'Blackhead (Clare)',
     latitude: 53.15306,
     longitude: -9.26667,
@@ -143,9 +141,9 @@ const lighthouses = [
     constructed: '1936-01-01',
     currentdate: date,
     image_url: '/lighthouses/blackhead (clare).jpg',
+    country: "Ireland"
   },
   {
-    id: '30f3ad9d-5e7e-4a2f-b04a-d45c6c3b177b',
     name: 'Blackhorse Rocks Beacon',
     latitude: 51.47395,
     longitude: -9.69472,
@@ -157,9 +155,9 @@ const lighthouses = [
     constructed: '1848-01-01',
     currentdate: date,
     image_url: '/lighthouses/Horse Rock beacon.jpg',
+    country: "Ireland"
   },
   {
-    id: '56be88da-3e61-45ad-b835-5f4f9a91b8f4',
     name: 'Blackrock (Mayo)',
     latitude: 54.06917,
     longitude: -10.32056,
@@ -171,9 +169,9 @@ const lighthouses = [
     constructed: '1864-01-01',
     currentdate: date,
     image_url: '/lighthouses/blackrock (mayo).jpg',
+    country: "Ireland"
   },
   {
-    id: '91ef6ec7-9b34-4931-8c8e-4a9a91c1c86f',
     name: 'Blackrock (Sligo)',
     latitude: 54.30667,
     longitude: -8.61667,
@@ -185,9 +183,9 @@ const lighthouses = [
     constructed: '1819-01-01',
     currentdate: date,
     image_url: '/lighthouses/blackrock (sligo).jpg',
+    country: "Ireland"
   },
   {
-    id: '681eeb43-70ac-4c9f-9b96-6a249e84c97b',
     name: 'Blacksod',
     latitude: 54.09972,
     longitude: -10.06000,
@@ -199,9 +197,9 @@ const lighthouses = [
     constructed: '1864-01-01',
     currentdate: date,
     image_url: '/lighthouses/blacksod.jpg',
+    country: "Ireland"
   },
   {
-    id: 'cc2e15c8-74ac-4f5c-bc7b-b063aee39268',
     name: 'Broadhaven',
     latitude: 54.26667,
     longitude: -9.88806,
@@ -213,9 +211,9 @@ const lighthouses = [
     constructed: '1848-01-01',
     currentdate: date,
     image_url: '/lighthouses/broadhaven.jpg',
+    country: "Ireland"
   },
   {
-    id: '9cb9d262-fc3f-46f0-b43d-3d50c7c0a9a9',
     name: 'Bull Rock',
     latitude: 51.59139,
     longitude: -10.30278,
@@ -227,9 +225,9 @@ const lighthouses = [
     constructed: '1888-01-01',
     currentdate: date,
     image_url: '/lighthouses/bull rock.jpg',
+    country: "Ireland"
   },
   {
-    id: 'f2579801-d840-44da-9330-bd9e6b466465',
     name: 'Bull Rock Beacon',
     latitude: 51.47400,
     longitude: -9.69444,
@@ -241,9 +239,9 @@ const lighthouses = [
     constructed: '1999-01-01',
     currentdate: date,
     image_url: '/lighthouses/bull rock beacon.jpg',
+    country: "Ireland"
   },
   {
-    id: 'ea5b5d6d-9200-470a-a313-1c6e492078be',
     name: 'Buncrana',
     latitude: 55.1265883,
     longitude: -7.4669514,
@@ -255,9 +253,9 @@ const lighthouses = [
     constructed: '1876-01-01',
     currentdate: date,
     image_url: '/lighthouses/buncrana.jpg',
+    country: "Ireland"
   },
   {
-    id: 'b6b29243-dc7a-4e07-9cf9-cc4f1f8f3196',
     name: 'Burren Rocks Beacon',
     latitude: 53.49175,
     longitude: -6.04067,
@@ -269,9 +267,9 @@ const lighthouses = [
     constructed: '2010-03-01',
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '2a473cf3-d7c9-4402-b902-7f55c4b9b72b',
     name: 'Cardy Rocks Beacon',
     latitude: 53.632,
     longitude: -6.181,
@@ -283,9 +281,9 @@ const lighthouses = [
     constructed: '2021-09-01',
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '49cf5d77-1e43-496f-b303-f5b4d44d6431',
     name: 'Cashla Bay',
     latitude: 53.26306,
     longitude: -9.56583,
@@ -297,9 +295,9 @@ const lighthouses = [
     constructed: '1984-03-01',
     currentdate: date,
     image_url: '/lighthouses/Cashla Bay.jpg',
+    country: "Ireland"
   },
   {
-    id: '9f4e0ae7-ea26-4693-bb4f-3d680a77eabb',
     name: 'Colt Rocks Beacon',
     latitude: 51.63447,
     longitude: -9.91812,
@@ -311,9 +309,9 @@ const lighthouses = [
     constructed: '2009-10-08',
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '8f1b2263-d9a9-41f1-a580-04148f5f2f74',
     name: 'Copper Point',
     latitude: 51.50333,
     longitude: -9.53333,
@@ -325,9 +323,9 @@ const lighthouses = [
     constructed: '1864-01-01',
     currentdate: date,
     image_url: '/lighthouses/Copper-Point-PT.png',
+    country: "Ireland"
   },
   {
-    id: 'db44368f-0b35-4dbd-9e25-b4eb4e21a9fa',
     name: 'Corlis Point LLs',
     latitude: 52.62806,
     longitude: -9.58806,
@@ -339,9 +337,9 @@ const lighthouses = [
     constructed: '1998-09-20',
     currentdate: date,
     image_url: '/lighthouses/Corlis Point.jpg',
+    country: "Ireland"
   },
   {
-    id: '5d8ff51a-dcf7-48ff-91b9-b8b7a7f6b7d0',
     name: 'Cromwell Point',
     latitude: 51.93333,
     longitude: -10.32306,
@@ -353,9 +351,9 @@ const lighthouses = [
     constructed: '1841-02-01',
     currentdate: date,
     image_url: '/lighthouses/Cromwell Point.jpg',
+    country: "Ireland"
   },
   {
-    id: '5ab81c4f-370b-4d1e-9fe4-4b717b9c1d0a',
     name: 'Crookhaven',
     latitude: 51.47722,
     longitude: -9.70389,
@@ -367,9 +365,9 @@ const lighthouses = [
     constructed: '1838-10-31',
     currentdate: date,
     image_url: '/lighthouses/Crookhaven.jpg',
+    country: "Ireland"
   },
   {
-    id: 'ec619c3f-6821-45da-8c72-7bff1e4435d9',
     name: 'Donaghadee',
     latitude: 54.64528,
     longitude: -5.53028,
@@ -381,9 +379,9 @@ const lighthouses = [
     constructed: '1836-01-01',
     currentdate: date,
     image_url: '/lighthouses/Donaghadee.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: 'bd3b5298-3951-4d3a-b159-21a75b1050cd',
     name: 'Dunmore East',
     latitude: 52.14972,
     longitude: -6.98806,
@@ -395,9 +393,9 @@ const lighthouses = [
     constructed: '1825-01-01',
     currentdate: date,
     image_url: '/lighthouses/Dunmore East.jpg',
+    country: "Ireland"
   },
   {
-    id: 'f5bde298-cf32-49b5-9a9b-d40e430a2fef',
     name: 'Dunree',
     latitude: 55.19708,
     longitude: -7.55708,
@@ -409,9 +407,9 @@ const lighthouses = [
     constructed: '1875-01-01',
     currentdate: date,
     image_url: '/lighthouses/Dunree.png',
+    country: "Ireland"
   },
   {
-    id: '433a049e-b456-4870-b2f1-3125a67fbc7c',
     name: 'Eagle Island',
     latitude: 54.28333,
     longitude: -10.09167,
@@ -423,9 +421,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '50339f9f-478f-4ac6-b703-91f5b5a02ef5',
     name: 'Eeragh',
     latitude: 53.14806,
     longitude: -9.85722,
@@ -437,9 +435,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '8c08d16f-1ab7-4b63-89e7-b4fbbcb2f897',
     name: 'Fanad Head',
     latitude: 55.27778,
     longitude: -7.63306,
@@ -451,9 +449,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '0b66bcb6-d6da-43d9-9ebd-5c8b07ffba61',
     name: 'Fastnet',
     latitude: 51.38833,
     longitude: -9.60278,
@@ -465,9 +463,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'b93ff7a2-9df2-4575-bfbb-64925bb87d42',
     name: 'Ferris Point',
     latitude: 54.85194,
     longitude: -5.78861,
@@ -479,9 +477,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: 'cfd5718e-592f-4fc0-bc48-2a06064db6b0',
     name: 'Galley Head',
     latitude: 51.52806,
     longitude: -8.95194,
@@ -493,9 +491,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '5609c00c-d6be-4c84-bbb1-7bb82862c240',
     name: 'Green Island',
     latitude: 54.03333,
     longitude: -6.09472,
@@ -507,9 +505,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '8e582f23-d618-4965-87a5-5b8a1744b198',
     name: 'Harbour Rock Beacon',
     latitude: 51.93167,
     longitude: -10.31167,
@@ -521,9 +519,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '82d0a953-c832-4a79-b9db-6b74c28345f1',
     name: 'Haulbowline',
     latitude: 54.02028,
     longitude: -6.07806,
@@ -535,9 +533,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '4b8f6ff6-c8f5-4e9a-a0a9-1e890f91a8e0',
     name: 'Hook Head',
     latitude: 52.12306,
     longitude: -6.92694,
@@ -549,9 +547,9 @@ const lighthouses = [
     constructed: '1172-01-01',
     currentdate: date,
     image_url: '/lighthouses/hook.jpg',
+    country: "Ireland"
   },
   {
-    id: '14e0fa21-5eaf-4315-a0b4-3f4775510d49',
     name: 'Inisheer',
     latitude: 53.04722,
     longitude: -9.52306,
@@ -563,9 +561,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'b14b0561-d68b-4970-ae95-b14c1e5f537f',
     name: 'Inishgort',
     latitude: 53.82667,
     longitude: -9.66722,
@@ -577,9 +575,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '8a1a0bb2-486b-4603-91fc-cf87e544ef98',
     name: 'Inishowen',
     latitude: 55.22667,
     longitude: -6.92639,
@@ -591,9 +589,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'f466bfc4-3d6b-41c1-bc80-2a15d9532cc6',
     name: 'Inishtearaght',
     latitude: 52.07583,
     longitude: -10.66194,
@@ -605,9 +603,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'f1ef5ad4-99e5-429f-90a6-ef76836e2548',
     name: 'Inishtrahull',
     latitude: 55.43083,
     longitude: -7.24333,
@@ -619,9 +617,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'c5e442b8-07db-47fc-b3ad-77b9b2d8042c',
     name: 'Kish',
     latitude: 53.31083,
     longitude: -5.92667,
@@ -633,9 +631,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '7fcdb964-c232-43b5-88a9-05f2b45649fa',
     name: 'Loop Head',
     latitude: 52.56194,
     longitude: -9.93139,
@@ -647,9 +645,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/loop.png',
+    country: "Ireland"
   },
   {
-    id: '07310616-d222-4629-9334-b50cddbd23c2',
     name: 'Maidens',
     latitude: 54.92806,
     longitude: -5.72667,
@@ -661,9 +659,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: '6a2c3151-0cf7-4f6e-8be9-94ee833fdb1b',
     name: 'Mew Island',
     latitude: 54.69861,
     longitude: -5.51194,
@@ -675,9 +673,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: '4fcb32e9-8c4d-4172-9376-c466a93f3a65',
     name: 'Mine Head',
     latitude: 51.99333,
     longitude: -7.58611,
@@ -689,9 +687,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'f7094ab0-b746-4714-9fa2-063f4d6fa94f',
     name: 'Mizen Head',
     latitude: 51.44806,
     longitude: -9.82056,
@@ -703,9 +701,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '00442a27-1f9f-41fe-b4b1-86f85abf0c1a',
     name: 'Muglins',
     latitude: 53.27472,
     longitude: -6.07500,
@@ -717,9 +715,9 @@ const lighthouses = [
     constructed: '1880-01-01',
     currentdate: date,
     image_url: '/lighthouses/muglins.jpg',
+    country: "Ireland"
     },
   {
-    id: '20d2fe25-3c35-430f-bff3-f8cf9b4460fc',
     name: 'Old Head of Kinsale',
     latitude: 51.60583,
     longitude: -8.53222,
@@ -731,9 +729,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '19a0c616-7648-4622-829b-b617af7f67be',
     name: "Rathlin O'Birne",
     latitude: 54.66444,
     longitude: -8.83306,
@@ -745,9 +743,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '99f9d64f-b395-4db6-b190-e3bb6ac38301',
     name: 'Rathlin East',
     latitude: 55.30222,
     longitude: -6.17056,
@@ -759,9 +757,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: '4049ad65-2f63-4d17-b6fe-95d9b8f6f400',
     name: 'Rathlin West',
     latitude: 55.30222,
     longitude: -6.27806,
@@ -773,9 +771,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: '2cc8c6fc-7c29-4d44-b346-2b4e8a674be7',
     name: 'Roancarrigmore',
     latitude: 51.65139,
     longitude: -9.74611,
@@ -787,9 +785,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '6c7f9c32-218f-495b-b8a0-25bb6bc07dfe',
     name: 'Roches Point',
     latitude: 51.79333,
     longitude: -8.24194,
@@ -801,9 +799,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'b8a6e9c9-6e53-4372-bf90-5d7026318c77',
     name: 'Rockabill',
     latitude: 53.59722,
     longitude: -6.08694,
@@ -815,9 +813,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'bc519e89-1f90-4874-8a43-1f16592c1b1b',
     name: 'Rotten Island',
     latitude: 54.61417,
     longitude: -8.44083,
@@ -829,9 +827,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'a9c9b3fa-c54f-44cd-ae78-15d56ae32599',
     name: 'Rue Point',
     latitude: 55.25861,
     longitude: -6.18861,
@@ -843,9 +841,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: 'dfe476dd-e58b-45a2-bcdc-bcf79b276f6f',
     name: 'Slyne Head',
     latitude: 53.40000,
     longitude: -10.23333,
@@ -857,9 +855,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'd8429e69-4d5b-4681-b62a-5d700e9c10d3',
     name: 'St Johns Point (Donegal)',
     latitude: 54.57056,
     longitude: -8.46000,
@@ -871,9 +869,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '81b82c0d-7e8c-45fa-95f0-3c78ea5f68f2',
     name: "St John's Point (Down)",
     latitude: 54.22694,
     longitude: -5.65833,
@@ -885,9 +883,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Northern Ireland"
   },
   {
-    id: '206a1197-d601-4cbb-b120-cc83a9bb15d9',
     name: 'Sheeps Head',
     latitude: 51.54083,
     longitude: -9.45500,
@@ -899,9 +897,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'e8eae5a0-b2b5-4646-9c84-cab8cc6d8581',
     name: 'Skelligs',
     latitude: 51.73694,
     longitude: -10.54083,
@@ -913,9 +911,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '14a0be87-e4cd-41a7-a508-3bfe4677d9b3',
     name: 'Straw Island',
     latitude: 53.11667,
     longitude: -9.63333,
@@ -927,9 +925,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'ea869772-e9f9-4a3c-8b9f-08f3fd6e2047',
     name: 'Tory Island',
     latitude: 55.27333,
     longitude: -8.24083,
@@ -941,9 +939,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'ac4315ab-c100-4428-9c86-e37a046c68fa',
     name: 'Tuskar',
     latitude: 52.20389,
     longitude: -6.20722,
@@ -955,9 +953,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'a689aa7f-2a6d-41d9-b8a6-5a5f5e5b4b6e',
     name: 'Valentia Directional Light',
     latitude: 51.92639,
     longitude: -10.30583,
@@ -969,9 +967,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: 'c1b04be9-5053-44b5-88f9-b8b9574172f6',
     name: 'Vidal Bank',
     latitude: 54.03000,
     longitude: -6.09444,
@@ -983,9 +981,9 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   },
   {
-    id: '846245ea-fc7e-43a0-8d86-84d073e88cc4',
     name: 'Wicklow Head',
     latitude: 52.96639,
     longitude: -6.00694,
@@ -997,6 +995,7 @@ const lighthouses = [
     constructed: date,
     currentdate: date,
     image_url: '/lighthouses/placeholder-image.jpg',
+    country: "Ireland"
   }
 ]
 

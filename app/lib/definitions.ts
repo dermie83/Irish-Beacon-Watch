@@ -4,7 +4,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type LighthouseType = {
-  id: string;
+  id?: string;
   name: string;
   latitude: number;
   longitude: number;
@@ -17,6 +17,14 @@ export type LighthouseType = {
   currentdate:string;
   age:number;
   image_url:string;
+  country?: string;
+};
+
+export type CountryType = {
+  id?: string;
+  name: string;
+  latitude: number;
+  longitude: number;
 };
 
 export type WeatherHeaderProps = {

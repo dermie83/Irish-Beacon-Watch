@@ -87,20 +87,22 @@ export async function fetchAllLighthouses() {
   try {
     const data = await sql<LighthouseType>
     `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.latitude, 
-            lighthouse.longitude,
-            lighthouse.abovewater,
-            lighthouse.towerheight, 
-            lighthouse.range_w,
-            lighthouse.range_r,
-            lighthouse.coast,
-            lighthouse.constructed,
-            lighthouse.currentdate,
-            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
-            lighthouse.image_url
-     FROM lighthouse`;
+            l.id,
+            l.name,
+            l.latitude,
+            l.longitude,
+            l.abovewater,
+            l.towerheight,
+            l.range_w,
+            l.range_r,
+            l.coast,
+            l.constructed,
+            l.currentdate,
+            (l.currentdate - l.constructed)/365 AS "age",
+            l.image_url,
+            l.country_id
+    FROM lighthouse l
+    LEFT JOIN country c ON l.country_id = c.id;`;
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
@@ -116,24 +118,28 @@ export async function fetchLighthouses(
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
     const data = await sql<LighthouseType>
-    `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.latitude, 
-            lighthouse.longitude,
-            lighthouse.abovewater,
-            lighthouse.towerheight, 
-            lighthouse.range_w,
-            lighthouse.range_r,
-            lighthouse.coast,
-            lighthouse.constructed,
-            lighthouse.currentdate,
-            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age",
-            lighthouse.image_url
-     FROM lighthouse
-     WHERE
-        lighthouse.name ILIKE ${`%${query}%`}
-        ORDER BY lighthouse.name
+    ` SELECT 
+      l.id,
+      l.name,
+      l.latitude,
+      l.longitude,
+      l.abovewater,
+      l.towerheight,
+      l.range_w,
+      l.range_r,
+      l.coast,
+      l.constructed,
+      l.currentdate,
+      l.image_url,
+      l.country_id,
+      c.name AS country_name,
+      c.latitude AS country_latitude,
+      c.longitude AS country_longitude
+    FROM lighthouse l
+    LEFT JOIN country c ON l.country_id = c.id
+    WHERE
+        l.name ILIKE ${`%${query}%`}
+        ORDER BY l.name
         LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}`;
     return data.rows;
   } catch (error) {
