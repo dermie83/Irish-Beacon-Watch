@@ -14,7 +14,6 @@ import {
 
 type LighthouseTowerProps = {
   towerData: {
-    id: string;
     name: string;
     towerheight:number;
   }[]

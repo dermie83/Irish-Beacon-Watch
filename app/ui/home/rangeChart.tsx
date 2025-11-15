@@ -14,7 +14,6 @@ import {
 
 type LighthouseRangeProps = {
   rangeData: {
-    id: string;
     name: string;
     range_w:number;
     range_r:number;

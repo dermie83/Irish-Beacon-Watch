@@ -13,7 +13,6 @@ import {
 
 type LighthouseABWProps = {
   abwData: {
-    id: string;
     name: string;
     abovewater: number;
   }[]
