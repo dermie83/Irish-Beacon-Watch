@@ -100,7 +100,10 @@ export async function fetchAllLighthouses() {
             l.currentdate,
             (l.currentdate - l.constructed)/365 AS "age",
             l.image_url,
-            l.country_id
+            l.country_id,
+            c.name AS country,
+            c.latitude AS country_latitude,
+            c.longitude AS country_longitude
     FROM lighthouse l
     LEFT JOIN country c ON l.country_id = c.id;`;
     return data.rows;
@@ -132,7 +135,7 @@ export async function fetchLighthouses(
       l.currentdate,
       l.image_url,
       l.country_id,
-      c.name AS country_name,
+      c.name AS country,
       c.latitude AS country_latitude,
       c.longitude AS country_longitude
     FROM lighthouse l
