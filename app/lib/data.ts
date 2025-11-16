@@ -104,6 +104,7 @@ export async function fetchAllLighthouses() {
             c.name AS country,
             c.latitude AS country_latitude,
             c.longitude AS country_longitude
+
     FROM lighthouse l
     LEFT JOIN country c ON l.country_id = c.id;`;
     return data.rows;

@@ -4,6 +4,7 @@
 Added Country Table and country attribute to Lighthouse object.
 Implemented Lighthouse by Country Select filter
 
+
 ## version 0.6.0
 Moved all weather and marine Forecast into Lightohuse page (Forecast page will now be Lightohuse page)
 Image button unused (swithed off)
