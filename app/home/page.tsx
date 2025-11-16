@@ -20,7 +20,7 @@ export default async function getServerSideProps(){
     alert("Application is on client side");}
 
     const lighthouses = await fetchAllLighthouses();
-    // console.log("list of lighouses ",lighthouses)
+    console.log("list of lighouses ",lighthouses)
 
     const ranges = await fetchLighthouseRanges();
     const maxRangeName = ranges.map((item)=> item.name);
@@ -54,7 +54,8 @@ export default async function getServerSideProps(){
                 latitude: lighthouse.latitude,
                 longitude: lighthouse.longitude,
                 coast: lighthouse.coast,
-                image_url: lighthouse.image_url
+                image_url: lighthouse.image_url,
+                country: lighthouse.country,
               }))}
             />
           </div>
