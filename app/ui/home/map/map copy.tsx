@@ -8,7 +8,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import { LighthouseType } from "@/app/lib/definitions";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from '@/app/lib/LighthouseMap.module.css';
 
 export interface MapProps {
@@ -18,12 +18,22 @@ export interface MapProps {
   >[];
 }
 
+const coasts = ["All", "North Atlantic Ocean", "North Channel", "Irish Sea", "Celtic Sea"] as const;
+const countries = ["All", "Ireland", "Northern Ireland"] as const;
 const defaultCenter = { lat: 53.4462988, lng: -7.5265753 };
-const zoom = 7;
 
 export default function LighthouseMap({ lighthouses = [] }: MapProps) {
+  const [selectedCoast, setSelectedCoast] = useState<(typeof coasts)[number]>("All");
+  const [selectedCountry, setSelectedCountry] = useState<(typeof countries)[number]>("All");
+
   const router = useRouter();
   const mapRef = useRef<LeafletMap | null>(null);
+
+  const filtered = lighthouses
+    .filter((l) => selectedCoast === "All" ? true : l.coast === selectedCoast)
+    .filter((l) => selectedCountry === "All" ? true : l.country?.trim().toLowerCase() === selectedCountry.toLowerCase());
+
+  const zoom = 7;
 
   const handleMarkerDoubleClick = useCallback(
     (lighthouseName: string) => {
@@ -32,17 +42,44 @@ export default function LighthouseMap({ lighthouses = [] }: MapProps) {
     [router]
   );
 
-  // Fit map bounds to all lighthouses on load
+  // Recenter map to filtered markers whenever filters change
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || lighthouses.length === 0) return;
+    if (!map) return;
 
-    const bounds = L.latLngBounds(lighthouses.map(l => [l.latitude, l.longitude]));
-    map.fitBounds(bounds, { padding: [50, 50] });
-  }, [lighthouses]);
+    if (filtered.length === 0) {
+      map.flyTo(defaultCenter, zoom);
+      return;
+    }
+
+    const bounds = L.latLngBounds(filtered.map(l => [l.latitude, l.longitude]));
+    map.flyToBounds(bounds, { padding: [50, 50] });
+  }, [filtered]);
 
   return (
     <div className="space-y-1">
+      {/* Filters Buttons */}
+      <div className="space-y-1 w-full md:w-1/3 relative">
+        <select
+          value={selectedCoast}
+          onChange={(e) => setSelectedCoast(e.target.value as typeof coasts[number])}
+          className="w-full appearance-none bg-white border border-gray-300 text-gray-700 px-4 py-2 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer"
+        >
+          {coasts.map((coast) => (
+            <option key={coast} value={coast}>{coast}</option>
+          ))}
+        </select>
+        <select
+          value={selectedCountry}
+          onChange={(e) => setSelectedCountry(e.target.value as (typeof countries)[number])}
+          className="w-full appearance-none bg-white border border-gray-300 text-gray-700 px-4 py-2 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer"
+        >
+          {countries.map((country) => (
+            <option key={country} value={country}>{country}</option>
+          ))}
+        </select>
+      </div>
+
       {/* Map container */}
       <div style={{ height: "500px", width: "100%" }}>
         <MapContainer
@@ -77,7 +114,7 @@ export default function LighthouseMap({ lighthouses = [] }: MapProps) {
               });
             }}
           >
-            {lighthouses.map((lighthouse: any) => {
+            {filtered.map((lighthouse: any) => {
               const lighthouseIcon = L.divIcon({
                 html: `<div style="width:32px; height:32px; text-align:center;"><img src='/lighthouses/lighthouseIcon.png' alt='Lighthouse' style='width:100%; height:100%; object-fit:cover;' /></div>`,
                 className: "",
@@ -88,7 +125,7 @@ export default function LighthouseMap({ lighthouses = [] }: MapProps) {
               return (
                 <Marker
                   key={lighthouse.id}
-                  position={{ lat: lighthouse.latitude, lng: lighthouse.longitude }}
+                  position={{lat: lighthouse.latitude, lng: lighthouse.longitude}}
                   icon={lighthouseIcon}
                   draggable={false}
                   eventHandlers={{
