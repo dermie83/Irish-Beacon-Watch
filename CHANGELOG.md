@@ -1,5 +1,8 @@
 # Irish Beacon Watch Changelog
 
+## version 0.6.2
+Upgarded Filter on Homepage to filter on all components.
+
 ## version 0.6.1
 Added Country Table and country attribute to Lighthouse object.
 Implemented Lighthouse by Country Select filter
