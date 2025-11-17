@@ -11,76 +11,76 @@ import {
       } from './definitions';
 
 
-export async function fetchLighthouseRanges() {
-  try {
-    const data = await sql<LighthouseType>
-    `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.range_w,
-            lighthouse.range_r
-      FROM lighthouse
-      ORDER BY lighthouse.range_w DESC
-      LIMIT 15`;
-    return data.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch lighthouse location data.');
-  }
-}
+// export async function fetchLighthouseRanges() {
+//   try {
+//     const data = await sql<LighthouseType>
+//     `SELECT 
+//             lighthouse.id, 
+//             lighthouse.name, 
+//             lighthouse.range_w,
+//             lighthouse.range_r
+//       FROM lighthouse
+//       ORDER BY lighthouse.range_w DESC
+//       LIMIT 15`;
+//     return data.rows;
+//   } catch (error) {
+//     console.error('Database Error:', error);
+//     throw new Error('Failed to fetch lighthouse location data.');
+//   }
+// }
 
-export async function fetchLighthouseABWMetrics() {
-  try {
-    const data = await sql<LighthouseType>
-    `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.abovewater
-      FROM lighthouse
-      ORDER BY lighthouse.abovewater DESC
-      LIMIT 15`;
-    return data.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch lighthouse location data.');
-  }
-}
+// export async function fetchLighthouseABWMetrics() {
+//   try {
+//     const data = await sql<LighthouseType>
+//     `SELECT 
+//             lighthouse.id, 
+//             lighthouse.name, 
+//             lighthouse.abovewater
+//       FROM lighthouse
+//       ORDER BY lighthouse.abovewater DESC
+//       LIMIT 15`;
+//     return data.rows;
+//   } catch (error) {
+//     console.error('Database Error:', error);
+//     throw new Error('Failed to fetch lighthouse location data.');
+//   }
+// }
 
-export async function fetchLighthouseTowerMetrics() {
-  try {
-    const data = await sql<LighthouseType>
-    `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.towerheight
-      FROM lighthouse
-      ORDER BY lighthouse.towerheight DESC
-      LIMIT 15`;
-    return data.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch lighthouse location data.');
-  }
-}
+// export async function fetchLighthouseTowerMetrics() {
+//   try {
+//     const data = await sql<LighthouseType>
+//     `SELECT 
+//             lighthouse.id, 
+//             lighthouse.name, 
+//             lighthouse.towerheight
+//       FROM lighthouse
+//       ORDER BY lighthouse.towerheight DESC
+//       LIMIT 15`;
+//     return data.rows;
+//   } catch (error) {
+//     console.error('Database Error:', error);
+//     throw new Error('Failed to fetch lighthouse location data.');
+//   }
+// }
 
-export async function fetchLighthouseAges() {
-  try {
-    const data = await sql<LighthouseType>
-    `SELECT 
-            lighthouse.id, 
-            lighthouse.name, 
-            lighthouse.constructed,
-            lighthouse.currentdate,
-            (lighthouse.currentdate - lighthouse.constructed)/365 AS "age"
-      FROM lighthouse
-      ORDER BY age DESC
-      LIMIT 15`;
-    return data.rows;
-  } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch lighthouse location data.');
-  }
-}
+// export async function fetchLighthouseAges() {
+//   try {
+//     const data = await sql<LighthouseType>
+//     `SELECT 
+//             lighthouse.id, 
+//             lighthouse.name, 
+//             lighthouse.constructed,
+//             lighthouse.currentdate,
+//             (lighthouse.currentdate - lighthouse.constructed)/365 AS "age"
+//       FROM lighthouse
+//       ORDER BY age DESC
+//       LIMIT 15`;
+//     return data.rows;
+//   } catch (error) {
+//     console.error('Database Error:', error);
+//     throw new Error('Failed to fetch lighthouse location data.');
+//   }
+// }
 
 
 export async function fetchAllLighthouses() {

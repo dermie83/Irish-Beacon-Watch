@@ -20,25 +20,29 @@ export default async function getServerSideProps(){
     alert("Application is on client side");}
 
     const lighthouses = await fetchAllLighthouses();
-    console.log("list of lighouses ",lighthouses)
+    // console.log("list of lighthouse names ",lighthouses)
 
-    const ranges = await fetchLighthouseRanges();
-    const maxRangeName = ranges.map((item)=> item.name);
-    const maxRange = ranges.map((item)=> item.range_w);
+    const top15ByRangeW = [...lighthouses].sort((a, b) => (b.range_w ?? 0) - (a.range_w ?? 0)).slice(0, 15);
+    const top15NamesAndRanges = top15ByRangeW.map(l => ({name: l.name, range_w: l.range_w, range_r: l.range_r,}));
+    const maxRangeName = top15NamesAndRanges.map((item)=> item.name);
+    const maxRange = top15NamesAndRanges.map((item)=> item.range_w);
 
-    const abwMetrics = await fetchLighthouseABWMetrics();
-    const maxABWName = abwMetrics.map((item)=> item.name);
-    const maxABW = abwMetrics.map((item)=> item.abovewater);
+    const top15ByABW = [...lighthouses].sort((a, b) => (b.abovewater ?? 0) - (a.abovewater ?? 0)).slice(0, 15);
+    const top15NamesAndABW = top15ByABW.map(l => ({name: l.name, abovewater: l.abovewater,}));
+    const maxABWName = top15NamesAndABW.map((item)=> item.name);
+    const maxABW = top15NamesAndABW.map((item)=> item.abovewater);
 
-    const towerHeights = await fetchLighthouseTowerMetrics();
-    const maxTowerName = towerHeights.map((item)=> item.name);
-    const maxTower = towerHeights.map((item)=> item.towerheight);
-    // console.log(maxTower.slice(-1)[0]);
+    const top15ByTowerHeight = [...lighthouses].sort((a, b) => (b.towerheight ?? 0) - (a.towerheight ?? 0)).slice(0, 15);
+    const top15NamesAndTowerHeight = top15ByTowerHeight.map(l => ({name: l.name, towerheight: l.towerheight,}));
+    const maxTowerName = top15NamesAndTowerHeight.map((item)=> item.name);
+    const maxTower = top15NamesAndTowerHeight.map((item)=> item.towerheight);
 
-    const ages = await fetchLighthouseAges();
-    const maxAgeName = ages.map((item)=> item.name);
-    const maxage = ages.map((item)=> item.age);
-    // console.log(maxage.slice(-1)[0]);
+    const top15ByAge = [...lighthouses].sort((a, b) => (b.age ?? 0) - (a.age ?? 0)).slice(0, 15);
+    const top15NamesAndAge = top15ByAge.map(l => ({name: l.name, age: l.age,}));
+    const maxAgeName = top15NamesAndAge.map((item)=> item.name);
+    const maxage = top15NamesAndAge.map((item)=> item.age);
+    
+
     const error = false;
     const errorMessage = "Failed to load data. Please refresh the page.";
    
@@ -59,7 +63,7 @@ export default async function getServerSideProps(){
               }))}
             />
           </div>
-          <div className="text-sm md:text-base">
+          {/* <div className="text-sm md:text-base">
             <MetricsTable
               maxabovewater={Math.max(...maxABW) ?? ""}
               abovewatername={maxABWName?.slice(0)[0] ?? ""}
@@ -70,22 +74,22 @@ export default async function getServerSideProps(){
               agename={maxAgeName?.slice(0)[0] ?? ""}
               maxage={Math.max(...maxage) ?? ""}
             />
+          </div> */}
+
+          <div className="w-full">
+            <RangeGraph rangeData={top15NamesAndRanges} />
           </div>
 
           <div className="w-full">
-            <RangeGraph rangeData={ranges} />
+            <AboveWaterGraph abwData={top15NamesAndABW} />
           </div>
 
           <div className="w-full">
-            <AboveWaterGraph abwData={abwMetrics} />
+            <TowerGraph towerData={top15NamesAndTowerHeight} />
           </div>
 
           <div className="w-full">
-            <TowerGraph towerData={towerHeights} />
-          </div>
-
-          <div className="w-full">
-            <AgeGraph ageData={ages} />
+            <AgeGraph ageData={top15NamesAndAge} />
           </div>
         </div>
 
